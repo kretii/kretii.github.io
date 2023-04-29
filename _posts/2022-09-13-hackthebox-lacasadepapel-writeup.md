@@ -2,7 +2,7 @@
 layout      : post
 title       : "La Casa De Papel - HackTheBox"
 author      : elc4br4
-image       : /lacasadepapel.webp
+image       : /assets/images/HTB/LaCasaDePapel-Hackthebox/lacasadepapel.webp
 optimized_image : /assets/images/HTB/LaCasaDePapel-Hackthebox/lacasadepapel.webp
 category    : [ htb ]
 tags        : [ Linux ]
