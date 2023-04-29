@@ -55,6 +55,10 @@ sent_message_url: "/contact/message-sent/"
 
 # Build settings
 markdown: kramdown
+highlighter: true
+permalink: pretty
+# Build settings
+
 highlighter: rouge
 permalink: /:title/
 collections:
