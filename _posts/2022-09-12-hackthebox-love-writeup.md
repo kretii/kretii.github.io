@@ -3,11 +3,13 @@ layout      : post
 title       : "Love - HackTheBox"
 author      : elc4br4
 image       : /assets/images/HTB/Love-HackTheBox/Love.webp
+optimized_image : /assets/images/HTB/Love-HackTheBox/Love.webp
 category    : [ htb ]
 tags        : [ Windows ]
+description : Estamos ante una máquina Windows nivel Easy en la que encontraremos credenciales, tendremos que explotar RCE y jugar un poco con registros y msfvenom... 🙈​
 ---
 
-Estamos ante una máquina Windows nivel Easy en la que encontraremos credenciales, tendremos que explotar RCE y jugar un poco con registros y msfvenom... 🙈​☺️​
+Estamos ante una máquina Windows nivel Easy en la que encontraremos credenciales, tendremos que explotar RCE y jugar un poco con registros y msfvenom... 🙈​
 
 ![](/assets/images/HTB/Love-HackTheBox/rating-love.png)
 

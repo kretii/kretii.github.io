@@ -3,8 +3,10 @@ layout      : post
 title       : "Netmon - HackTheBox"
 author      : elc4br4
 image       : /assets/images/HTB/Netmon-HackTheBox/Netmon.webp
+optimized_image : /assets/images/HTB/Netmon-HackTheBox/Netmon.webp
 category    : [ htb ]
 tags        : [ Windows ]
+description : Hoy vamos a resolver una máquina Windows de nivel Easy de la plataforma HackTheBox en la que obtendremos la flag user de manera muy sencilla y aprovecharemos una vulnerabilidad del servidor web para obtener la flag root sin necesidad de escalar privilegios ni acceder al sistema.
 ---
 
 Hoy vamos a resolver una máquina Windows de nivel Easy de la plataforma HackTheBox en la que obtendremos la flag user de manera muy sencilla y aprovecharemos una vulnerabilidad del servidor web para obtener la flag root sin necesidad de escalar privilegios ni acceder al sistema.

@@ -3,8 +3,10 @@ layout      : post
 title       : "Academy - HackTheBox"
 author      : elc4br4
 image       : /assets/images/HTB/Academy-HackTheBox/Academy.webp
+optimized_image : /assets/images/HTB/Academy-HackTheBox/Academy.webp
 category    : [ htb ]
 tags        : [ Linux ]
+description : ⚡En esta ocasión vamos a resolver una máquina Linux de nivel Easy en la que tocaremos un poco de Laravel, logs y escalaremos privilegios a través de un binario⚡
 ---
 
 En esta ocasión vamos a resolver una máquina Linux de nivel Easy en la que tocaremos un poco de Laravel, logs y escalaremos privilegios a través de un binario⚡

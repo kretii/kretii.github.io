@@ -3,8 +3,10 @@ layout      : post
 title       : "Optimum - HackTheBox"
 author      : elc4br4
 image       : /assets/images/HTB/Optimum-HackTheBox/Optimum.webp
+optimized_image : /assets/images/HTB/Optimum-HackTheBox/Optimum.webp
 category    : [ htb ]
 tags        : [ Windows ]
+description : En esta ocasión resolveremos una máquina Windows de nivel Easy, tenemos un servidor web de transferencia de archivos y usaremos una herramienta nueva para descubrir vulnerabilidades para escalar privilegios en Windows.
 ---
 
 En esta ocasión resolveremos una máquina Windows de nivel Easy, tenemos un servidor web de transferencia de archivos y usaremos una herramienta nueva para descubrir vulnerabilidades para escalar privilegios en Windows.

@@ -3,8 +3,10 @@ layout      : post
 title       : "Pam - HackMyVm"
 author      : elc4br4
 image       : /assets/images/HMV/Pam-HackMyVM/portada.jpg
+optimized_image : /assets/images/HMV/Pam-HackMyVM/portada.jpg
 category    : [ HackMyVM ]
 tags        : [ Linux ]
+description : Pam es una maquina de nivel medio de la plataforma HackMyVm, en la que tocaremos una forma de subir una reverse shell al servidor a través del servidor FTP, mostraré como se realizo el tratamiento de la tty y tendremos pivoting a un usuario para posteriormente escalar privilegios a través del binario feh.
 ---
 
 Pam es una maquina de nivel medio de la plataforma HackMyVm, en la que tocaremos una forma de subir una reverse shell al servidor a través del servidor FTP, mostraré como se realizo el tratamiento de la tty y tendremos pivoting a un usuario para posteriormente escalar privilegios a través del binario feh.

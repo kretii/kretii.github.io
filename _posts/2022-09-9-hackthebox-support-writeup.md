@@ -3,8 +3,10 @@ layout		: post
 title		: "Support-HackTheBox"
 author		: elc4br4
 image		: /assets/images/HTB/Support-HackTheBox/support.webp
+optimized_image : /assets/images/HTB/Support-HackTheBox/support.webp
 category	: [ htb ]
 tags		: [ Windows ]
+description : Estamos ante una máquina Windows de nivel Easy.
 ---
 Estamos ante una máquina Windows de nivel Easy en la que tocaremos Active Directory.
 

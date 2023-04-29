@@ -3,8 +3,10 @@ layout      : post
 title       : "Return - HackTheBox"
 author      : elc4br4
 image       : /assets/images/HTB/Return-HackTheBox/Return.webp
+original_image: /assets/images/HTB/Lame-HackTheBox/Return.webp
 category    : [ htb ]
 tags        : [ Windows ]
+description : Esta vez tenemos una máquina Windows de nivel Easy en la que explotaremos un servidor web de Administración de Impresora para obtener unas credenciales con las que posteriormente nos conectaremos a la máquina a través de Winrm y escalaremos privilegios a través de una mala configuración de grupos de usuario con la que podremos crear, modificar, iniciar y parar servicios.
 ---
 
 Esta vez tenemos una máquina Windows de nivel Easy en la que explotaremos un servidor web de Administración de Impresora para obtener unas credenciales con las que posteriormente nos conectaremos a la máquina a través de Winrm y escalaremos privilegios a través de una mala configuración de grupos de usuario con la que podremos crear, modificar, iniciar y parar servicios.

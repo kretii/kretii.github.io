@@ -3,8 +3,10 @@ layout      : post
 title       : "Lame - HackTheBox"
 author      : elc4br4
 image       : /assets/images/HTB/Lame-HackTheBox/Lame.webp
+original_image: /assets/images/HTB/Lame-HackTheBox/Lame.webp
 category    : [ htb ]
 tags        : [ Linux ]
+description : Hoy romperemos una máquina Linux de nivel Easy, explotaremos una versión vulnerable del protocolo SMB a través de un módulo de metasploit, y en esta ocasión no tendremos que escalar privilegios, ya que el mismo módulo nos otorga el acceso como root.
 ---
 
 Hoy romperemos una máquina Linux de nivel Easy, explotaremos una versión vulnerable del protocolo SMB a través de un módulo de metasploit, y en esta ocasión no tendremos que escalar privilegios, ya que el mismo módulo nos otorga el acceso como root.
