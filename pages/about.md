@@ -5,10 +5,9 @@ date: '2023-04-29 01:53:59'
 title: About
 description: Este espacio es únicamente para añadir mis redes sociales.
 permalink: /about/
-image: /assets/images/about.png
 ---
 
-<img class="img-rounded" src="/assets/img/uploads/profile.png" alt="Thiago Rossener" width="200">
+<img class="img-rounded" src="/assets/images/about.png" alt="elc4br4">
 
 # About
 
