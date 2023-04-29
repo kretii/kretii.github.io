@@ -15,7 +15,7 @@ Hola! Soy elc4br4, estudiante de Ciberseguridad y CTF player.
 
 ## Tryhackme Profile
 
-<script src="https://tryhackme.com/badge/512515"></script>
+<div align="center"><script src="https://tryhackme.com/badge/512515"></script> </div>
 
 ## HackTheBox Profile
 
