@@ -3,7 +3,7 @@ layout      : post
 title       : "La Casa De Papel - HackTheBox"
 author      : elc4br4
 image       : /lacasadepapel.webp
-optimized_image : /lacasadepapel.webp
+optimized_image : /assets/images/HTB/LaCasaDePapel-Hackthebox/lacasadepapel.webp
 category    : [ htb ]
 tags        : [ Linux ]
 description : Vamos a resolver una máquina Linux Nivel Easy de HackTheBox en la que tendremos un proceso de explotación un poco largo y tedioso y unsa escalada rápida y sencilla para compensar, tocaremos PHP, crearemos certificados con OpenSSL, manejaremos claves rsa y acabaremos con una escalada muy sencilla💻👽👾
