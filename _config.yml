@@ -59,8 +59,8 @@ highlighter: true
 permalink: pretty
 # Build settings
 
-highlighter: rouge
-permalink: /:title/
+#highlighter: rouge
+#permalink: /:title/
 collections:
   authors:
     output: true
