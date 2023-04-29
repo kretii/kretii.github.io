@@ -1,19 +1,21 @@
 ---
 layout: page
-menu: false
-date: '2020-02-27 01:53:59'
-title: About
-description: Some description.
-permalink: /about/
+title: Redes sociales
+permalink: /about
+comments: false
+image: assets/images/about.png
+imageshadow: true
 ---
 
-<img class="img-rounded" src="/assets/img/uploads/profile.png" alt="Thiago Rossener" width="200">
+Este espacio es únicamente para añadir mis redes sociales
 
-# About
+<a target="_blank" href="https://github.com/elc4br4" class="btn btn-dark"><i class="fab fa-github"></i></a>
+<a target="_blank" href="https://twitter.com/elc4br4_hacking" class="btn btn-dark"><i class="fab fa-twitter"></i></a>
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Perfil-HackTheBox:
+
+[![HTBadge](https://www.hackthebox.eu/badge/image/533771)](https://www.hackthebox.com/home/users/profile/533771)
+
+
+
