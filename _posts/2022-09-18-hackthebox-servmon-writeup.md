@@ -7,7 +7,7 @@ optimized_image : /assets/images/HTB/Servmon-HackTheBox/ServMon.webp
 category    : [ htb ]
 tags        : [ Windows ]
 description : En esta ocasión tenemos una máquina Windows de nivel Easy.
-Tocaremos un poco de FTP (que nos dará pistas), explotaremos una vulnerabilidad en el servidor web (directory transversal) y escalaremos privilegios abusando de una vulnerabiliad del servidor NSClient++
+Tocaremos un poco de FTP, explotaremos una vulnerabilidad en el servidor web (directory transversal) y escalaremos privilegios abusando de una vulnerabiliad del servidor NSClient++
 ---
 
 En esta ocasión tenemos una máquina Windows de nivel Easy.
