@@ -94,7 +94,9 @@ Buscando información acerca de la Psy Shell encuentro que es una consola para d
 
 # Explotación
 
-Podemos comprobar al escribir un comando lo siguiente --> `shell_exec() has been disabled for security reasons in phar://eval()'d code on line 1`
+Podemos comprobar al escribir un comando lo siguiente:
+
+`shell_exec() has been disabled for security reasons in phar://eval()'d code on line 1`
 
 Pruebo a ejecutar otros comandos en php, como listar archivos o leer el contenido de los mismos.
 
