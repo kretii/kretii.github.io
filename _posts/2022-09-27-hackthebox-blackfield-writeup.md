@@ -3,8 +3,10 @@ layout      : post
 title       : "Blackfield - HackTheBox"
 author      : elc4br4
 image       : /assets/images/HTB/Blackfield-HackTheBox/Blackfield.webp
+optimized_image : /assets/images/HTB/Blackfield-HackTheBox/Blackfield.webp
 category    : [ htb ]
 tags        : [ Windows ]
+description : En esta ocasión me he aventurado a resolver una máquina de nivel HARD Windows. Es la primera vez que me enfrento a una máquina de este calibre, me ha llevado mucho tiempo pero finalmente la he pwneado.
 ---
 
 En esta ocasión me he aventurado a resolver una máquina de nivel HARD Windows. Es la primera vez que me enfrento a una máquina de este calibre, me ha llevado mucho tiempo pero finalmente la he pwneado.

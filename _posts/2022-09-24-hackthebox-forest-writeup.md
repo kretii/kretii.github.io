@@ -3,8 +3,10 @@ layout      : post
 title       : "Forest - HackTheBox"
 author      : elc4br4
 image       : /assets/images/HTB/Forest-HackTheBox/Forest.webp
+optimized_image : /assets/images/HTB/Forest-HackTheBox/Forest.webp
 category    : [ htb ]
 tags        : [ Windows ]
+description : En esta ocasión vamos a resolver la máquina Forest de nivel Easy, que la verdad, de Easy tiene poco... Realizaremos ataque ASREPRoast, crackearemos hashes, y realizaremos una escalada algo difícil para ser una máquina de nivel Easy, abusando de privilegios Generic All y WriteDacl.
 ---
 
 En esta ocasión vamos a resolver la máquina Forest de nivel Easy, que la verdad, de Easy tiene poco... Realizaremos ataque ASREPRoast, crackearemos hashes, y realizaremos una escalada algo difícil para ser una máquina de nivel Easy, abusando de privilegios Generic All y WriteDacl.
