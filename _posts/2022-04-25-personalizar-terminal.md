@@ -1,5 +1,5 @@
 ---
-date: 2023-04-25 23:48:05
+date: 2022-04-25 23:48:05
 layout: post
 title: Personalización shell con ZSH y Powelevel10k
 subtitle: 
