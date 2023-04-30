@@ -412,5 +412,5 @@ Set your website language. It's used for SEO purposes (e.g. `pt-BR`, `en`, `es`,
 
 ```yaml
 # advanced.yml
-language: "en"
+language: "es"
 ```
