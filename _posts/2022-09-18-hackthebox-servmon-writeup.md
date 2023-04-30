@@ -6,8 +6,8 @@ subtitle:
 description: >-
 En esta ocasión tenemos una máquina Windows de nivel Easy.
 Tocaremos un poco de FTP, explotaremos una vulnerabilidad en el servidor web (directory transversal) y escalaremos privilegios abusando de una vulnerabiliad del servidor NSClient++
-image: /assets/images/HTB/Servmon-HackTheBox/ServMon.webp
-optimized_image: /assets/images/HTB/Servmon-HackTheBox/ServMon.webp
+image: /assets/images/HTB/Servmon-HackTheBox/ServMon.jpg
+optimized_image: /assets/images/HTB/Servmon-HackTheBox/ServMon.jpg
 category: blog
 tags:
   - Linux
