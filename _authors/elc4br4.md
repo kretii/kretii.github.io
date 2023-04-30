@@ -1,6 +1,6 @@
 ---
 layout: author
-photo: /assets/img/uploads/profile.png
+photo: /assets/img/user.jpg
 name: elc4br4
 display_name: elc4br4
 position: The One
