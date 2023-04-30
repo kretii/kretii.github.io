@@ -39,7 +39,7 @@ Dentro del navegador encuentro lo siguiente:
 
 > phpipam is ready 
 
-![](/assets/images/ HMV/Pam-HackMyVM/web1.png)
+![](/assets/images/HMV/Pam-HackMyVM/web1.png)
 
 Buscando dentro del servidor ftp llego a la siguiente ruta donde se aloja el servicio web.
 
