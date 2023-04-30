@@ -3,8 +3,10 @@ layout      : post
 title       : "Arroutada - HackMyVm"
 author      : elc4br4
 image       : assets/images/HMV/Arroutada-HackMyVM/Arroutada.webp
+optimized_image : assets/images/HMV/Arroutada-HackMyVM/Arroutada.webp
 category    : [ HackMyVM ]
 tags        : [ Linux ]
+description : En esta ocasión resolvemos la máquina **Arroutada** creada por Rijaba1 que está disponible en la plataforma de **HackmyVm**.
 ---
 
 En esta ocasión resolvemos la máquina **Arroutada** creada por Rijaba1 que está disponible en la plataforma de **HackmyVm**.
@@ -15,12 +17,9 @@ En esta ocasión resolvemos la máquina **Arroutada** creada por Rijaba1 que est
 2. [Explotación](#explotación).
 3. [Escalada de Privilegios](#priv-esc).
 
-
 ***
 
-
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
-
 
 Comenzamos como siempre lanzando **nmap** para realizar un reconocimiento de puertos.
 
