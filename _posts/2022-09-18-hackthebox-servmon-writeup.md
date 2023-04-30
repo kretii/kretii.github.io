@@ -3,7 +3,7 @@ layout      : post
 title       : "ServMon - HackTheBox"
 author      : elc4br4
 image       : /assets/images/HTB/Servmon-HackTheBox/ServMon.jpg
-optimized_image : /assets/images/HTB/Servmon-HackTheBox/ServMon.jpg
+optimized_image: /assets/images/HTB/Servmon-HackTheBox/ServMon.jpg
 category    : [ htb ]
 tags        : [ Linux ]
 description : En esta ocasión tenemos una máquina Windows de nivel Easy.
