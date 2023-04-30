@@ -3,7 +3,6 @@ layout      : post
 title       : "Metatwo - HackTheBox"
 author      : elc4br4
 image       : /assets/images/HTB/Metatwo-HackTheBox/Metatwo.webp
-optimized_image : /assets/images/HTB/Metatwo-HackTheBox/Metatwo.webp
 category    : [ htb ]
 tags        : [ Linux ]
 description : Máquina easy de la plataforma HackTheBox
