@@ -6,7 +6,7 @@
   {% for post in posts %}
     {
       "title"    : "{{ post.title | escape }}",
-      "tags"     : "{{ post.tags | array_to_sentence_string }}",
+      "tags"     : "{{ post.tags | map: 'to_liquid'| array_to_sentence_string }}",
       "categories" : "{{ post.category }}",
       "url"      : "{{ site.baseurl }}{{ post.url }}",
       "date"     : "{{ post.date | date: date_format }}"
