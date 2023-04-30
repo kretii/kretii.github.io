@@ -1,19 +1,13 @@
 ---
-date: 2022-09-18 23:48:05
-layout: post
-title: ServMon - HackTheBox
-subtitle: 
-description: >-
-En esta ocasión tenemos una máquina Windows de nivel Easy.
-Tocaremos un poco de FTP, explotaremos una vulnerabilidad en el servidor web (directory transversal) y escalaremos privilegios abusando de una vulnerabiliad del servidor NSClient++
-image: /assets/images/HTB/Servmon-HackTheBox/ServMon.jpg
-optimized_image: /assets/images/HTB/Servmon-HackTheBox/ServMon.jpg
-category: blog
-tags:
-  - Linux
-  - htb
-author: elc4br4
-paginate: true
+layout      : post
+title       : "ServMon - HackTheBox"
+author      : elc4br4
+image       : /assets/images/HTB/Servmon-HackTheBox/ServMon.jpg
+optimized_image : /assets/images/HTB/Servmon-HackTheBox/ServMon.jpg
+category    : [ htb ]
+tags        : [ Linux ]
+description : En esta ocasión tenemos una máquina Windows de nivel Easy.
+Tocaremos un poco de FTP (que nos dará pistas), explotaremos una vulnerabilidad en el servidor web (directory transversal) y escalaremos privilegios abusando de una vulnerabiliad del servidor NSClient++
 ---
 
 En esta ocasión tenemos una máquina Windows de nivel Easy.
