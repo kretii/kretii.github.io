@@ -16,8 +16,6 @@ En esta ocasión me he metido en un jaleo resolviendo la máquina Absolute de Ha
 
 ![](/assets/images/HTB/Absolute-HackTheBox/absolute-rating.webp)
 
-[![HTBadge](https://www.hackthebox.eu/badge/image/533771)](https://www.hackthebox.com/home/users/profile/533771)
-
 
 ***
 

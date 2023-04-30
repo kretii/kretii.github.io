@@ -11,8 +11,6 @@ description : 📡Estoy ante una máquina Linux nivel Medium en la que aprovecha
 
 📡Estoy ante una máquina Linux nivel Medium en la que aprovecharemos una vulnerabilidad de Grafana para leer usuarios, analizaremos brevemente un archivo base de datos, tocaremos un poco de SQL y acabremos con una escalada explotando una vulnerabilidad de un servicio denominado consul a través de un token y un módulo de metasploit📡.
 
-🎥Canal Writeups Youtube🎬 --> [https://www.youtube.com/channel/UCllewdxU0OQudNp9-1IVJYQ](https://www.youtube.com/channel/UCllewdxU0OQudNp9-1IVJYQ)
-
 ![](/assets/images/HTB/Ambassador-HackTheBox/Ambassador2.webp)
 
 ![](/assets/images/HTB/Ambassador-HackTheBox/ambassador-rating.webp)
