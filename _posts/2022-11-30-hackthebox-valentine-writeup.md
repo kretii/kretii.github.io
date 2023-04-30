@@ -2,12 +2,14 @@
 layout      : post
 title       : "Valentine - HackTheBox"
 author      : elc4br4
-image       : assets/images/HTB/Valentine-HackTheBox/valentine.webp
+image       : /assets/images/HTB/Valentine-HackTheBox/valentine.webp
+optimized_image : /assets/images/HTB/Valentine-HackTheBox/valentine.webp
 category    : [ htb ]
 tags        : [ Linux ]
+description : ❤️En esta máquina Linux de nivel easy explotaremos una vulnerabilidad conocida como Heartbleed y acabremos escalando privilegios a través de tmux❤️
 ---
 
-❤️En esta máquina Linux de nivel easy explotaremos una vulnerabilidad conocida como Heartbleed y acabremos escalando privilegios a través de tmux❤️.
+❤️En esta máquina Linux de nivel easy explotaremos una vulnerabilidad conocida como Heartbleed y acabremos escalando privilegios a través de tmux❤️
 
 🎥Canal Writeups Youtube🎬 --> [https://www.youtube.com/channel/UCllewdxU0OQudNp9-1IVJYQ](https://www.youtube.com/channel/UCllewdxU0OQudNp9-1IVJYQ)
 

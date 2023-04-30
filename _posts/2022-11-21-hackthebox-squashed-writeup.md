@@ -2,12 +2,14 @@
 layout      : post
 title       : "Squashed - HackTheBox"
 author      : elc4br4
-image       : assets/images/HTB/Squashed-HackTheBox/Squashed.webp
+image       : /assets/images/HTB/Squashed-HackTheBox/Squashed.webp
+optimized_image : /assets/images/HTB/Squashed-HackTheBox/Squashed.webp
 category    : [ htb ]
 tags        : [ Linux ]
+description: ⚔️En esta máquina Linux de nivel easy tendremos que montar directorios compartidos nfs, obtener reverse shell a través de la subida de un archivo malicioso y escalaremos privilegios a través del fichero .Xauthority⚔️
 ---
 
-⚔️En esta máquina Linux de nivel easy tendremos que montar directorios compartidos nfs, obtener reverse shell a través de la subida de un archivo malicioso y escalaremos privilegios a través del fichero .Xauthority⚔️.
+⚔️En esta máquina Linux de nivel easy tendremos que montar directorios compartidos nfs, obtener reverse shell a través de la subida de un archivo malicioso y escalaremos privilegios a través del fichero .Xauthority⚔️
 
 🎥Canal Writeups Youtube🎬 --> [https://www.youtube.com/channel/UCllewdxU0OQudNp9-1IVJYQ](https://www.youtube.com/channel/UCllewdxU0OQudNp9-1IVJYQ)
 

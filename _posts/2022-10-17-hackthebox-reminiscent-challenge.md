@@ -2,8 +2,8 @@
 layout      : post
 title       : "Reminiscent Forensic Challenge - HackTheBox"
 author      : elc4br4
-image       : assets/images/HTB/Reminiscent-HackTheBox/Reminiscent-challenge.webp
-optimized_image       : assets/images/HTB/Reminiscent-HackTheBox/Reminiscent-challenge.webp
+image       : /assets/images/HTB/Reminiscent-HackTheBox/Reminiscent-challenge.webp
+optimized_image : /assets/images/HTB/Reminiscent-HackTheBox/Reminiscent-challenge.webp
 category    : [ htb ]
 tags        : [ Forense ]
 description : Challenge forense en el que debemos analizar un archivo de dumpeo de memoria ram a través de la herramienta volatility, buscando archivos, dumpeándolos y decodificando la data que hay dentro del archivo.

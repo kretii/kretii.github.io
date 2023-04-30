@@ -2,14 +2,14 @@
 layout      : post
 title       : "Arroutada - HackMyVm"
 author      : elc4br4
-image       : assets/images/HMV/Arroutada-HackMyVM/Arroutada.webp
-optimized_image : assets/images/HMV/Arroutada-HackMyVM/Arroutada.webp
+image       : /assets/images/HMV/Arroutada-HackMyVM/Arroutada.webp
+optimized_image : /assets/images/HMV/Arroutada-HackMyVM/Arroutada.webp
 category    : [ HackMyVM ]
 tags        : [ Linux ]
-description : En esta ocasión resolvemos la máquina **Arroutada** creada por Rijaba1 que está disponible en la plataforma de **HackmyVm**.
+description : En esta ocasión resolvemos la máquina Arroutada creada por Rijaba1 que está disponible en la plataforma de HackmyVm.
 ---
 
-En esta ocasión resolvemos la máquina **Arroutada** creada por Rijaba1 que está disponible en la plataforma de **HackmyVm**.
+En esta ocasión resolvemos la máquina Arroutada creada por Rijaba1 que está disponible en la plataforma de HackmyVm.
 
 **Un pequeño INDICE**
 
@@ -21,7 +21,7 @@ En esta ocasión resolvemos la máquina **Arroutada** creada por Rijaba1 que est
 
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
 
-Comenzamos como siempre lanzando **nmap** para realizar un reconocimiento de puertos.
+Comenzamos como siempre lanzando nmap para realizar un reconocimiento de puertos.
 
 `nmap -p- -Pn -n --min-rate 5000 192.168.0.30`
 

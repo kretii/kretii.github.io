@@ -2,9 +2,11 @@
 layout      : post
 title       : "Goodgames - HackTheBox"
 author      : elc4br4
-image       : assets/images/HTB/Goodgames-HackTheBox/goodgames.webp
+image       : /assets/images/HTB/Goodgames-HackTheBox/goodgames.webp
+optimized_image : /assets/images/HTB/Goodgames-HackTheBox/goodgames.webp
 category    : [ htb ]
 tags        : [ Linux ]
+description : 🎮🕹️En esta máquina Linux de nivel easy tocaremos un poco de sql, a través de sqlmap, explotaremos una vulnerabilidad ssti y escalaremos privielgios a través del binario bash jugando con los poermisos del mismo desde docker y una shell ssh🕹️🎮
 ---
 
 🎮🕹️En esta máquina Linux de nivel easy tocaremos un poco de sql, a través de sqlmap, explotaremos una vulnerabilidad ssti y escalaremos privielgios a través del binario bash jugando con los poermisos del mismo desde docker y una shell ssh🕹️🎮.
@@ -14,8 +16,6 @@ tags        : [ Linux ]
 ![](/assets/images/HTB/Goodgames-HackTheBox/goodgames2.webp)
 
 ![](/assets/images/HTB/Goodgames-HackTheBox/estadisticas.webp)
-
-[![HTBadge](https://www.hackthebox.eu/badge/image/533771)](https://www.hackthebox.com/home/users/profile/533771)
 
 ***
 

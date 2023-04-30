@@ -2,8 +2,8 @@
 layout      : post
 title       : "Blue - HackTheBox"
 author      : elc4br4
-image       : assets/images/HTB/Blue-HackTheBox/Blue.webp
-optimized_image : assets/images/HTB/Blue-HackTheBox/Blue.webp
+image       : /assets/images/HTB/Blue-HackTheBox/Blue.webp
+optimized_image : /assets/images/HTB/Blue-HackTheBox/Blue.webp
 category    : [ htb ]
 tags        : [ Windows ]
 description : Tenemos una máquina nivel EASY Windows, en la que explotaremos la vulnerabilidad eternalblue del protocolo SMB, de forma automatizada con metasploit y no tendremos que escalar privilegios ya el propio exploit nos dará acceso al usuario Administrador.

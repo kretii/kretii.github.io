@@ -3,7 +3,7 @@ layout      : post
 title       : "Shocker - HackTheBox"
 author      : elc4br4
 image       : /assets/images/HTB/Shocker-HackTheBox/Shocker.webp
-optimized_image       : /assets/images/HTB/Shocker-HackTheBox/Shocker.webp
+optimized_image : /assets/images/HTB/Shocker-HackTheBox/Shocker.webp
 category    : [ htb ]
 tags        : [ Linux ]
 description : 👨‍🎓Esta vez tenemos la máquina Shocker de nivel EASY, en la que explotaremos shellshock, veremos dos formas de detectarla y como explotarla, y finalizaremos con una escalada de privilegios sencilla a través del binario perl👨‍🎓

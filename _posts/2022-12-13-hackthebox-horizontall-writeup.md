@@ -2,9 +2,11 @@
 layout      : post
 title       : "Horizontall - HackTheBox"
 author      : elc4br4
-image       : assets/images/HTB/Horizontall-HackTheBox/Horizontall.webp
+image       : /assets/images/HTB/Horizontall-HackTheBox/Horizontall.webp
+optimized_image : /assets/images/HTB/Horizontall-HackTheBox/Horizontall.webp
 category    : [ htb ]
 tags        : [ Linux ]
+description: 🚀👨‍🚀En esta máquina Linux de nivel easy obtendré acceso al sistema a través de una vulnerabilidad RCE en Strapi CMS y escalaré privilegios aprovechando una vulnerabilidad explotada a través de Laravel usando chisel🚀👨‍🚀.
 ---
 
 🚀👨‍🚀En esta máquina Linux de nivel easy obtendré acceso al sistema a través de una vulnerabilidad RCE en Strapi CMS y escalaré privilegios aprovechando una vulnerabilidad explotada a través de Laravel usando chisel🚀👨‍🚀.

@@ -3,11 +3,13 @@ layout      : post
 title       : "DevOops - HackTheBox"
 author      : elc4br4
 image       : /assets/images/HTB/DevOops-HackTheBox/DevOops.webp
+optimized_image : /assets/images/HTB/DevOops-HackTheBox/DevOops.webp
 category    : [ htb ]
 tags        : [ Linux ]
+description: Máquina Linux de nivel MEDIUM en la que explotaremos la vulnerabilidad XXE para leer archivos generando un archivo .xml y escalaremos privilegios a través de un rsa.
 ---
 
-Estamos ante una máquina Linux de nivel MEDIUM en la que explotaremos la vulnerabilidad XXE para leer archivos generando un archivo .xml y escalaremos privilegios a través de un rsa.
+Máquina Linux de nivel MEDIUM en la que explotaremos la vulnerabilidad XXE para leer archivos generando un archivo .xml y escalaremos privilegios a través de un rsa.
 
 ![](/assets/images/HTB/DevOops-HackTheBox/DevOops2.webp)
 

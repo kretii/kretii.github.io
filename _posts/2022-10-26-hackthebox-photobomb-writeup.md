@@ -2,8 +2,8 @@
 layout      : post
 title       : "Photobomb - HackTheBox"
 author      : elc4br4
-image       : assets/images/HTB/Photobomb-HackTheBox/Photobomb.webp
-optimized_image       : assets/images/HTB/Photobomb-HackTheBox/Photobomb.webp
+image       : /assets/images/HTB/Photobomb-HackTheBox/Photobomb.webp
+optimized_image : /assets/images/HTB/Photobomb-HackTheBox/Photobomb.webp
 category    : [ htb ]
 tags        : [ Linux ]
 description : 🤖Máquina Linux de nivel Easy en la que encontraremos unas credenciales de acceso a un panel web de descarga de imágenes ocultas en archivo javascript, a través de burpsuite podremos obtener un reverse shell y escalaremos privilegios de 2 formas diferentes, a través del script cleanup.sh creando un falso binario y a través de LD_PRELOAD, creando el script en C🤖.
