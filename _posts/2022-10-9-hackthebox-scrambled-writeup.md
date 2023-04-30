@@ -3,15 +3,15 @@ layout      : post
 title       : "Scrambled - HackTheBox"
 author      : elc4br4
 image       : /assets/images/HTB/Scrambled-HackTheBox/Scrambled.webp
+optimized_image       : /assets/images/HTB/Scrambled-HackTheBox/Scrambled.webp
 category    : [ htb ]
 tags        : [ Windows ]
+description : Máquina Windows de nivel MEDIO bastante compleja, tendremos que enumerar utilizando una gran cantidad de herramientas Impacket. Habilitaremos _xp_cmdshell en la base de datos sql para ejecutar comandos y obtener una shell inversa. Nos migraremos a otro usuario tars encontrar credenciales en la base de datos y escalaremos privilegios a través de una deserialización .NET usando la herramienta `ysoserial`
 ---
 
-Estamos ante una máquina Windows de nivel MEDIO bastante compleja, tendremos que enumerar utilizando una gran cantidad de herramientas Impacket. Habilitaremos _xp_cmdshell en la base de datos sql para ejecutar comandos y obtener una shell inversa. Nos migraremos a otro usuario tars encontrar credenciales en la base de datos y escalaremos privilegios a través de una deserialización .NET usando la herramienta `ysoserial`
+Máquina Windows de nivel MEDIO bastante compleja, tendremos que enumerar utilizando una gran cantidad de herramientas Impacket. Habilitaremos _xp_cmdshell en la base de datos sql para ejecutar comandos y obtener una shell inversa. Nos migraremos a otro usuario tars encontrar credenciales en la base de datos y escalaremos privilegios a través de una deserialización .NET usando la herramienta `ysoserial`
 
 ![](/assets/images/HTB/Scrambled-HackTheBox/scrambled2.webp)
-
-[![HTBadge](https://www.hackthebox.eu/badge/image/533771)](https://www.hackthebox.com/home/users/profile/533771)
 
 ![](/assets/images/HTB/Scrambled-HackTheBox/scrambled-rating.webp)
 

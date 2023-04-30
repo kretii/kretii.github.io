@@ -3,11 +3,13 @@ layout      : post
 title       : "CelebritySoup - HackMyVm"
 author      : elc4br4
 image       : /assets/images/HMV/Celebritysoup-HackMyVM/Celebritysoup.webp
+optimized_image : /assets/images/HMV/Celebritysoup-HackMyVM/Celebritysoup.webp
 category    : [ HackMyVM ]
 tags        : [ Linux ]
+description : CelebritySoup es una máquina nivel Easy creada por ShellDredd, en la que tendremos un poco de todo, una "larga" enumeración web con cositas muy chulas en cuanto al diseño del CTF, un poco de stego y una escalada bien sencilla tirando de un SUID y jugando un poco con la variable PATH.
 ---
 
-Esta vez tenemos la máquina CelebritySoup nivel Easy creada por ShellDredd, en la que tendremos un poco de todo, una "larga" enumeración web con cositas muy chulas en cuanto al diseño del CTF, un poco de stego y una escalada bien sencilla tirando de un SUID y jugando un poco con la variable PATH.
+CelebritySoup es una máquina nivel Easy creada por ShellDredd, en la que tendremos un poco de todo, una "larga" enumeración web con cositas muy chulas en cuanto al diseño del CTF, un poco de stego y una escalada bien sencilla tirando de un SUID y jugando un poco con la variable PATH.
 
 ### Canal de ShellDredd Informática 
 <a href="https://www.youtube.com/c/ShellDreddInform%C3%A1tica">Enlace Canal Youtube Shelldredd Informática</a>

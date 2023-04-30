@@ -3,15 +3,15 @@ layout      : post
 title       : "Grandpa - HackTheBox"
 author      : elc4br4
 image       : /assets/images/HTB/Grandpa-HackTheBox/Grandpa.webp
+optimized_image       : /assets/images/HTB/Grandpa-HackTheBox/Grandpa.webp
 category    : [ htb ]
 tags        : [ Windows ]
+description : 🤖​En esta ocasión estamos ante una máquina Windows de nivel Easy, en la que tendremos que explotar una vulnerabilidad del servidor IIS de Microsoft y escalaremos privielgios a través de un exploit local, y todo usando metasploit. Es una máquina sencilla y perfecta para quienes empiezan en el mundo del CTF y de la Ciberseguridad🤖​.
 ---
 
 🤖​En esta ocasión estamos ante una máquina Windows de nivel Easy, en la que tendremos que explotar una vulnerabilidad del servidor IIS de Microsoft y escalaremos privielgios a través de un exploit local, y todo usando metasploit. Es una máquina sencilla y perfecta para quienes empiezan en el mundo del CTF y de la Ciberseguridad🤖​.
 
 ![](/assets/images/HTB/Grandpa-HackTheBox/Grandpa2.webp)
-
-[![HTBadge](https://www.hackthebox.eu/badge/image/533771)](https://www.hackthebox.com/home/users/profile/533771)
 
 ![](/assets/images/HTB/Grandpa-HackTheBox/Grandpa-rating.webp)
 

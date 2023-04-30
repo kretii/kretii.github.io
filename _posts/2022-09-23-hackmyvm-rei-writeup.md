@@ -3,13 +3,16 @@ layout      : post
 title       : "Rei - HackMyVm"
 author      : elc4br4
 image       : /assets/images/HMV/Rei-HackMyVM/Rei.webp
+optimized_image : /assets/images/HMV/Rei-HackMyVM/Rei.webp
 category    : [ HackMyVM ]
 tags        : [ Linux ]
+description : En esta ocasión tenemos una máquina nivel Easy creada por ShellDredd, tendremos varios trolleos a lo largo de la explotación y debemos fijarnos y prestar atención a todo.
 ---
 
 En esta ocasión tenemos una máquina nivel Easy creada por ShellDredd, tendremos varios trolleos a lo largo de la explotación y debemos fijarnos y prestar atención a todo.
 
-Canal Shelldredd Informática [https://www.youtube.com/c/ShellDreddInform%C3%A1tica](https://www.youtube.com/c/ShellDreddInform%C3%A1tica)
+### Canal de ShellDredd Informática 
+<a href="https://www.youtube.com/c/ShellDreddInform%C3%A1tica">Enlace Canal Youtube Shelldredd Informática</a>
 
 # Reconocimiento de Puertos
 

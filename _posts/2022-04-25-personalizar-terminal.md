@@ -15,7 +15,6 @@ author: elc4br4
 paginate: true
 ---
 
-
 ## Requisitos
 
 1. Instalamos zsh

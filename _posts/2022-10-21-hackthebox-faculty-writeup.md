@@ -1,5 +1,5 @@
 ---
-date: 2022-10-21T23:48:05.000Z
+date: 2022-10-21 23:48:05.000Z
 layout: post
 title: Faculty - HackTheBox
 subtitle: 

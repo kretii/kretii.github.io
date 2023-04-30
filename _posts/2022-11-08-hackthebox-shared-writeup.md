@@ -3,8 +3,10 @@ layout      : post
 title       : "Shared - HackTheBox"
 author      : elc4br4
 image       : assets/images/HTB/Shared-HackTheBox/Shared.webp
+optimized_image : assets/images/HTB/Shared-HackTheBox/Shared.webp
 category    : [ htb ]
 tags        : [ Linux ]
+description : ⚔️En esta máquina Linux de nivel medio tocaremos sqli para obtener credenciales y conectarnos por ssh y posteriormente escalaremos con ipython al usuario dan y a través de redis al usuario root⚔️.
 ---
 
 ⚔️En esta máquina Linux de nivel medio tocaremos sqli para obtener credenciales y conectarnos por ssh y posteriormente escalaremos con ipython al usuario dan y a través de redis al usuario root⚔️.
@@ -14,9 +16,6 @@ tags        : [ Linux ]
 ![](/assets/images/HTB/Shared-HackTheBox/shared2.webp)
 
 ![](/assets/images/HTB/Shared-HackTheBox/shared-rating.webp)
-
-[![HTBadge](https://www.hackthebox.eu/badge/image/533771)](https://www.hackthebox.com/home/users/profile/533771)
-
 
 ***
 
