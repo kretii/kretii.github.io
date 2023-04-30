@@ -1,8 +1,7 @@
 # Site Settings
-name: Jekflix
-title: Jekflix | A blog theme for Jekyll
-description: Jekflix is a template for Jekyll inspired by Netflix and made by
-  Thiago Rossener.
+name: elc4br4
+title: Bienvenidos al blog de elc4br4
+description: Este es mi blog de Ciberseguridad, donde subiré artículos y writeups de máquinas CTF.
 tags:
   - blog
   - template
@@ -19,6 +18,8 @@ menu:
     url: /contact
   - title: Feed
     url: /feed.xml
+  - title: HackTheBox
+    url : /HackTheBox
 email: youremail@test.com
 # See: https://disqus.com/
 disqus_username: disqus_username
@@ -29,12 +30,7 @@ formspree_form_id: formspree_form_id
 
 # Social Media Settings
 # Remove the item if you don't need it
-github_username: github_username
-facebook_username: facebook_username
-twitter_username: twitter_username
-instagram_username: instagram_username
-linkedin_username: linkedin_username
-medium_username: medium_username
+github_username: elc4br4
 
 
 # Posts Settings
