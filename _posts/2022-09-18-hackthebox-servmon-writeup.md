@@ -21,8 +21,6 @@ Tocaremos un poco de FTP (que nos dará pistas), explotaremos una vulnerabilidad
 
 ![](/assets/images/HTB/Servmon-HackTheBox/rating-servmon.png)
 
-[![HTBadge](https://www.hackthebox.eu/badge/image/533771)](https://www.hackthebox.com/home/users/profile/533771)
-
 ...
 
 **Un pequeño INDICE**
@@ -368,7 +366,6 @@ Y añadimos el comando para obtener conexión a través del netcat.
 > Recargamos el módulo y somos root.
 
 ![](/assets/images/HTB/Servmon-HackTheBox/privesc3.png)
-
 
 ![](/assets/images/HTB/Servmon-HackTheBox/root.png)
 

@@ -1,6 +1,6 @@
 ---
 layout      : post
-title       : "Videoclub - HackMyVm"
+title       : Videoclub - HackMyVm
 author      : elc4br4
 image       : /assets/images/HMV/Videoclub-HackMyVM/Videoclub.webp
 optimized_image : /assets/images/HMV/Videoclub-HackMyVM/Videoclub.webp
