@@ -2,7 +2,7 @@
 layout      : post
 title       : "Metatwo - HackTheBox"
 author      : elc4br4
-image       : /assets/images/HTB/Metatwo-HackTheBox/Metatwo.webp
+image       : /assets/images/HTB/Metatwo-HackTheBox/Metatwo.jpg
 category    : [ htb ]
 tags        : [ Linux ]
 description : Máquina easy de la plataforma HackTheBox
@@ -249,7 +249,7 @@ Y según lo subamos recibiremos en el servidor web atacante la data codificada e
 
 ![](/assets/images/HTB/Metatwo-HackTheBox/php1.webp)
 
-Con un pequeño script en php podemos decodear la data:
+Con un pequeño script en php podemos decodificar la data:
 
 ```php
 <?php
@@ -261,7 +261,7 @@ De forma que quedaría así:
 
 ![](/assets/images/HTB/Metatwo-HackTheBox/data.webp)
 
-Lo decodeamos y ahí tenemos el archivo wp_config.php.
+Lo decodificamos y ahí tenemos el archivo wp_config.php.
 
 ```php
 <?php
