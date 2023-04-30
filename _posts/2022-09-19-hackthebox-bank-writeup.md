@@ -3,8 +3,10 @@ layout      : post
 title       : "Bank - HackTheBox"
 author      : elc4br4
 image       : /assets/images/HTB/Bank-HackTheBox/Bank.webp
+optimized_image : /assets/images/HTB/Bank-HackTheBox/Bank.webp
 category    : [ htb ]
 tags        : [ Linux ]
+description: 💲En esta ocasión explotaremos una máquina Easy de HackTheBox muy pero muy sencilla, tendremos que obtener unas credenciales de acceso al servidor web y después subir una reverse shell para poder conseguir acceso al sistema. La escalada de privilegios es un auténtico regalito🎁💲!!
 ---
 
 💲En esta ocasión explotaremos una máquina Easy de HackTheBox muy pero muy sencilla, tendremos que obtener unas credenciales de acceso al servidor web y después subir una reverse shell para poder conseguir acceso al sistema. La escalada de privilegios es un auténtico regalito🎁💲!!

@@ -1,9 +1,9 @@
 ---
 layout      : post
-title       : Videoclub - HackMyVm
+title       : "Videoclub - HackMyVm"
 author      : elc4br4
-image       : /assets/images/HMV/Videoclub-HackMyVM/Videoclub.jpg
-optimized_image: /assets/images/HMV/Videoclub-HackMyVM/Videoclub.jpg
+image       : /assets/images/HMV/Videoclub-HackMyVM/Videoclub.webp
+optimized_image : /assets/images/HMV/Videoclub-HackMyVM/Videoclub.webp
 category    : [ HackMyVM ]
 tags        : [ Linux ]
 description : 🎮En esta ocasión resuelvo la máquina Videoclub de nuestro compañero ShellDredd Informática. 
