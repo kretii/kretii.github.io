@@ -3,14 +3,13 @@ layout      : post
 title       : "Absolute - HackTheBox"
 author      : elc4br4
 image       : /assets/images/HTB/Absolute-HackTheBox/Absolute.webp
-optimized_image: /assets/images/HTB/Absolute-HackTheBox/Absolute.webp
+optimized_image : /assets/images/HTB/Absolute-HackTheBox/Absolute.webp
 category    : [ htb ]
 tags        : [ Windows ]
 description : En esta ocasión me he metido en un jaleo resolviendo la máquina Absolute de HackTheBox de nivel Insane... Es una máquina bastante compleja pero la recomiendo si quieres aprender técnicas nuevas y terminar de asentar algunos conceptos.
 ---
 
 En esta ocasión me he metido en un jaleo resolviendo la máquina Absolute de HackTheBox de nivel Insane... Es una máquina bastante compleja pero la recomiendo si quieres aprender técnicas nuevas y terminar de asentar algunos conceptos.
-
 
 ![](/assets/images/HTB/Absolute-HackTheBox/Absolute2.webp)
 
