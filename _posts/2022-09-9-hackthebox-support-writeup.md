@@ -147,7 +147,7 @@ Seguiremos los siguientes pasos:
 ![](/assets/images/HTB/Support-HackTheBox/wireshark2.png)
 
 
-**PASSWORD --> nvEfEK16^1aM4$e7AclUf8x$tRWxPWO1%lmz**
+> PASSWORD --> nvEfEK16^1aM4$e7AclUf8x$tRWxPWO1%lmz
 
 
 # Enumeración LDAP
@@ -245,7 +245,7 @@ Aquí dejo las referencias.
 
 Para realizar la escalada necesitamos la suite impacket, powermad y Rubeus
 
-```bash
+```git
 https://github.com/Kevin-Robertson/Powermad
 https://github.com/GhostPack/Rubeus
 ```
@@ -313,7 +313,7 @@ A continuación, usaré Rubeus para generar los hashes del nuevo pc FAKE
 
 ![](/assets/images/HTB/Support-HackTheBox/rubeus.png)
 
-HASH --> 31F429C15354CF5017A09D88CC57A495EEFB53884801AD5B48FF4EA02799357A
+> HASH:31F429C15354CF5017A09D88CC57A495EEFB53884801AD5B48FF4EA02799357A
 
 Hemos dado al computer object "ELC4RB4" los derechos para hacerse pasar por otros.
 Ahora podemos solicitar el ticket-Granting-Ticket (TGT) de Kerberos mientras suplantamos la identidad del administrador.

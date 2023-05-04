@@ -32,8 +32,6 @@ PORT   STATE SERVICE    VERSION
 |   DNSStatusRequestTCP, LDAPSearchReq, NotesRPC, SSLSessionReq, TLSSessionReq
 ``` 
 
-
-
 El escaneo nmap revela que tenemos un Servidor OpenSSH corriendo en el puerto 22.
 También revela que tenemos el puerto 80 abierto en el cual corre un servidor Apache con una web bajo el nombre de "Hack The Box Academy".
 Además tenemos el puerto 33060 en el cual corre un servidor MySQL.
@@ -53,17 +51,15 @@ Una vez lo añadimos ya podemos acceder a la web.
 ![](/assets/images/HTB/Academy-HackTheBox/web.png)
 
 
-Encuentro la opción Register en la que me creo una cuenta, una vez creada me encuentro con el panel en el que se ubican los modulos de HTB Academy, pero anda que pueda aprovechar.
+Encuentro la opción Register en la que me creo una cuenta, una vez creada me encuentro con el panel en el que se ubican los modulos de HTB Academy, pero nada que pueda aprovechar.
 
 ![](/assets/images/HTB/Academy-HackTheBox/web2.png)
 
-
-Pr lo tanto vuelvo hacia atrás y decido capturar la petición de registro con BurpSuite.
+Por lo tanto vuelvo hacia atrás y decido capturar la petición de registro con BurpSuite.
 
 ![](/assets/images/HTB/Academy-HackTheBox/burp1.png)
 
-
-```burp
+```bash
 POST /register.php HTTP/1.1
 Host: academy.htb
 User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101 Firefox/91.0
@@ -86,23 +82,27 @@ uid=elc4br4&password=elc4br4&confirm=elc4br4&roleid=0
 Si nos fijamos tenemos el parámetro `roleid`, que está fijado en 0, pero si lo cambiamos podemos ver si ocurre algo
 
 
-```burp
+```bash
 uid=elc4br4&password=elc4br4&confirm=elc4br4&roleid=1
 ```
 
 Si cambiamos el parámetro, enviamos la respuesta y abrimos la url [http://academy.htb/admin.php](http://academy.htb/admin.php) y nos logueamos con la cuenta que hemos creado y accedemos a la web como admin.
 
-Encontramos cosas interesantes... 🤗
+> Encontramos cosas interesantes... 🤗
 
 ![](/assets/images/HTB/Academy-HackTheBox/web3.png)
 
+```bash
+Dos posibles usuarios
+---------------------
+Complete initial set of modules (cry0l1t3 / mrb3n)
 
-``Complete initial set of modules (cry0l1t3 / mrb3n)``  --> Dos posibles usuarios
+Otro vhost
+---------
+Fix issue with dev-staging-01.academy.htb
+```
 
-``Fix issue with dev-staging-01.academy.htb`` --> otro host
-
-> Añadimos el host a al archivo hosts
-
+> Añadimos el vhost a al archivo hosts
 
 `` sudo echo "10.10.10.215 dev-staging-01.academy.htb" >> /etc/hosts ``
 
@@ -119,7 +119,7 @@ Si nos fijamos bien veremos que aparece en mcuhas ocasiones la palabra `laravel`
 
 Buscando exploits para PHP Laravel encuentro esto
 
-``PHP Laravel Framework 5.5.40 / 5.6.x < 5.6.30 - token Unserialize Remote Command Execution (Metasploit)                               | linux/remote/47129.rb``
+``PHP Laravel Framework 5.5.40 / 5.6.x < 5.6.30 - token Unserialize Remote Command Execution (Metasploit)``
 
 Abro metasploit y procedo a configurar y lanzar el exploit
 
@@ -139,7 +139,7 @@ whoami
 www-data
 ```
 
-Tras enumerar durante un buen rato, encuentro en la ruta /var/www/html/academy/.env credenciales que podría servirnos para loguearnos a través de ssh.
+Tras enumerar durante un buen rato, encuentro en la ruta /var/www/html/academy/.env credenciales que podría servirnos para logarnos a través de ssh.
 
 ```bash
 www-data@academy:/var/www/html/academy$ cat .env
