@@ -166,8 +166,7 @@ Tras enumerar y buscar durante un buen rato, pruebo a ver las conexiones existen
 - -p, --processes     show process using socket
 ```
 
-
-  ![](/assets/images/HMV/Pam-HackMyVM/pivoting1.png)
+![](/assets/images/HMV/Pam-HackMyVM/pivoting1.png)
 
 Como se puede ver, hay una conexión a través del puerto 12345.
 
