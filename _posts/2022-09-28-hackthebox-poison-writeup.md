@@ -3,7 +3,7 @@ layout      : post
 title       : "Poison - HackTheBox"
 author      : elc4br4
 image       : /assets/images/HTB/Poison-HackTheBox/Poison.webp
-optimized-image : /assets/images/HTB/Poison-HackTheBox/Poison.webp
+optimized_image : /assets/images/HTB/Poison-HackTheBox/Poison.webp
 category    : [ htb ]
 tags        : [ FreeBSD ]
 description : En esta ocasión estaré resolviendo una máquina de nivel MEDIUM de HackTheBox en la que tendremos que explotar la vulnerabilidad Directory Path Transversal y a través de procesos en ejecución encontraremos el servicio VNC y tendremos que crear un Túnel ssh para acceder al mismo.

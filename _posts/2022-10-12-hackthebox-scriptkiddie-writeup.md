@@ -3,7 +3,7 @@ layout      : post
 title       : "ScriptKiddie - HackTheBox"
 author      : elc4br4
 image       : /assets/images/HTB/ScriptKiddie-HackTheBox/Scriptkiddie.webp
-optimized_mage : /assets/images/HTB/ScriptKiddie-HackTheBox/Scriptkiddie.webp
+optimized_image : /assets/images/HTB/ScriptKiddie-HackTheBox/Scriptkiddie.webp
 category    : [ htb ]
 tags        : [ Linux ]
 description : Máquina nivel EASY Linux bastante sencilla, tendremos que ganar acceso a través de un exploit que genera una apk maliciosa que podremos introducir y ejecutar en el servidor web, tendremos que realizar una escalada lateral aprovechándonos de un fallo en un srcipt a través del cual podremos inyectar comandos y finalizaremos con una escalada vertical al usuario root a través de la utilidad msfconsole.
