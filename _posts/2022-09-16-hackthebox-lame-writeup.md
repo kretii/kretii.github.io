@@ -17,7 +17,7 @@ Hoy romperemos una máquina Linux de nivel Easy, explotaremos una versión vulne
 
 # Reconocimiento de Puertos
 
-```nmap
+```bash
 PORT     STATE SERVICE
 21/tcp   open  ftp
 22/tcp   open  ssh
@@ -30,7 +30,7 @@ Tenemos varios puertos pero necesitamos más información, asique realizaré el 
 
 Después extraeré la información más relevante.
 
-```nmap
+```bash
 PORT     STATE SERVICE     VERSION
 21/tcp   open  ftp         vsftpd 2.3.4
 |_ftp-anon: Anonymous FTP login allowed (FTP code 230)
