@@ -18,7 +18,7 @@ En esta ocasión tenemos una máquina nivel Easy creada por ShellDredd, tendremo
 
 Comenzamos lanzando nmap para descubrir los puertos abiertos en la máquina.
 
-```nmap
+```bash
 PORT      STATE SERVICE
 63777/tcp open  unknown
 65333/tcp open  unknown
@@ -26,7 +26,7 @@ PORT      STATE SERVICE
 
 Me saca 2 puertos, pero no tengo ni idea de que se ejecuta en los mismos de forma que voy a realizar un escaneo más descriptivo para obtener los servicios que se ejecutan en cada puerto y sus versiones.
 
-```nmap
+```bash
 PORT      STATE SERVICE VERSION
 63777/tcp open  http    lighttpd 1.4.59
 |_http-server-header: lighttpd/1.4.59
@@ -38,6 +38,7 @@ PORT      STATE SERVICE VERSION
 |_  256 f4:f5:6c:ac:81:ed:06:14:ea:07:de:56:ac:34:ca:be (ED25519)
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
+
 Una vez finalizado el escaneo ya tengo la información que necesitaba:
 
 | Puerto | Servicio | Versión |
@@ -45,24 +46,23 @@ Una vez finalizado el escaneo ya tengo la información que necesitaba:
 | 63777  | http     | lighttpd 1.4.59 |
 | 65333  | ssh      | OpenSSH 8.4p1 Debian 5 |
 
-
->Tenemos un servidor web en el puerto 63777 
->ssh en el 65333
+> Tenemos un servidor web en el puerto 63777 y ssh en el 65333
 
 # Enumeración Web
 
-A simple vista no hay nada relevante o de interés que me pueda servir
+A simple vista no hay nada relevante que me pueda servir
 
 ![](/assets/images/HMV/Rei-HackMyVM/web1.webp)
 
-
 Reviso el código fuente y tampoco hay nada.
 
->Toca fuzzear para descubrir rutas en el servidor.
+> Toca fuzzear para descubrir rutas en el servidor.
 
 En esta ocasión uso gobuster bajo el comando:
 
-`gobuster dir -u http://192.168.0.13:63777 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x php,txt`
+```bash
+gobuster dir -u http://192.168.0.13:63777 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x php,txt
+```
 
 ![](/assets/images/HMV/Rei-HackMyVM/gobuster.webp)
 
@@ -90,7 +90,9 @@ Fui vistando cada ruta una a una y todas me daban error 404.
 
 De forma que sigo fuzzeando desde esa ruta.
 
-`gobuster dir -u http://192.168.0.13:63777/gichin/your-button -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x php,html,txt`
+```bash
+gobuster dir -u http://192.168.0.13:63777/gichin/your-button -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x php,html,txt
+```
 
 ![](/assets/images/HMV/Rei-HackMyVM/gobuster2.webp)
 
@@ -102,7 +104,7 @@ Y me saca dos rutas:
 
 Simplemente hay un gif, pero miro el código fuente y encuentro la siguiente línea:
 
->title="ENTER" href="chuck-norris.html"
+> title="ENTER" href="chuck-norris.html"
 
 Tenemos una imágen... Y encontramos algo más
 
@@ -110,9 +112,9 @@ Tenemos una imágen... Y encontramos algo más
 
 Pero hay que fijarse en todo, ya que la foto nos da varios datos interesantes...
 
->BALANCE IS KEY
+> BALANCE IS KEY
 
->Chuck Norris is the user master
+> Chuck Norris is the user master
 
 ![](/assets/images/HMV/Rei-HackMyVM/balance.gif)
 
@@ -128,7 +130,7 @@ Nos intentamos loguear con los datos que tenemos por ssh.
 
 Listo, tenemos acceso a través de ssh y ya podemos leer la flag user.txt, o eso creía...
 
-```ssh
+```bash
 chuck-norris@karate:~$ cat user.txt
                  (__) 
                  (oo) 
@@ -142,7 +144,7 @@ El señor Shelldredd siempre nos tiene algún trolleo guardado en la manga...
 
 Pero no pasa nada, podemos probar con la ruta de cat o usar strings.
 
-```ssh
+```bash
 chuck-norris@karate:~$ strings user.txt 
 Flag User:
 ******U46AcfI*****
@@ -156,7 +158,7 @@ Lanzo linpeas.sh pero no veo nada raro... asique paso a lanzar pspy para buscar 
 
 Y encuentro lo siguiente
 
->2022/09/22 12:51:29 CMD: UID=0    PID=10752   (kanga.sh)
+> 2022/09/22 12:51:29 CMD: UID=0    PID=10752   (kanga.sh)
 
 Procedo a buscar el archivo...
 
@@ -179,7 +181,9 @@ Pero claro, olvidaba que es shelldredd y el trolleo nunca acaba :(
 
 Sigo busando... ya que el pspy no me daba más info pero no encontré nada y volví a lanzarlo y descubrí esto
 
->2022/09/22 12:58:49 CMD: UID=0    PID=10902  | /bin/bash /lost+found/sakugawa-kanga.sh
+```bash
+2022/09/22 12:58:49 CMD: UID=0    PID=10902  | /bin/bash /lost+found/sakugawa-kanga.sh
+```
 
 Ahí está lo que buscaba
 
@@ -203,8 +207,7 @@ Debemos buscar un archivo con el nombre maritrini y tendremos la bandera root.tx
 
 Tras buscar un buen rato lo encuentro en la ruta:
 
->/mnt/.maritrini
-
+> /mnt/.maritrini
 
 _Agradecimientos a Shelldredd por esta máquina y por el trolleo gratuito_
 

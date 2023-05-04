@@ -37,7 +37,7 @@ Esta vez tenemos una máquina Windows de nivel Easy en la que explotaremos un se
 
 ## Reconocimiento de Puertos [📌](#recon-nmap) {#recon-nmap}
 
-```nmap
+```bash
 PORT      STATE SERVICE          REASON
 53/tcp    open  domain           syn-ack ttl 127
 80/tcp    open  http             syn-ack ttl 127
@@ -70,16 +70,15 @@ Usaré crackmapexec bajo el protocolo SMB para obtener más información acerca 
 
 Como vemos ya vamos obteniendo algo de info
 
-1. Nombre de la máquina --> _Printer_
+1. Nombre de la máquina --> ``Printer``
 
-2. Dominio --> _return.local_
+2. Dominio --> ``return.local``
 
-3. Protocolo _SMB firmado_
+3. Protocolo ``SMB firmado``
 
 Ahora vamos a ver si tenemos algún recurso compartido pero claro, no tenemos credenciales, asique debemos usar el parámetro -N (Null session)
 
 ![](/assets/images/HTB/Return-HackTheBox/smbclient.png)
-
 
 > NO hay nada
 
@@ -148,11 +147,11 @@ Por lo que he podido investigar, al pertener a este grupo podemos arrancar, para
 
 Sigo los pasos del post:
 
-1.Subir netcat a la máquina víctima
+1. Subir netcat a la máquina víctima
 
 ![](/assets/images/HTB/Return-HackTheBox/nc.png)
 
-2.Vemos que servicios hay en ejecución y lo modificamos
+2. Vemos que servicios hay en ejecución y lo modificamos
 
 ![](/assets/images/HTB/Return-HackTheBox/services.png)
 
@@ -162,12 +161,11 @@ Tenemos varios servicios en ejecución, ahora procedemos a modificar uno de ello
 
 Ya lo tenemos modificado
 
-3.A continaución toca poner netcat en escucha en el puerto configurado (443), y ahora debemos arrancar el servicio.
+3. A continaución toca poner netcat en escucha en el puerto configurado (443), y ahora debemos arrancar el servicio.
 
 ![](/assets/images/HTB/Return-HackTheBox/services3.png)
 
 ![](/assets/images/HTB/Return-HackTheBox/root.png)
-
 
 > Y ya hemos escalado privilegios, somos el usuario Administrador.
 
