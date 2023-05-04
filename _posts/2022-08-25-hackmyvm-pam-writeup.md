@@ -72,6 +72,8 @@ Una vez subido abrimos un oyente en netcat con el puerto que configuramos anteri
 
 Accedo a la ruta donde se ubica la reverse shell en el servidor web (desde el navegador) y ejecutamos la reverse shell, pero al ejecutar la reverse shell nos aparece el siguiente mensaje.
 
+> Access denied.
+
 ![](/assets/images/HMV/Pam-HackMyVM/web2.png)
 
 Como vemos nos dice que el acceso ha sido denegado.
@@ -156,11 +158,13 @@ Tras enumerar y buscar durante un buen rato, pruebo a ver las conexiones existen
 `` ss -ntlup ``
 
 **Comando Desglosado:**
+```text
 - -n, --numeric       don't resolve service names
 - -t, --tcp           display only TCP sockets
 - -l, --listening     display listening sockets
 - -u, --udp           display only UDP sockets
 - -p, --processes     show process using socket
+```
 
 
   ![](/assets/images/HMV/Pam-HackMyVM/pivoting1.png)
