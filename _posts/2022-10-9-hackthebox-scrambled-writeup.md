@@ -472,7 +472,7 @@ $creds = New-Object System.Management.Automation.PSCredential("scrm\miscsvc", $p
 
 ![](/assets/images/HTB/Scrambled-HackTheBox/credenciales.webp)
 
-Después me abro un oyente en netcat en mi máquin atacante.
+Después me abro un oyente en netcat en mi máquina atacante.
 
 `nc -lnvp 8888`
 
