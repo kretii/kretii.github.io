@@ -15,8 +15,6 @@ description : 🤖​En esta ocasión estamos ante una máquina Windows de nivel
 
 ![](/assets/images/HTB/Grandpa-HackTheBox/Grandpa-rating.webp)
 
-...
-
 
 **Un pequeño INDICE**
 
@@ -29,8 +27,6 @@ description : 🤖​En esta ocasión estamos ante una máquina Windows de nivel
  5. [Escalada de Privilegios](#privesc). 
     * [kitrap0d](#kitrap0d).   
 
-
-...
 
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
 
@@ -45,14 +41,14 @@ Como de costumbre comienzo lanzando la utilidad Whichsystem para averiguar ante 
 
 Una vez que sabemos que nos enfrentamos a una máquina Windows ya procedo a enumerar puertos.
 
-```nmap
+```bash
 PORT   STATE SERVICE
 80/tcp open  http
 ```
 
 En principio solo encuentro el puerto 80 (http) abierto, pero necesito algo más de información sobre este puerto, para saber que servicio y versión se ejecuta en el mismo.
 
-```nmap
+```bash
 PORT   STATE SERVICE VERSION
 80/tcp open  http    Microsoft IIS httpd 6.0
 | http-methods: 
@@ -68,11 +64,9 @@ PORT   STATE SERVICE VERSION
 Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
 ```
 
->`Servidor Web IIS httpd 6.0`
+> Servidor Web IIS httpd 6.0
 
 # Enumeración [#](enumeración) {#enumeración}
-
-----
 
 ## Enumeración Web [📌](#enum-web) {#enum-web}
 
@@ -86,20 +80,17 @@ Por lo que veo el servidor web aún está en desarrollo, pero antes de seguir vo
 
 Hay una vulnerabilidad que me interesa.
 
-> `Microsoft IIS 6.0 - WebDAV 'ScStoragePathFromUrl' Remote Buffer Overflow`
+> Microsoft IIS 6.0 - WebDAV 'ScStoragePathFromUrl' Remote Buffer Overflow
 
 Tenemos un exploit en python o podemos explotarla a través de metasploit.
 
 # Explotación [#](explotacion) {#explotacion}
-
-----
 
 ## Metasploit [🔥](#metasploit) {#metasploit}
 
 En mi caso esta vez voy a usar metasploit.
 
 ![](/assets/images/HTB/Grandpa-HackTheBox/msf1.webp)
-
 
 ![](/assets/images/HTB/Grandpa-HackTheBox/msf2.webp)
 
@@ -121,8 +112,6 @@ Al acceder al directorio de Usuario del propio usuario Harry me da error, acceso
 
 # Escalada de Privilegios [#](privesc) {#privesc}
 
-----
-
 ## kitrap0d [👽](kitrap0d) {#kitrap0d}
 
 En este caso podría probar a usar SharpHound pero voy a lanzar desde metasploit el exploit-suggester para buscar algun exploit que pueda usar para escalar privilegios aprovechándome de alguna vulnerabilidad existente.
@@ -135,7 +124,7 @@ Lanzo el exploit y me arroja una lista de exploits que a los que el ssistema es 
 
 Usaré el siguiente:
 
-> `windows/local/ms10_015_kitrap0d`
+> windows/local/ms10_015_kitrap0d
 
 ![](/assets/images/HTB/Grandpa-HackTheBox/msf7.webp)
 

