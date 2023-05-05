@@ -46,7 +46,7 @@ Para comenzar lanzo la herramienta WhichSystem para identificar ante que sistema
 
 Ya se que estamos ante una máquina Linux, asique a continuación escanearé los puertos existentes en la máquina.
 
-```nmap
+```bash
 PORT     STATE SERVICE
 22/tcp   open  ssh
 5000/tcp open  upnp
@@ -55,7 +55,7 @@ Tenemos el puerto 22(ssh) y el puerto 5000 (upnp).
 
 Pero necesito más información del puerto 5000 asique escanearé los puertos de forma más avanzada.
 
-```nmap
+```bash
 PORT     STATE SERVICE VERSION
 22/tcp   open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.4 (Ubuntu Linux; protocol 2.0)
 | ssh-hostkey: 
@@ -84,7 +84,9 @@ Parece que el sitio está en desarrollo, pero no hay nada interesante, asique vo
 
 Usaré la herramienta wfuzz para enumerar rutas en el servidor web.
 
-`wfuzz -c -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -u http://10.10.10.91:5000/FUZZ --hl=4`
+```bash
+wfuzz -c -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -u http://10.10.10.91:5000/FUZZ --hl=4
+```
 
 ![](/assets/images/HTB/DevOops-HackTheBox/wfuzz.webp)
 
@@ -99,8 +101,6 @@ Pero en la ruta upload hay un panel de subida de archivos
 
 # Explotación [#](explotacion) {#explotacion}
 
-----
-
 ## Burpsuite [🔥](#burpsuite) {#burpsuite}
 
 Pruebo a subir una reverse shell en php y capturar la petición con Burpsuite.
@@ -109,7 +109,7 @@ Pruebo a subir una reverse shell en php y capturar la petición con Burpsuite.
 
 Pero no ocurre nada, aunque si nos fijamos en el servidor web veremos esto.
 
-> `XML elements: Author, Subject, Content`
+> XML elements: Author, Subject, Content
 
 Debemos subir un archivo XML que contenga los campos Author, Subject y Content.
 
@@ -146,12 +146,11 @@ Y como vemos tenemos el archivo passwd para leer.
 
 Encuentro varios usuarios
 
-```users
+```bash
 git:x:1001:1001:git,,,:/home/git:/bin/bash
 roosa:x:1002:1002:,,,:/home/roosa:/bin/bash
-sshd:x:121:65534::/var/run/sshd:/usr/sbin/nologin
-blogfeed:x:1003:1003:,,,:/home/blogfeed:/bin/false
 ```
+
 El más destacable es _roosa_, asique igual que he leido el archivo passwd intento leer el archivo id_rsa del usuario roosa para poder conectarme por ssh.
 
 ```xml
@@ -168,7 +167,7 @@ El más destacable es _roosa_, asique igual que he leido el archivo passwd inten
 
 ![](/assets/images/HTB/DevOops-HackTheBox/Burp2.webp)
 
-Y ahí lo tenemos, asique me lo copio a un archivo y le asigno los permisos 400 con `chmod 400 id_rsa`.
+Y ahí lo tenemos, asique me lo copio a un archivo y le asigno los permisos con `chmod 400 id_rsa`.
 
 Una vez hecho, me conecto por ssh.
 
@@ -179,17 +178,17 @@ Y ya podemos leer la flag user.txt
 
 # Escalada de Privilegios [#](privesc) {#privesc}
 
-----
-
 ## Git[👽](git) {#git}
 
 Ahora toca escalar privilegios para leer la flag root, pero para eso debemos convertirnos en el usuario root.
 
 Enumerando encuentro carpeta .git en la ruta /home/roosa/work/blogfeed/.git asique pruebo con el comando `git log -r` a ver que obtenemos. 
 
+El comando git log muestra todas las commits en el historial del repositorio. 
+
 ![](/assets/images/HTB/DevOops-HackTheBox/git.webp)
 
-> reverted accidental commit with proper key
+> Reverted accidental commit with proper key
 
 Dato curioso que decido mirar, asique si ejecuto `git log -p 6`...
 
@@ -199,7 +198,7 @@ Tenemos dos claves rsa, una en rojo y la otra en verde, creo que debido a un err
 
 ![](/assets/images/HTB/DevOops-HackTheBox/rsa.webp)
 
-Una vez lo tenemos copiado en un archivo le asigamos los permisos 600 con `chmod 600 id_rsa2` y nos logueamos por ssh como root.
+Una vez lo tenemos copiado en un archivo le asigamos los permisos con `chmod 600 id_rsa2` y nos logueamos por ssh como root.
 
 ![](/assets/images/HTB/DevOops-HackTheBox/root.webp)
 

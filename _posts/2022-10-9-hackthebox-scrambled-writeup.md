@@ -52,7 +52,7 @@ Como de cosumbre antes de comenzar a escanear los puertos de la máquina lanzo l
 
 Estamos ante una máquina Windows, y ahora que lo sabemos ya procedo a escanear puertos.
 
-```nmap
+```bash
 PORT      STATE SERVICE
 53/tcp    open  domain
 80/tcp    open  http
@@ -86,7 +86,7 @@ Al ser tantos puertos uso la utilidad extractPorts para copiarlos al portapapele
 
 Una vez copiados lanzo el escaneo de nmap.
 
-```nmap
+```bash
 PORT      STATE SERVICE       VERSION
 53/tcp    open  domain        Simple DNS Plus
 80/tcp    open  http          Microsoft IIS httpd 10.0

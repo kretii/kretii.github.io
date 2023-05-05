@@ -54,7 +54,7 @@ Una vez que sabemos que estamos ante una máquina `Linux` ya comienzo a escanear
 
 Lanzo el escaneo de servicios y versiones para obtener más información de los puertos 22 y 2222.
 
-```nmap
+```bash
 PORT     STATE SERVICE REASON  VERSION
 80/tcp   open  http    syn-ack Apache httpd 2.4.18 ((Ubuntu))
 | http-methods: 
@@ -71,6 +71,7 @@ PORT     STATE SERVICE REASON  VERSION
 |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC/RjKhT/2YPlCgFQLx+gOXhC6W3A3raTzjlXQMT8Msk
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
+
 | Puerto | Servicio | Versión |
 | :----- | :------- | :------ |
 | 2222   | SSH      | OpenSSH 7.2p2 |
@@ -132,7 +133,7 @@ Abrimos metasploit y usamos el módulo auxiliar:
 
 Configuramos las opciones que nos pide el módulo.
 
-```msfconsole
+```bash
 msf6 auxiliary(scanner/http/apache_mod_cgi_bash_env) > set RHOST 10.10.10.56
 RHOST => 10.10.10.56
 msf6 auxiliary(scanner/http/apache_mod_cgi_bash_env) > set TARGETURI /cgi-bin/user.sh
@@ -154,7 +155,9 @@ Para detectar si es vulnerable a través de nmap, usaremos un `script` que ya tr
 
 Y a través de este comando comprobamos si es vulnerable o no.
 
-**`nmap -p 80 10.10.10.56 --script=/usr/share/nmap/scripts/http-shellshock.nse --script-args uri=/cgi-bin/user.sh`**
+```bash
+nmap -p 80 10.10.10.56 --script=/usr/share/nmap/scripts/http-shellshock.nse --script-args uri=/cgi-bin/user.sh
+```
 
 ![](/assets/images/HTB/Shocker-HackTheBox/nmap.webp)
 
@@ -170,7 +173,7 @@ Una vez hemos detectado que es vulnerable procedo a su explotación para acceder
 
 En este caso, en vez de usar metasploit voy a explotarlo a través de `burpsuite`.
 
-`Modificando el user agent podemos introducir comandos`.
+> Modificando el user agent podemos introducir comandos.
 
 De forma que primeramente hago un ping a la ip de mi interfaz tun0 (la vpn de HTB).
 
@@ -178,7 +181,7 @@ De forma que primeramente hago un ping a la ip de mi interfaz tun0 (la vpn de HT
 
 Como se puede ver en la imágen, el comando se ejecuta perfectamente y hace ping a la ip.
 
-A continuación intento entablar una `conexión inversa` con una `rev shell en bash`.
+A continuación intento entablar una conexión inversa con una reverse shell en bash.
 
 ![](/assets/images/HTB/Shocker-HackTheBox/burp2.webp)
 
@@ -190,7 +193,7 @@ Una vez dentro ya podemos leer la flag `user.txt`
 
 ![](/assets/images/HTB/Shocker-HackTheBox/user.webp)
 
-Y ahora toca `escalar privilegios`.
+Y ahora toca escalar privilegios a root.
 
 # Escalada de Privilegios [#](privesc) {#privesc}
 
@@ -198,7 +201,7 @@ Y ahora toca `escalar privilegios`.
 
 ## Perl [👨‍💻](#perl) {#perl}
 
-Como siempre comenzamos enumerando el sistema en busca de `vectores de escalada`.
+Como siempre comenzamos enumerando el sistema en busca de vectores de escalada.
 
 Yo siempre comienzo con `sudo -l` asique esta vez no va a ser menos.
 
@@ -212,7 +215,7 @@ Y como de costumbre, nos dirigimos a la web `GTFOBINS`
 
 Ejecutamos el comando:
 
->`sudo perl -e 'exec "/bin/sh";'`
+`sudo perl -e 'exec "/bin/sh";'`
 
 ![](/assets/images/HTB/Shocker-HackTheBox/root.webp)
 
