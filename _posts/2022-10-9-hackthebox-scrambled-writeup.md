@@ -370,7 +370,7 @@ Y ya estamos autenticados en el servidor SQL.
 
 Pruebo a inspeccionar que hay dentro de la base de datos.
 
-1. Listamos las bases de datos
+Listamos las bases de datos
 
 `select name from master.sys.databses`
 
@@ -380,13 +380,13 @@ Vemos que una de las bases de datos se llama ScrambleHR, es la más llamativa de
 
 `use ScrambledHR`
 
-2. Listamos las tablas que hay dentro de la base de datos ScrambleHR
+Listamos las tablas que hay dentro de la base de datos ScrambleHR
 
 `select name from information_schema.tables`
 
 ![](/assets/images/HTB/Scrambled-HackTheBox/sqlcommands2.webp)
 
-3. Listamos el contenido de la tabla UserImport
+Listamos el contenido de la tabla UserImport
 
 `SELECT * from UserImport`
 
@@ -420,7 +420,7 @@ Como podemos ver nos ejecuta el comando y nos devuelve la salida al mismo, asiqu
 
 ## Reverse Shell  [🔄](#rev-shell) {#rev-shell}
 
-1. Lo primero será subir el netcat a la máquina vícitma.
+Lo primero será subir el netcat a la máquina vícitma.
 
 Abro un servidor python3 en mi máquina.
 
@@ -432,9 +432,9 @@ Y desde el servidor sql ejecuto el siguiente comandopara descargar el netcat.
 
 ![](/assets/images/HTB/Scrambled-HackTheBox/sql4.webp)
 
-2. A continuación pongo un oyente de netcat en escucha en el puerto 443.
+A continuación pongo un oyente de netcat en escucha en el puerto 443.
 
-3. Y lanzo el siguiente comando para eejcutar la rev shell desde el servidor sql usando el nc.exe 
+Y lanzo el siguiente comando para eejcutar la rev shell desde el servidor sql usando el nc.exe 
 
 En mi máquina atacante:
 
