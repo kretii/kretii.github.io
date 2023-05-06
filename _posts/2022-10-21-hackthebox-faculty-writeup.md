@@ -17,8 +17,6 @@ paginate: true
 
 🤖En esta máquina Linux de nivel medio tocaremos un poco de sqli, una explotación muy chula a través de archivos pdf, escalada de privilegios con meta-git y a través de gdb aprovechándonos de un proceso que se ejecuta como root para pivotar al usuario administrador🤖.
 
-🎥Canal Writeups Youtube🎬 --> [https://www.youtube.com/channel/UCllewdxU0OQudNp9-1IVJYQ](https://www.youtube.com/channel/UCllewdxU0OQudNp9-1IVJYQ)
-
 ![](/assets/images/HTB/Faculty-HackTheBox/faculty2.webp)
 
 ![](/assets/images/HTB/Faculty-HackTheBox/faculty-rating.webp)
@@ -27,8 +25,6 @@ paginate: true
 
 
 ***
-
-
 **Un pequeño INDICE**
 
 1. [Reconocimiento](#reconocimiento).
@@ -40,8 +36,6 @@ paginate: true
 4. [Escalada de Privilegios](#privesc). 
     * [meta-git](#meta-git).
     * [gdb](#gdb).
-    
-    
 ***
 
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
@@ -56,7 +50,7 @@ Comenzamos lanzando la utilidad WhichSystem.py para identificar el sistema opera
 
 Una vez se que me estoy enfrentando a una `máquina Linux`, ya procedo a lanzar un `escaneo de puertos` para descubrir puertos abiertos en la máquina víctima a través de la herramienta `nmap`.
 
-```nmap
+```bash
 PORT  STATE SERVICE
 22/tcp open  ssh
 80/tcp open  hhtp
@@ -66,7 +60,6 @@ Tenemos abiertos los puertos 22 y 80, pero necesito saber algo más de informaci
 
 ```bash
  # Comando usado para el escaneo 
- -------------------------------
  nmap -p22,80 -n -sCV 10.10.11.169 -oN servicios
 ```
 
@@ -95,8 +88,6 @@ Encuentro varias cositas interesantes:
 A continuación procedo a enumerar el servidor web.
 
 # Enumeración [#](enumeración) {#enumeración}
-
-***
 
 ## Enumeración Web [🔢](#enum-web) {#enum-web}
 
@@ -165,8 +156,6 @@ Tenemos en la ruta del archivo el directorio mpdf, podría ser algún tipo de te
 
 # Explotación [#](explotación) {#explotación}
 
-***
-
 ## mpdf [🔢](#mpdf) {#mpdf}
 
 ![](/assets/images/HTB/Faculty-HackTheBox/searchsploit.webp)
@@ -232,8 +221,6 @@ Y consigo loguearme con el usuario gbyolo y la credencial que encontré.
 Intento leer la user flag pero para poder leerla he de convertirme en el usuario `developer`.
 
 # Escalada de Privilegios [#](privesc) {#privesc}
-
-***
 
 ## meta-git [🔍](#meta-git) {#meta-git}
 

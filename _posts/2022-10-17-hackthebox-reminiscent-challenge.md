@@ -17,21 +17,17 @@ Challenge forense en el que debemos analizar un archivo de dumpeo de memoria ram
 
 [![HTBadge](https://www.hackthebox.eu/badge/image/533771)](https://www.hackthebox.com/home/users/profile/533771)
 
-```text
+```r
 # CHALLENGE DESCRIPTION
 -----------------------
 Suspicious traffic was detected from a recruiter's virtual PC. A memory dump of the offending VM was captured before it was removed from the network for imaging and analysis. Our recruiter mentioned he received an email from someone regarding their resume. A copy of the email was recovered and is provided for reference. Find and decode the source of the malware to find the flag.
 ```
 
 ***
-
-
 **Un pequeño INDICE**
 
 1. [Requerimientos](#requerimientos).
 2. [Anáisis del memory dump](#memory).
-
-
 ***
 
 # Requerimientos [#](requerimientos) {#requerimientos}
@@ -48,7 +44,6 @@ Para comenzar a resolver el challenge necesitamos varias cosas:
 * Volatility CheatSheet SANS SIFT 
 
 Una vez tenemos todo comenzamos.
-
 
 # Anáisis del memory dump [#](memory) {#memory}
 
@@ -84,7 +79,7 @@ Vamos a proceder con el análsis.
 
 Usando la herramienta volatility comienzo lanzando un plugin para escanear archivos.
 
-Pero me saca una lista muy grande de archivos por lo que buscaremos directamente por el nombre dela rchivo que Brian nos envió (`resume`)
+Pero me saca una lista muy grande de archivos por lo que buscaremos directamente por el nombre del archivo que Brian nos envió (`resume`)
 
 ```bash
 # Lanzo el comando para buscar archivos filtrando por el nombre resume

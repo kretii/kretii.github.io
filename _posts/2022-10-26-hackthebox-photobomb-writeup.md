@@ -11,8 +11,6 @@ description : 🤖Máquina Linux de nivel Easy en la que encontraremos unas cred
 
 🤖Máquina Linux de nivel Easy en la que encontraremos unas credenciales de acceso a un panel web de descarga de imágenes ocultas en archivo javascript, a través de burpsuite podremos obtener un reverse shell y escalaremos privilegios de 2 formas diferentes, a través del script cleanup.sh creando un falso binario y a través de LD_PRELOAD, creando el script en C🤖.
 
-🎥Canal Writeups Youtube🎬 --> [https://www.youtube.com/channel/UCllewdxU0OQudNp9-1IVJYQ](https://www.youtube.com/channel/UCllewdxU0OQudNp9-1IVJYQ)
-
 ![](/assets/images/HTB/Photobomb-HackTheBox/photobomb2.webp)
 
 ![](/assets/images/HTB/Photobomb-HackTheBox/photobomb-rating.webp)
@@ -23,7 +21,7 @@ description : 🤖Máquina Linux de nivel Easy en la que encontraremos unas cred
 **Un pequeño INDICE**
 
 1. [Reconocimiento](#reconocimiento).
-    * [Reconocimiento de Puertos](#recon-nmap).
+* [Reconocimiento de Puertos](#recon-nmap).
 2. [Enumeración](#enumeración).
     * [Analizando la Web](#enum-web).
 3. [Explotación](#explotacion).    

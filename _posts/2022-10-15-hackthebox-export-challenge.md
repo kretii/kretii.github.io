@@ -6,7 +6,7 @@ image       : /assets/images/HTB/Export-HackTheBox/Export-Challenge.webp
 optimized_image : /assets/images/HTB/Export-HackTheBox/Export-Challenge.webp
 category    : [ htb ]
 tags        : [ Forense ]
-descritpion: Challenge forense bastante chulo para quien comience en el Análisis Forense. Analizaremos un archivo .raw de una captura de memoria de un sistema Windows, listaremos procesos, los analizaremos... y tendremos un poco de criptografía a nivel muy básico para finalizar obteniendo la flag de un script powershell...
+description: Challenge forense bastante chulo para quien comience en el Análisis Forense. Analizaremos un archivo .raw de una captura de memoria de un sistema Windows, listaremos procesos, los analizaremos... y tendremos un poco de criptografía a nivel muy básico para finalizar obteniendo la flag de un script powershell...
 ---
 
 Esta vez estoy ante un challenge forense bastante chulo para quien comience en el Análisis Forense, analizaremos un archivo .raw de una captura de memoria de un sistema Windows, listaremos procesos, analizaremos los mismos, tendremos un poco de criptografía a nivel muy básico y finalizaremos obteniendo la flag de un script powershell...
@@ -17,7 +17,7 @@ Esta vez estoy ante un challenge forense bastante chulo para quien comience en e
 
 Writeup en Vídeo --> [https://www.youtube.com/watch?v=dB2KLvvLdsI](https://www.youtube.com/watch?v=dB2KLvvLdsI)
 
-```text
+```r
 # CHALLENGE DESCRIPTION
 -----------------------
 We spotted a suspicious connection to one of our servers, and immediately took a memory dump. Can you figure out what the attackers were up to?
