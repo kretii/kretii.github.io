@@ -17,7 +17,6 @@ description : 👻En esta ocasión romperemos una máquina Linux de nivel easy d
 1. [Reconocimiento](#reconocimiento).
 2. [Explotación](#explotación).
 4. [Escalada de Privilegios](#privesc). 
-    
 ***
 
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
