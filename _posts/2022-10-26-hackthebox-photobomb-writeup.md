@@ -17,7 +17,7 @@ description : 🤖Máquina Linux de nivel Easy en la que encontraremos unas cred
 
 **Un pequeño INDICE**
 
-1. [Reconocimiento](#reconocimiento).
+* [Reconocimiento](#reconocimiento).
 * [Reconocimiento de Puertos](#recon-nmap).
 2. [Enumeración](#enumeración).
     * [Analizando la Web](#enum-web).
@@ -28,8 +28,6 @@ description : 🤖Máquina Linux de nivel Easy en la que encontraremos unas cred
     * [Script /opt/cleanup.sh](#script)
 
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
-
-***
 
 ## Reconocimiento de Puertos [🔍](#recon-nmap) {#recon-nmap}
 
@@ -169,7 +167,7 @@ Partiendo de aquí existen 2 formas de escalar privilegios.
 
 Para poder escalar debemos crear un script en C con el siguiente contenido.
 
-```C
+```c
 #include <stdio.h>
 #include <sys/types.h>
 #include <stdlib.h>
