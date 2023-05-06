@@ -19,14 +19,11 @@ description : ❤️En esta máquina Linux de nivel easy explotaremos una vulner
 
 ***
 **Un pequeño INDICE**
-
 1. [Reconocimiento](#reconocimiento).
 2. [Puerto 443](#puerto443)
 3. [Explotación](#explotación).
 4. [Escalada de Privilegios](#privesc).
-
 ***
-
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
 
 Como de costumbre comienzo con el reconocimiento, pero antes de lanzar la utilidad nmap, lanzo el <span style="color:red"> script Whichsystem.py </span> que me sirve para identificar el sistema operativo de la máquina a la que me voy a enfrentar.

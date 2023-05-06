@@ -24,6 +24,7 @@ Máquina easy de la plataforma HackTheBox
 3. [Explotación](#explotación).
 4. [Escalada de Privilegios](#privesc). 
     * [GPG](#gpg).
+    
 ***
 
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
