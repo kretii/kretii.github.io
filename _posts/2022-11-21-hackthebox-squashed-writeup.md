@@ -18,10 +18,7 @@ description: ⚔️En esta máquina Linux de nivel easy tendremos que montar dir
 ![](/assets/images/HTB/Squashed-HackTheBox/squashed-rating.webp)
 
 [![HTBadge](https://www.hackthebox.eu/badge/image/533771)](https://www.hackthebox.com/home/users/profile/533771)
-
-
 ***
-
 
 **Un pequeño INDICE**
 
@@ -32,13 +29,9 @@ description: ⚔️En esta máquina Linux de nivel easy tendremos que montar dir
     * [Puerto 111](#puerto111).
 4. [Escalada de Privilegios](#privesc). 
     * [.Xauthority](#Xauthority).
-
-    
 ***
 
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
-
-
 
 ## Reconocimiento de Puertos [🔍](#recon-nmap) {#recon-nmap}
 
@@ -59,7 +52,6 @@ Una vez que ya se que es una máquina Linux puedo proceder al <span style="color
 
 ```bash
 # Primer escaneo para sacar los puertos abiertos de la máquina
---------------------------------------------------------------
 nmap -p- -Pn -n --min-rate 5000 10.10.11.191 --open -vvv
 ```
 
@@ -67,7 +59,6 @@ nmap -p- -Pn -n --min-rate 5000 10.10.11.191 --open -vvv
 
 ```bash
 # Segundo escaneo para sacar la versión de lo que se ejecuta en cada puerto y lanzamiento de una serie de scripts básicos de nmap contra dichos puertos.
---------------------------------------------------------------
 nmap -p80,22,111 -sCV -n 10.10.11.191
 ```
 
@@ -81,13 +72,11 @@ Por el momento tengo la siguiente información:
 | 80     | http     | Apache httpd 2.4.41 |
 | 111    | rpcbind  | rpcbind 2-4 |
 
-> En el pueeto 111 (rpcbind) hay varias comparticiones nfs.
+> En el puerto 111 (rpcbind) hay varias comparticiones nfs.
 
 Iré por partes, comenzando por la enumeración del puerto 80 en el que reside un servidor web.
 
 # Enumeración [#](enumeración) {#enumeración}
-
-
 
 ## Puerto 8️⃣0️⃣ [🔢](#puerto80) {#puerto80}
 
@@ -117,7 +106,6 @@ Primeramente he de averiguar que rutas puedo montar.
 
 ```bash
 # Primero he de averiguar que carpetas tiene el servidor disponibles para montar
---------------------------------------------------------------------------------
 > showmount -e 10.10.11.191
 Export list for 10.10.11.191:
 /home/ross *
@@ -128,7 +116,6 @@ Puedo montar esas dos rutas, por lo que creo dos directorios en /tmp para montar
 
 ```bash
 # Creo los directorios
-----------------------
 mkdir /tmp/ross
 mkdir /tmp/www
 # Monto los directorios en cada carpeta
@@ -146,7 +133,6 @@ Intento obtener el hash de la contraseña para posteriormente intentar crackearl
 
 ```bash
 # Con la herramienta keepas2john intento sacar el hash con el siguiente comando.
--------------------------------------------------------------------------------
 keepass2john Passwords.kdbx > /home/elc4br4/HTB/Squashed/hashkdbx
 ```
 
@@ -186,7 +172,6 @@ Usaré la reverse shell de pentest monkey.
 
 ```bash
 # Servidor python3 
-------------------
 python3 -m http.server 8081
 ```
 
@@ -202,13 +187,13 @@ Pero antes de continuar actualizo la tty para tener una shell estable e interact
 
 ```bash
 > script /dev/null -c bash
---------------------------
+
 > Ctrl+z
---------------------------
+
 > stty raw -echo; fg 
         reset
     terminal type? xterm
---------------------------
+
 export TERM=xterm
 export SHELL=bash
 ```
@@ -216,8 +201,6 @@ export SHELL=bash
 Ahora ya tengo una shell más estable e interactiva.
 
 # Escalada de Privilegios [#](privesc) {#privesc}
-
-
 
 ## .Xauthority [☣️](#Xauthority) {#Xauthority}
 
@@ -243,9 +226,8 @@ Para <span style="color:red">conseguir la escalada de privilegios sigo estos pas
 
 ```bash
 XAUTHORITY=/tmp/.Xauthority
----------------------------
 export XAUTHORITY
----------------------------
+
 # Realizo la captura de pantalla de la sesión
 xwd -root -screen -silent -display :0 -out /tmp/captura.xwd
 ```

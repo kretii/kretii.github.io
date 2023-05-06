@@ -19,10 +19,7 @@ description: 🤖En esta máquina Linux de nivel Easy tendremos un login que deb
 
 [![HTBadge](https://www.hackthebox.eu/badge/image/533771)](https://www.hackthebox.com/home/users/profile/533771)
 
-
-...
-
-
+***
 **Un pequeño INDICE**
 
 1. [Reconocimiento](#reconocimiento).
@@ -37,12 +34,10 @@ description: 🤖En esta máquina Linux de nivel Easy tendremos un login que deb
     * [ssh jaeger](#jaeger).
     * [ssh deploy](#deploy).
 5. [Escalada de Privilegios](#privesc). 
- 
-...
-
-# Reconocimiento [#](reconocimiento) {#reconocimiento}
 
 ***
+
+# Reconocimiento [#](reconocimiento) {#reconocimiento}
 
 ## Reconocimiento de Puertos [🔍](#recon-nmap) {#recon-nmap}
 
@@ -63,8 +58,6 @@ Una vez tenemos estos datos, procedo a comprobar que tenemos en el servidor web 
 
 # Enumeración [#](enumeración) {#enumeración}
 
-***
-
 ## Enumeración Web [🔍](#enum-web) {#enum-web}
 
 Añado el dominio al archivo hosts y accedo al mismo a través del navegador.
@@ -80,8 +73,6 @@ El fuzzeo me reporta la ruta login, por lo que voy a ver que puedo hacer.
 ![](/assets/images/HTB/Shoppy-HackTheBox/login.webp)
 
 # Explotación [#](explotación) {#explotación}
-
-***
 
 ## Burpsuite [🔍](#burpsuite) {#burpsuite}
 

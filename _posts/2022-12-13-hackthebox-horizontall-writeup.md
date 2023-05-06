@@ -11,22 +11,15 @@ description: 🚀👨‍🚀En esta máquina Linux de nivel easy obtendré acces
 
 🚀👨‍🚀En esta máquina Linux de nivel easy obtendré acceso al sistema a través de una vulnerabilidad RCE en Strapi CMS y escalaré privilegios aprovechando una vulnerabilidad explotada a través de Laravel usando chisel🚀👨‍🚀.
 
-🎥Canal Writeups Youtube🎬 --> [https://www.youtube.com/channel/UCllewdxU0OQudNp9-1IVJYQ](https://www.youtube.com/channel/UCllewdxU0OQudNp9-1IVJYQ)
-
-
 [![HTBadge](https://www.hackthebox.eu/badge/image/533771)](https://www.hackthebox.com/home/users/profile/533771)
 
 ***
-
-
 **Un pequeño INDICE**
 
 1. [Reconocimiento](#reconocimiento).
 2. [Enumeración Web](#enumeración).
 3. [Explotación](#explotación).
 4. [Escalada de Privilegios](#priv-esc).
-
-
 ***
 
 Ya es hora de estar hack asique al liooo a romper la máquina Horizontall!!!!!
@@ -40,13 +33,13 @@ Como de costumbre comienzo lanzando la herramienta whichsystem.py para identific
 
 Esta herramienta se basa en el TTL (Time To Live).
 
-```bash
+```html
 # Windows --> TTL 128
 ---------------------
 # Linux --> TTL 64
 ```
 
-```bash
+```r
 ❯ whichSystem.py 10.10.11.105
 
 	10.10.11.105 (ttl -> 63): Linux
@@ -67,7 +60,7 @@ Pero necesito más información acerca de estos puertos por lo que debo realizar
 ```bash
 # Escaneo para detectar versiones del servicio que corre en cada puerto
 nmap -p80,22 -n -Pn -sCV 10.10.11.105 -oN versiones
------------------------------------------------------------------------
+
 PORT   STATE SERVICE VERSION
 22/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.5 (Ubuntu Linux; protocol 2.0)
 | ssh-hostkey: 
@@ -203,13 +196,13 @@ Por lo que primero descargo chisel en mi máquina y luego lo paso a la máquina 
 
 ```bash
 # En la máquina atacante
-------------------------
+
 ./chisel server --reverse -p 1234
 ```
 
 ```bash
 # En la máquina víctima
------------------------
+
 ./chisel client http://10.10.14.12:1234 R:8001:127.0.0.1:8000
 ```
 

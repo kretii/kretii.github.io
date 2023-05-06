@@ -9,9 +9,7 @@ tags        : [ Linux ]
 description : ❤️En esta máquina Linux de nivel easy explotaremos una vulnerabilidad conocida como Heartbleed y acabremos escalando privilegios a través de tmux❤️
 ---
 
-❤️En esta máquina Linux de nivel easy explotaremos una vulnerabilidad conocida como Heartbleed y acabremos escalando privilegios a través de tmux❤️
-
-🎥Canal Writeups Youtube🎬 --> [https://www.youtube.com/channel/UCllewdxU0OQudNp9-1IVJYQ](https://www.youtube.com/channel/UCllewdxU0OQudNp9-1IVJYQ)
+❤️Máquina Linux de nivel easy, explotaremos una vulnerabilidad conocida como Heartbleed y acabaremos escalando privilegios a través de tmux❤️
 
 ![](/assets/images/HTB/Valentine-HackTheBox/valentine2.webp)
 
@@ -19,18 +17,13 @@ description : ❤️En esta máquina Linux de nivel easy explotaremos una vulner
 
 [![HTBadge](https://www.hackthebox.eu/badge/image/533771)](https://www.hackthebox.com/home/users/profile/533771)
 
-
 ***
-
-
 **Un pequeño INDICE**
 
 1. [Reconocimiento](#reconocimiento).
-    * [Reconocimiento de Puertos](#recon-nmap).
 2. [Puerto 443](#puerto443)
 3. [Explotación](#explotación).
 4. [Escalada de Privilegios](#privesc).
-
 
 ***
 
@@ -47,8 +40,6 @@ Esta heramienta creada por s4vitar se basa en el ttl (time to live) para identif
 
 ![](/assets/images/HTB/Valentine-HackTheBox/whichsystem.webp)
 
-## Reconocimiento de Puertos [🔍](#recon-nmap) {#recon-nmap}
-
 Una vez que ya se que me enfrento a una máquina Linux procedo a lanzar un escaneo simple de puertos con el fin de detectar los puertos abiertos en la máquina víctima.
 
 Este escaneo de puertos lo realizo con la herramienta nmap.
@@ -61,7 +52,7 @@ Pero necesito algo más de información acerca de estos puertos, por lo que lanz
 
 ![](/assets/images/HTB/Valentine-HackTheBox/nmap2.webp)
 
-> Encuentro el host valentine.htb que añado al archivo /etc/hosts
+> Encuentro el host `valentine.htb` que añado al archivo `/etc/hosts`
 
 # Puerto 443 [🔢](#puerto443) {#puerto443}
 
