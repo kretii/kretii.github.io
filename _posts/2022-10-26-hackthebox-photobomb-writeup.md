@@ -15,9 +15,6 @@ description : 🤖Máquina Linux de nivel Easy en la que encontraremos unas cred
 
 ![](/assets/images/HTB/Photobomb-HackTheBox/photobomb-rating.webp)
 
-...
-
-
 **Un pequeño INDICE**
 
 1. [Reconocimiento](#reconocimiento).
@@ -30,9 +27,6 @@ description : 🤖Máquina Linux de nivel Easy en la que encontraremos unas cred
     * [Variable LD_PRELOAD](#preload).   
     * [Script /opt/cleanup.sh](#script)
 
- 
-...
-
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
 
 ***
@@ -41,7 +35,7 @@ description : 🤖Máquina Linux de nivel Easy en la que encontraremos unas cred
 
 Como siempre comenzamos lanzando Whichsystem para averiguar ante que sistema operativo nos enfrentamos, recordar que Whichsytem es una utilidad desarrollada en python por S4vitar que nos permite detectar el sistema operativo de una máquina por su TTL (Time To Live).
 
-```bash
+```html
 # Windows --> TTL 128
 ---------------------
 # Linux --> TTL 64
@@ -62,13 +56,11 @@ Tenemos lo siguiente:
 | 22     | SSH      | OpenSSH 8.2p1 |
 | 80     | HTTP     | nginx 1.18.0 |
 
-> Dominio --> <span style="color:red">photobomb.htb</span>
+> Dominio <span style="color:red">photobomb.htb</span>
 
 Añado el dominio al archivo <span style="color:red"> /etc/hosts</span>
 
 # Enumeración [#](enumeración) {#enumeración}
-
-***
 
 ## Analizando la Web [📌](#enum-web) {#enum-web}
 
@@ -104,10 +96,7 @@ Dentro hay imágenes en diferentes resoluciones que podemos descargar.
 
 # Explotación [#](explotacion) {#explotacion}
 
-***
-
 ## Burpsuite [🔥](#burpsuite) {#burpsuite}
-
 
 Se me ocurre abrir Burpsuite e interceptar la petición al hacer click en descargar la imágen.
 
@@ -123,7 +112,7 @@ Creo una reverse shell en bash en mi máquina atacante.
 
 Lanzo un servidor de python3.
 
-> `python3 -m http.server 8080`
+`python3 -m http.server 8080`
 
 Y desde el burp injecto el siguiente comando.
 
@@ -168,7 +157,6 @@ Y ya podemos escalar privilegios.
 
 # Escalada de Privilegios [#](privesc) {#privesc}
 
-
 Primeramente como siempre enumeramos para encontrar vectores de escalada y como siempre comienzo por `sudo -l`
 
 ![](/assets/images/HTB/Photobomb-HackTheBox/privesc1.webp)
@@ -177,9 +165,9 @@ Partiendo de aquí existen 2 formas de escalar privilegios.
 
 ## Variable LD_PRELOAD [👨‍💻](#preload) {#preload}
 
-> `LD_Preload es la variable de entorno que lista las rutas de la librerías compartidas, al igual que /etc/ld.so.preload.`
+> LD_Preload es la variable de entorno que lista las rutas de la librerías compartidas, al igual que /etc/ld.so.preload.
 
-> Para poder escalar debemos crear un script en C con el siguiente contenido.
+Para poder escalar debemos crear un script en C con el siguiente contenido.
 
 ```C
 #include <stdio.h>
