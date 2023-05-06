@@ -18,7 +18,7 @@ description : 🤖Máquina Linux de nivel Easy en la que encontraremos unas cred
 **Un pequeño INDICE**
 
 * [Reconocimiento](#reconocimiento).
-* [Reconocimiento de Puertos](#recon-nmap).
+    * [Reconocimiento de Puertos](#recon-nmap).
 2. [Enumeración](#enumeración).
     * [Analizando la Web](#enum-web).
 3. [Explotación](#explotacion).    
