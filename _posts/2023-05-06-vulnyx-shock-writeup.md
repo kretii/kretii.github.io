@@ -17,8 +17,8 @@ description : 👻En esta ocasión romperemos una máquina Linux de nivel easy d
 1. [Reconocimiento](#reconocimiento).
 2. [Explotación](#explotación).
 4. [Escalada de Privilegios](#privesc). 
-***
 
+***
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
 
 Como en todo CTF comenzamos enumerando puertos en la máquina víctima, esto lo hacemos usando nmap, aunque esta vez voy a usar la herramienta rustscan.
