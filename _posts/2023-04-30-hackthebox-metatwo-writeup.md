@@ -24,7 +24,7 @@ Máquina easy de la plataforma HackTheBox
 3. [Explotación](#explotación).
 4. [Escalada de Privilegios](#privesc). 
     * [GPG](#gpg).
-    
+
 ***
 
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
@@ -87,7 +87,6 @@ Dentro de esta ruta tampoco veo nada que me pueda servir.
 Abro el código fuente de la página para ver si podría haber alguna ruta o algo de interés.
 
 # Explotación [#](explotación) {#explotación}
-
 
 Y buscando encontré un plugin que podría ser vulnerable y podría servirme para conseguir acceso al sistema.
 
