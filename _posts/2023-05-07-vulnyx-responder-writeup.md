@@ -227,7 +227,7 @@ Como vemos es vulnerable, por lo que buscando encuentro un exploit que me puede 
 
 Para ello sigo estos pasos:
 
-1. Crear archivo evil-so.c y exploit.c
+> Crear archivo evil-so.c y exploit.c
 
 ```c
 #include <stdio.h>
@@ -277,7 +277,7 @@ int main()
 }
 ```
 
-2. Una vez creados los compilamos
+> Una vez creados los compilamos
 
 ```bash
 gcc -shared -o evil.so -fPIC evil-so.c
@@ -287,7 +287,7 @@ gcc -shared -o evil.so -fPIC evil-so.c
  gcc exploit.c -o exploit
 ```
 
-3. Por último lanzamos el exploit
+> Por último lanzamos el exploit
 
 ```bash
 rohit@responder:/tmp$ ./exploit
