@@ -15,9 +15,6 @@ Esta vez tenemos una máquina Windows de nivel Easy en la que explotaremos un se
 
 [![HTBadge](https://www.hackthebox.eu/badge/image/533771)](https://www.hackthebox.com/home/users/profile/533771)
 
-...
-
-
 **Un pequeño INDICE**
 
 1. [Reconocimiento](#reconocimiento).
@@ -28,12 +25,7 @@ Esta vez tenemos una máquina Windows de nivel Easy en la que explotaremos un se
 4. [Escalada de Privilegios](#privesc). 
     * [Server Operators](#server-operators).      
 
-
-...
-
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
-
-----
 
 ## Reconocimiento de Puertos [📌](#recon-nmap) {#recon-nmap}
 
@@ -86,8 +78,6 @@ Por lo tanto hasta que no tengamos credenciales no hay mucho que hacer. Asique p
 
 # Enumeración [#](enumeración) {#enumeración}
 
-----
-
 ## Enumeración Web [📌](#enum-web) {#enum-web}
 
 Al acceder a la ip desde el navegador encontramos lo siguiente:
@@ -126,8 +116,6 @@ Y conseguimos conectarnos
 Ahora toca escalar privilegios
 
 # Escalada de Privilegios [#](privesc) {#privesc}
-
-----
 
 ## Server Operators[👽](server-operators) {#server-operators}
 

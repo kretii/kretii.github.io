@@ -15,8 +15,6 @@ En esta ocasión me he metido en un jaleo resolviendo la máquina Absolute de Ha
 
 ![](/assets/images/HTB/Absolute-HackTheBox/absolute-rating.webp)
 
-
-***
 **Un pequeño INDICE**
 
 1. [Reconocimiento](#reconocimiento).
@@ -24,7 +22,6 @@ En esta ocasión me he metido en un jaleo resolviendo la máquina Absolute de Ha
 2. [Explotación](#explotación).
 3. [Escalada de Privilegios](#privesc). 
 
-***
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
 
 ## Reconocimiento de Puertos [🔍](#recon-nmap) {#recon-nmap}

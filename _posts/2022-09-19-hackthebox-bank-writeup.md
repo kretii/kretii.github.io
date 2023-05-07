@@ -15,9 +15,6 @@ description: 💲En esta ocasión explotaremos una máquina Easy de HackTheBox m
 
 [![HTBadge](https://www.hackthebox.eu/badge/image/533771)](https://www.hackthebox.com/home/users/profile/533771)
 
-...
-
-
 **Un pequeño INDICE**
 
 1. [Reconocimiento](#reconocimiento).
@@ -29,12 +26,7 @@ description: 💲En esta ocasión explotaremos una máquina Easy de HackTheBox m
 4. [Escalada de Privilegios](#privesc). 
     * [Emergency](#emergency).   
 
-
-...
-
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
-
-----
 
 ## Reconocimiento de Puertos [📌](#recon-nmap) {#recon-nmap}
 
@@ -73,8 +65,6 @@ Procedo a enumerar el servidor web
 
 # Enumeración [#](enumeración) {#enumeración}
 
-----
-
 ## Enumeración Web [📌](#enum-web) {#enum-web}
 
 Encontramos un login para acceder pero no tenemos credenciales, asique me pongo a enumerar rutas en el servidor para ver que tenemos.
@@ -110,8 +100,6 @@ Una vez dentro encontramos un panel con todas las transacciones y datos bancario
 ![](/assets/images/HTB/Bank-HackTheBox/web4.png)
 
 # Explotación [#](explotacion) {#explotacion}
-
-----
 
 ## Reverse Shell [🔥](#rev-shell) {#rev-shell}
 
@@ -168,8 +156,6 @@ Ahora toca escalar privilegios
 
 
 # Escalada de Privilegios [#](privesc) {#privesc}
-
-----
 
 ## Emergency [🚑](emergency) {#emergency}
 

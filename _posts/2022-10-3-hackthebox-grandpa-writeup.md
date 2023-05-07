@@ -15,7 +15,6 @@ description : 🤖​En esta ocasión estamos ante una máquina Windows de nivel
 
 ![](/assets/images/HTB/Grandpa-HackTheBox/Grandpa-rating.webp)
 
-
 **Un pequeño INDICE**
 
 1. [Reconocimiento](#reconocimiento).
@@ -27,10 +26,7 @@ description : 🤖​En esta ocasión estamos ante una máquina Windows de nivel
  5. [Escalada de Privilegios](#privesc). 
     * [kitrap0d](#kitrap0d).   
 
-
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
-
-----
 
 ## Reconocimiento de Puertos [📌](#recon-nmap) {#recon-nmap}
 

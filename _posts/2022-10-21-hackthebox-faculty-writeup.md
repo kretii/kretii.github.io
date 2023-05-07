@@ -23,8 +23,6 @@ paginate: true
 
 [![HTBadge](https://www.hackthebox.eu/badge/image/533771)](https://www.hackthebox.com/home/users/profile/533771)
 
-
-***
 **Un pequeño INDICE**
 
 1. [Reconocimiento](#reconocimiento).
@@ -36,11 +34,8 @@ paginate: true
 4. [Escalada de Privilegios](#privesc). 
     * [meta-git](#meta-git).
     * [gdb](#gdb).
-***
 
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
-
-***
 
 ## Reconocimiento de Puertos [🔍](#recon-nmap) {#recon-nmap}
 

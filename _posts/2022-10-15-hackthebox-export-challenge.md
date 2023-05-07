@@ -15,25 +15,17 @@ Esta vez estoy ante un challenge forense bastante chulo para quien comience en e
 
 [![HTBadge](https://www.hackthebox.eu/badge/image/533771)](https://www.hackthebox.com/home/users/profile/533771)
 
-Writeup en Vídeo --> [https://www.youtube.com/watch?v=dB2KLvvLdsI](https://www.youtube.com/watch?v=dB2KLvvLdsI)
-
 ```r
 # CHALLENGE DESCRIPTION
 -----------------------
 We spotted a suspicious connection to one of our servers, and immediately took a memory dump. Can you figure out what the attackers were up to?
 ```
 
-***
-
-
 **Un pequeño INDICE**
 
 1. [Volcado de Memoria RAM](#volcado).
 2. [Requerimientos](#requerimientos).
 3. [Anáisis del memory dump](#memory).
-
-
-***
 
 # Volcado de Memoria RAM [#](volcado) {#volcado}
 

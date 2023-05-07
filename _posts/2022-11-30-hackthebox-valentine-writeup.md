@@ -23,6 +23,7 @@ description : ❤️En esta máquina Linux de nivel easy explotaremos una vulner
 2. [Puerto 443](#puerto443)
 3. [Explotación](#explotación).
 4. [Escalada de Privilegios](#privesc).
+
 ***
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
 

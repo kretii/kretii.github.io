@@ -16,7 +16,7 @@ En esta ocasión resolvemos la máquina Arroutada creada por Rijaba1 que está d
 1. [Reconocimiento](#reconocimiento).
 2. [Explotación](#explotación).
 3. [Escalada de Privilegios](#priv-esc).
-***
+
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
 
 Comenzamos como siempre lanzando nmap para realizar un reconocimiento de puertos.

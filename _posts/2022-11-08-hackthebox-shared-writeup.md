@@ -15,7 +15,6 @@ description : ⚔️En esta máquina Linux de nivel medio tocaremos sqli para ob
 
 ![](/assets/images/HTB/Shared-HackTheBox/shared-rating.webp)
 
-***
 **Un pequeño INDICE**
 
 1. [Reconocimiento](#reconocimiento).
@@ -27,7 +26,7 @@ description : ⚔️En esta máquina Linux de nivel medio tocaremos sqli para ob
 4. [Escalada de Privilegios](#privesc). 
     * [iPython](#iPython).
     * [Redis cli](#redis).
-***
+
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
 
 ## Reconocimiento de Puertos [🔍](#recon-nmap) {#recon-nmap}

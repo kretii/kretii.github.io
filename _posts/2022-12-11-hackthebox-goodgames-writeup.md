@@ -15,7 +15,6 @@ description : 🎮🕹️En esta máquina Linux de nivel easy tocaremos un poco 
 
 ![](/assets/images/HTB/Goodgames-HackTheBox/estadisticas.webp)
 
-***
 **Un pequeño INDICE**
 
 1. [Reconocimiento](#reconocimiento).
@@ -24,7 +23,6 @@ description : 🎮🕹️En esta máquina Linux de nivel easy tocaremos un poco 
 4. [SSTI](#ssti).
 5. [Contenedor docker](#docker).
 6. [Escalada de Privilegios](#privesc).
-***
 
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
 

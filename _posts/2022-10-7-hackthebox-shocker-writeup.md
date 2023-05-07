@@ -16,9 +16,6 @@ description : 👨‍🎓Esta vez tenemos la máquina Shocker de nivel EASY, en 
 
 ![](/assets/images/HTB/Shocker-HackTheBox/shocker-rating.webp)
 
-...
-
-
 **Un pequeño INDICE**
 
 1. [Reconocimiento](#reconocimiento).
@@ -33,12 +30,7 @@ description : 👨‍🎓Esta vez tenemos la máquina Shocker de nivel EASY, en 
  5. [Escalada de Privilegios](#privesc). 
     * [Perl](#perl).   
 
-
-...
-
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
-
-----
 
 ## Reconocimiento de Puertos [📌](#recon-nmap) {#recon-nmap}
 
@@ -123,8 +115,6 @@ Encontramos el archivo `user.sh` por lo tanto ya podríamos comprobar si es vuln
 
 # Detección ShellShock [#](#detect-shellshock) {#detect-shellshock}
 
-----
-
 ## Metasploit [👿](#metasploit) {#metasploit}
 
 Abrimos metasploit y usamos el módulo auxiliar: 
@@ -165,8 +155,6 @@ Y como vemos es `Vulnerable a ShellShock`.
 
 # Explotación ShellShock [#](explotacion) {#explotacion}
 
-----
-
 ## Burpsuite [🔥](#burpsuite) {#burpsuite}
 
 Una vez hemos detectado que es vulnerable procedo a su explotación para acceder al sistema.
@@ -196,8 +184,6 @@ Una vez dentro ya podemos leer la flag `user.txt`
 Y ahora toca escalar privilegios a root.
 
 # Escalada de Privilegios [#](privesc) {#privesc}
-
-----
 
 ## Perl [👨‍💻](#perl) {#perl}
 

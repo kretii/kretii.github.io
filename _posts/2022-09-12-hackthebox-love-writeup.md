@@ -15,8 +15,6 @@ Estamos ante una máquina Windows nivel Easy en la que encontraremos credenciale
 
 [![HTBadge](https://www.hackthebox.eu/badge/image/533771)](https://www.hackthebox.com/home/users/profile/533771)
 
-
-
 # Reconocimiento puertos
 
 El escaneo nmap nos reporta la siguiente información.

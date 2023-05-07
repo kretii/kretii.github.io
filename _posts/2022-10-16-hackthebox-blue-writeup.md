@@ -17,18 +17,12 @@ Tenemos una máquina nivel EASY Windows, en la que explotaremos la vulnerabilida
 
 ![](/assets/images/HTB/Blue-HackTheBox/Blue-rating.webp)
 
-***
-
-
 **Un pequeño INDICE**
 
 1. [Reconocimiento](#reconocimiento).
     * [Reconocimiento de Puertos](#recon-nmap).
 2. [Explotación](#explotacion).
     * [Metasploit](#metasploit).
-
-
-***
 
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
 

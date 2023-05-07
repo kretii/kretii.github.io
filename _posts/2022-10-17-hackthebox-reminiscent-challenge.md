@@ -23,12 +23,10 @@ Challenge forense en el que debemos analizar un archivo de dumpeo de memoria ram
 Suspicious traffic was detected from a recruiter's virtual PC. A memory dump of the offending VM was captured before it was removed from the network for imaging and analysis. Our recruiter mentioned he received an email from someone regarding their resume. A copy of the email was recovered and is provided for reference. Find and decode the source of the malware to find the flag.
 ```
 
-***
 **Un pequeño INDICE**
 
 1. [Requerimientos](#requerimientos).
 2. [Anáisis del memory dump](#memory).
-***
 
 # Requerimientos [#](requerimientos) {#requerimientos}
 

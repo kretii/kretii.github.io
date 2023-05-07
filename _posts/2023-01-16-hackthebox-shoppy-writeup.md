@@ -19,7 +19,6 @@ description: 🤖En esta máquina Linux de nivel Easy tendremos un login que deb
 
 [![HTBadge](https://www.hackthebox.eu/badge/image/533771)](https://www.hackthebox.com/home/users/profile/533771)
 
-***
 **Un pequeño INDICE**
 
 1. [Reconocimiento](#reconocimiento).
@@ -34,8 +33,6 @@ description: 🤖En esta máquina Linux de nivel Easy tendremos un login que deb
     * [ssh jaeger](#jaeger).
     * [ssh deploy](#deploy).
 5. [Escalada de Privilegios](#privesc). 
-
-***
 
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
 

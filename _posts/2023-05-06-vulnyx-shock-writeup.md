@@ -11,14 +11,12 @@ description : 👻En esta ocasión romperemos una máquina Linux de nivel easy d
 
 👻Estamos ante una máquina Linux Easy de la nueva plataforma VulNyx en la que tenemos máquinas basadas en UNIX con diferentes niveles de dificultad para aprender y practicar las habilidades de Ciberseguridad👻.
 
-***
 **Un pequeño INDICE**
 
 1. [Reconocimiento](#reconocimiento).
 2. [Explotación](#explotación).
 4. [Escalada de Privilegios](#privesc). 
 
-***
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
 
 Como en todo CTF comenzamos enumerando puertos en la máquina víctima, esto lo hacemos usando nmap, aunque esta vez voy a usar la herramienta rustscan.

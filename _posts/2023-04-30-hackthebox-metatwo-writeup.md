@@ -14,7 +14,6 @@ Máquina easy de la plataforma HackTheBox
 
 ![](/assets/images/HTB/Metatwo-HackTheBox/metatwo-rating.webp)
 
-***
 **Un pequeño INDICE**
 
 1. [Reconocimiento](#reconocimiento).
@@ -24,8 +23,6 @@ Máquina easy de la plataforma HackTheBox
 3. [Explotación](#explotación).
 4. [Escalada de Privilegios](#privesc). 
     * [GPG](#gpg).
-
-***
 
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
 

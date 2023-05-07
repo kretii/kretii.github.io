@@ -13,14 +13,12 @@ description: 🚀👨‍🚀En esta máquina Linux de nivel easy obtendré acces
 
 [![HTBadge](https://www.hackthebox.eu/badge/image/533771)](https://www.hackthebox.com/home/users/profile/533771)
 
-***
 **Un pequeño INDICE**
 
 1. [Reconocimiento](#reconocimiento).
 2. [Enumeración Web](#enumeración).
 3. [Explotación](#explotación).
 4. [Escalada de Privilegios](#priv-esc).
-***
 
 Ya es hora de estar hack asique al liooo a romper la máquina Horizontall!!!!!
 

@@ -18,7 +18,6 @@ description: ⚔️En esta máquina Linux de nivel easy tendremos que montar dir
 ![](/assets/images/HTB/Squashed-HackTheBox/squashed-rating.webp)
 
 [![HTBadge](https://www.hackthebox.eu/badge/image/533771)](https://www.hackthebox.com/home/users/profile/533771)
-***
 
 **Un pequeño INDICE**
 
@@ -29,7 +28,7 @@ description: ⚔️En esta máquina Linux de nivel easy tendremos que montar dir
     * [Puerto 111](#puerto111).
 4. [Escalada de Privilegios](#privesc). 
     * [.Xauthority](#Xauthority).
-***
+
 
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
 

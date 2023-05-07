@@ -17,9 +17,6 @@ Máquina Linux de nivel MEDIUM en la que explotaremos la vulnerabilidad XXE para
 
 ![](/assets/images/HTB/DevOops-HackTheBox/DevOops-rating.webp)
 
-...
-
-
 **Un pequeño INDICE**
 
 1. [Reconocimiento](#reconocimiento).
@@ -30,9 +27,6 @@ Máquina Linux de nivel MEDIUM en la que explotaremos la vulnerabilidad XXE para
     * [Burpsuite](#burpsuite).
  5. [Escalada de Privilegios](#privesc). 
     * [Git](#git).   
-
-
-...
 
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
 

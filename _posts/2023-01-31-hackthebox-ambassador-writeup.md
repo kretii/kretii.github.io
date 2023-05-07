@@ -19,7 +19,6 @@ description : 📡Estoy ante una máquina Linux nivel Medium en la que aprovecha
 
 ![](/assets/images/HTB/Ambassador-HackTheBox/start.gif)
 
-***
 **Un pequeño INDICE**
 
 1. [Reconocimiento](#reconocimiento).
@@ -30,7 +29,6 @@ description : 📡Estoy ante una máquina Linux nivel Medium en la que aprovecha
     * [Grafana Directory Traversal](#Grafana-Directory-Traversal).
 4. [Escalada de Privilegios](#privesc). 
     * [Consul Service](#Consul-service)
-***
 
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
 

@@ -15,9 +15,6 @@ En esta ocasión vamos a resolver la máquina Forest de nivel Easy, que la verda
 
 [![HTBadge](https://www.hackthebox.eu/badge/image/533771)](https://www.hackthebox.com/home/users/profile/533771)
 
-...
-
-
 **Un pequeño INDICE**
 
 1. [Reconocimiento](#reconocimiento).
@@ -27,12 +24,7 @@ En esta ocasión vamos a resolver la máquina Forest de nivel Easy, que la verda
 4. [Escalada de Privilegios](#privesc). 
     * [BloodHound](#blood).   
 
-
-...
-
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
-
-----
 
 ## Reconocimiento de Puertos [📌](#recon-nmap) {#recon-nmap}
 
@@ -165,7 +157,6 @@ Me copio estos usuarios en un archivo de texto para posteriormente intentar saca
 
 # ASREPRoast [#](asreproast) {#asreproast}
 
-
 Como tenemos el puerto 88 abierto (Kerberos), intentaré atacarlo con los usuarios que hemos recolectado anteriormente.
 
 El ataque ASREPRoast busca usuarios sin necesidad de autenticación previa de Kerberos.
@@ -195,10 +186,7 @@ Ahora podemos conectarnos a través de WinRM con las credenciales obtenidas
 
 Y ya podemos leer la flag user.txt
 
-
 # Escalada de Privilegios [#](privesc) {#privesc}
-
-----
 
 ## BloodHound[🩸](blood) {#blood}
 

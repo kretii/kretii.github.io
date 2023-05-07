@@ -17,9 +17,6 @@ En esta ocasión estaré resolviendo una máquina de nivel MEDIUM de HackTheBox 
 
 ![](/assets/images/HTB/Poison-HackTheBox/Poison-rating.webp)
 
-...
-
-
 **Un pequeño INDICE**
 
 1. [Reconocimiento](#reconocimiento).
@@ -31,11 +28,7 @@ En esta ocasión estaré resolviendo una máquina de nivel MEDIUM de HackTheBox 
  5. [Escalada de Privilegios](#privesc). 
     * [VNC](#vnc).   
 
-...
-
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
-
-----
 
 ## Reconocimiento de Puertos [📌](#recon-nmap) {#recon-nmap}
 

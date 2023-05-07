@@ -17,9 +17,6 @@ Máquina nivel EASY Linux bastante sencilla, tendremos que ganar acceso a travé
 
 ![](/assets/images/HTB/ScriptKiddie-HackTheBox/Scriptkiddie-rating.webp)
 
-***
-
-
 **Un pequeño INDICE**
 
 1. [Reconocimiento](#reconocimiento).
@@ -32,12 +29,7 @@ Máquina nivel EASY Linux bastante sencilla, tendremos que ganar acceso a travé
     * [Movimiento Lateral - Usuario pwn](#pwn).
     * [Escalada Vertical - Usuario root](#root).
 
-
-***
-
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
-
-***
 
 ## Reconocimiento de Puertos [🔍](#recon-nmap) {#recon-nmap}
 

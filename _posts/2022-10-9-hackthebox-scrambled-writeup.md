@@ -15,10 +15,6 @@ Máquina Windows de nivel MEDIO bastante compleja, tendremos que enumerar utiliz
 
 ![](/assets/images/HTB/Scrambled-HackTheBox/scrambled-rating.webp)
 
-
-***
-
-
 **Un pequeño INDICE**
 
 1. [Reconocimiento](#reconocimiento).
@@ -35,10 +31,6 @@ Máquina Windows de nivel MEDIO bastante compleja, tendremos que enumerar utiliz
 7. [ipforwarding](#ipforwarding).
 8. [Escalada de Privilegios Vertical - Usuario Administrador](#privesc2).
     * [ScrambleClient.exe](#scrambled)
-
-
-***
-
 
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
 

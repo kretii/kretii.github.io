@@ -17,9 +17,6 @@ En esta ocasión me he aventurado a resolver una máquina de nivel HARD Windows.
 
 ![](/assets/images/HTB/Blackfield-HackTheBox/blackfield-rating.webp)
 
-...
-
-
 **Un pequeño INDICE**
 
 1. [Reconocimiento](#reconocimiento).
@@ -27,9 +24,6 @@ En esta ocasión me he aventurado a resolver una máquina de nivel HARD Windows.
 2. [Explotación](#explotación).
 3. [Escalada de Privilegios](#privesc). 
     * [dsh](#dsh).   
-
-
-...
 
 # Reconocimiento [#](reconocimiento) {#reconocimiento}
 
