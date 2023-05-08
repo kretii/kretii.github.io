@@ -113,7 +113,7 @@ Miro la ruta videos donde tenemos varios videos que me descargo y analizo sus me
 
 Tenemos una película secreta:
 
-> `secret_film:c0ntr0l` `
+> `secret_film:c0ntr0l` 
 
 Los campos Copyright podrían ser rutas del servidor, o algun tipo de archivo, asique probaré.
 
