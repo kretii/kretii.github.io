@@ -233,7 +233,7 @@ Y por fin estoy dentro de la máquina como el usuario cromiphi.
 
 Llegados a este paso ya podemos leer la flag de usuario.
 
-Y ya para finalizar solo nos quedaría escalar privilegios y convertirnos en el usaurio root.
+Y ya para finalizar solo nos quedaría escalar privilegios y convertirnos en el usuario root.
 
 # Escalada de Privilegios [#](Escalada de Privilegios) {#privesc}
 
@@ -265,3 +265,4 @@ sudo nmap --script=$TF
 
 Y ya somos root y hemos pwneado la máquina!
 
+![](/assets/images/VULNYX/Hat-Vulnyx/gif.gif)
