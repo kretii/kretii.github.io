@@ -128,7 +128,8 @@ precious
 
 # Escalada de Privilegios [#](Escalada de Privilegios) {#privesc}
 
-A continuación toca escalar privilegios, por lo que ejecuto el comando `sudo -l`.
+A continuación toca escalar privilegios, por lo que ejecuto el comando
+`sudo -l`.
 
 ```bash
 -bash-5.1$ sudo -l
