@@ -6,10 +6,13 @@ image       : /assets/images/HMV/Friendly2-HackMyVM/friendly2.jpg
 optimized_image : /assets/images/HMV/Friendly2-HackMyVM/friendly2.jpg
 category    : [ HackMyVM ]
 tags        : [ Linux ]
-description : En esta ocasión resolveremos una máquina Easy creada por el compñaero Rijaba1 de la plataforma HackMyVM, en la que explotaremos un LFI, craquearemos una clave RSA privada y escalaremos a través de un Path Hijacking.
+description : En esta ocasión resolveremos una máquina Easy creada por el compañero Rijaba1 de la plataforma HackMyVM, en la que explotaremos un LFI, craquearemos una clave RSA privada y escalaremos a través de un Path Hijacking.
 ---
 
 🥶En esta ocasión resolveremos una máquina Easy creada por el compñaero Rijaba1 de la plataforma HackMyVM, en la que explotaremos un LFI, craquearemos una clave RSA privada y escalaremos a través de un Path Hijacking.🥶
+
+### Canal de Rijaba1  
+<a href="https://www.youtube.com/@RiJaba1 ">Enlace Canal Youtube Rijaba1</a>
 
 **Un pequeño INDICE**
 
