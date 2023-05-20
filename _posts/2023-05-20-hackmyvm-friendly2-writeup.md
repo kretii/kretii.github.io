@@ -1,11 +1,12 @@
 ---
-layout      : HackTheBox
-title       : "Friendly2 - HackMyVM"
-author      : elc4br4
-image       : /assets/images/HMV/Friendly2-HackMyVM/friendly2.jpg
+layout: post
+title : "Friendly2 - HackMyVM"
+author : elc4br4
+image : /assets/images/HMV/Friendly2-HackMyVM/friendly2.jpg
 optimized_image : /assets/images/HMV/Friendly2-HackMyVM/friendly2.jpg
-category    : [ HackMyVM ]
-tags        : [ Linux ]
+category : [ HackMyVM ]
+tags : [ Linux ]
+permalink : /HackTheBox/
 description : En esta ocasión resolveremos una máquina Easy creada por el compañero Rijaba1 de la plataforma HackMyVM, en la que explotaremos un LFI, craquearemos una clave RSA privada y escalaremos a través de un Path Hijacking.
 ---
 
