@@ -5,7 +5,7 @@ author      : elc4br4
 image       : /assets/images/VULNYX/Responder-Vulnyx/Responder.jpg
 optimized_image : /assets/images/VULNYX/Responder-Vulnyx/Responder.jpg
 category    : [ Vulnyx ]
-tags        : [ Linux ]
+tags        : [ Linux, Vulnyx ]
 description : Máquina medium de la plataforma VulNyx em la que explotaremos un LFI, haremos uso de php wrappers para leer archivos del sistema, y finalizaremos escalando privilegios con el binario calc y explotando una versión vulnerable de pkexec.
 ---
 

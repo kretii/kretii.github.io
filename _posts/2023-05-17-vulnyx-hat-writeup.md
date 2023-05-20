@@ -5,7 +5,7 @@ author      : elc4br4
 image       : /assets/images/VULNYX/Hat-Vulnyx/Hat.jpg
 optimized_image : /assets/images/VULNYX/Hat-Vulnyx/Hat.jpg
 category    : [ Vulnyx ]
-tags        : [ Linux ]
+tags        : [ Linux, Vulnyx ]
 description : En esta ocasión resolveremos una máquina Medium de la nueva plataforma Vulnyx, en la que tocaremos un poco de fuerza bruta, ipv6 y escalaremos usando el binario nmap.
 ---
 

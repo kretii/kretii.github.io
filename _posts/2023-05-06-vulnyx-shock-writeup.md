@@ -5,7 +5,7 @@ author      : elc4br4
 image       : /assets/images/VULNYX/Shock-Vulnyx/Shock.jpg
 optimized_image : /assets/images/VULNYX/Shock-Vulnyx/Shock.jpg
 category    : [ Vulnyx ]
-tags        : [ Linux ]
+tags        : [ Linux, Vulnyx ]
 description : 👻En esta ocasión romperemos una máquina Linux de nivel easy de la nueva plataforma Vulnyx. Explotaremos la vulnerabilidad Shellshock y escalaremos usando dos binarios👻.
 ---
 
