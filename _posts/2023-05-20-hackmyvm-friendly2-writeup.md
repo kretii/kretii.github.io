@@ -1,5 +1,5 @@
 ---
-layout      : post
+layout      : HackTheBox
 title       : "Friendly2 - HackMyVM"
 author      : elc4br4
 image       : /assets/images/HMV/Friendly2-HackMyVM/friendly2.jpg
