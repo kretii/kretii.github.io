@@ -82,7 +82,7 @@ Tras obtener la contraseña pruebo a utilizarla para conectarme al puerto 9999.
 
 ![](/assets/images/VULNYX/Printer-Vulnyx/nc2.webp)
 
-Tras acceder ejecuto el comando `?` para que me muestre la ayuda con para ver todos los parámetros que puedo ejecutar y veo que con el comando exec puedo ejecutar comandos en la misma máquina.
+Tras acceder ejecuto el comando `?` para que me muestre la ayuda para ver todos los parámetros que puedo ejecutar y veo que con el comando exec puedo ejecutar comandos en la misma máquina.
 
 ```bash
 > exec whoami
