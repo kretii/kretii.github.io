@@ -58,7 +58,7 @@ Encuentro la ruta `api` por lo que sigo fuzzeando.
 
 Accedo a la ruta `api/printers` y encuentro lo siguiente.
 
-> "Search for your printer with the following format: printer<id>.<ext>"
+> "Search for your printer with the following format: printerid.ext"
 
 Tras ver esto ya se que he de hacer, continuar fuzzeando.
 
