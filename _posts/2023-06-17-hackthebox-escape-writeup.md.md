@@ -19,7 +19,7 @@ description : 📡En esta ocasión estoy ante una máquina Windows nivel `Medium
 **Un pequeño INDICE**
 
 1. [Reconocimiento](#reconocimiento).
-2. [Explotación](#explotacion).
+2. [Explotación](#explotación).
 3. [Escalada de Privilegios](#privesc). 
 
      
