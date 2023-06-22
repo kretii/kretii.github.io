@@ -10,7 +10,7 @@ description : 📡En esta ocasión estoy ante una máquina Windows nivel `Medium
 
 📡En esta ocasión estoy ante una máquina Windows nivel `Medium` de la plataforma HackThebox que me ha parecido muy interesante y con la que se aprenden técnicas nuevas📡.
 
-![](/assets/images/HTB/Escape-HackTheBox/Escape2.png)
+![](/assets/images/HTB/Escape-HackTheBox/Escape2.webp)
 
 ![](/assets/images/HTB/Escape-HackTheBox/escape-rating.webp)
 
